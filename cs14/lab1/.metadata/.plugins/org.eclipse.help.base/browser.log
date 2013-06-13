@@ -1,0 +1,5 @@
+
+Jun 21, 2010 14:49:14.89 NEW SESSION
+Jun 21, 2010 14:49:14.89 which: no mozilla in (/usr/csshare/pkgs/jdk1.6.0_14_x86_64:/home/csmajs/wongc/bin:/usr/csshare/bin:/usr/csshare/sbin:/usr/bin/:/bin:/usr/local/bin:/usr/ucb:/sbin:/usr/sbin:/usr/local/sbin:/usr/bin/X11:/usr/X11R6/bin:/usr/local/X11:/usr/local/bin/X11:/usr/openwin/bin:.)
+Jun 21, 2010 14:49:14.89 which: no netscape in (/usr/csshare/pkgs/jdk1.6.0_14_x86_64:/home/csmajs/wongc/bin:/usr/csshare/bin:/usr/csshare/sbin:/usr/bin/:/bin:/usr/local/bin:/usr/ucb:/sbin:/usr/sbin:/usr/local/sbin:/usr/bin/X11:/usr/X11R6/bin:/usr/local/X11:/usr/local/bin/X11:/usr/openwin/bin:.)
+Jun 21, 2010 14:49:14.90 /usr/bin/firefox

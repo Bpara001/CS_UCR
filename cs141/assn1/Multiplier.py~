@@ -1,0 +1,15 @@
+class Multiplier:
+	def __init__(self, number):
+		self.number = number
+	def multiply_by(self, x):
+		return self.number * x
+	def test(self):
+		return self.number
+
+
+
+a = Multiplier(10)
+
+print a.multiply_by(5)
+
+print a.test

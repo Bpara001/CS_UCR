@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277158909219
+activated,view,org.eclipse.ui.navigator.resources,3.4.200.I20091124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1277158929103
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158948005
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.selectAll",1277159143954
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277159208866
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277159221531
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277159223382
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277159223720
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277159223721
+error,log,,,"Resource '/empty_project' is not open.",1277159223762
+closed,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159224026
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159245416
+activated,view,org.eclipse.ui.navigator.resources,3.4.200.I20091124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1277159300163
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159303044
+activated,view,org.eclipse.ui.navigator.resources,3.4.200.I20091124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1277159318700
+opened,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159318806
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159318877
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159340978
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159360943
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159370145
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159394436
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277159408077
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277159417206
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.copy",1277159566967
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.paste",1277159571320

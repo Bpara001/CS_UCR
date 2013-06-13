@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "Z:/Desktop/cs161/lab6/a/CAM_Wrapper.xst" -ofn "Z:/Desktop/cs161/lab6/a/CAM_Wrapper.syr" 

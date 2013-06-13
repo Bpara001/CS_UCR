@@ -1,0 +1,202 @@
+Test 1: Operations on an empty book
+Removing a number from an empty book
+Error: Phone number does not exist
+Total size of book = 0
+Size of area code ( 909 ) = 0
+Number of phone numbers with area code ( 909 ) and prefix 234 = 0
+--------------------------------------------------------
+Test 2: Inserting first phone number     asdfsfeeceddc
+( 909 )
+       345-1111, 
+Total size of book = 1
+--------------------------------------------------------
+Test 3: Inserting 3 additional phone numbers to the same area code
+( 909 )
+       123-1111, 345-3333, 345-2222, 345-1111, 
+Total size of book = 4
+Size of area code ( 909 ) = 4
+Number of phone numbers with area code ( 909 ) and prefix 345 = 3
+--------------------------------------------------------
+Test 4: Inserting duplicate number at tail of phone number list
+Error: cannot insert duplicate phone numbers
+( 909 )
+       123-1111, 345-3333, 345-2222, 345-1111, 
+Total size of book = 4
+--------------------------------------------------------
+Test 5: Inserting duplicate number in middle of phone number list
+Error: cannot insert duplicate phone numbers
+( 909 )
+       123-1111, 345-3333, 345-2222, 345-1111, 
+Total size of book = 4
+--------------------------------------------------------
+Test 6: Inserting duplicate number at head of phone number list
+Error: cannot insert duplicate phone numbers
+( 909 )
+       123-1111, 345-3333, 345-2222, 345-1111, 
+Total size of book = 4
+--------------------------------------------------------
+Test 7: Inserting 4 more numbers to the same area code
+( 909 )
+       123-5555, 123-4444, 123-3333, 123-2222, 123-1111, 
+       345-3333, 345-2222, 345-1111, 
+Total size of book = 8
+--------------------------------------------------------
+Test 8: Searching for a phone number that does exist
+Searching for 909-345-1111....found
+Total size of book = 8
+--------------------------------------------------------
+Test 9: Searching for a phone number that does not exist
+Searching for 909-345-9876....not found
+Total size of book = 8
+--------------------------------------------------------
+Test 10: Removing from head of phone number list
+( 909 )
+       123-4444, 123-3333, 123-2222, 123-1111, 345-3333, 
+       345-2222, 345-1111, 
+Total size of book = 7
+--------------------------------------------------------
+Test 11: Removing from middle of phone number list
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+       345-1111, 
+Total size of book = 6
+--------------------------------------------------------
+Test 12: Removing from tail of phone number list
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 5
+--------------------------------------------------------
+Test 13: Removing a phone number that does not exist
+Error: Phone number does not exist
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 5
+--------------------------------------------------------
+Test 14: Inserting a number into a new area code
+( 818 )
+       999-1111, 
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 6
+--------------------------------------------------------
+Test 15: Inserting 3 more numbers into the new area code
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 9
+--------------------------------------------------------
+Test 16: Adding a third area code
+( 619 )
+       777-1111, 
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 10
+--------------------------------------------------------
+Test 17: Searching for a phone number in an area code that does not exist 
+Searching for 111-345-1111....not found
+Total size of book = 10
+--------------------------------------------------------
+Test 18: Removing in an area code that does not exist
+Error: Phone number does not exist
+( 619 )
+       777-1111, 
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 10
+--------------------------------------------------------
+Test 19: Removing the last phone number in an area code at the head of the area code list
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 9
+--------------------------------------------------------
+Test 20: Reading in phone numbers from a file
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+Error: cannot insert duplicate phone numbers
+( 753 )
+       674-3456, 123-9345, 123-2365, 123-2545, 123-4345, 
+       123-1234, 123-2345, 
+( 868 )
+       678-5430, 678-5439, 678-5435, 678-5433, 678-5436, 
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       123-4444, 123-3333, 123-2222, 345-3333, 345-2222, 
+Total size of book = 21
+--------------------------------------------------------
+Test 21: Splitting 123 prefix out of area code 909 to area code 808
+( 808 )
+       123-2222, 123-3333, 123-4444, 
+( 753 )
+       674-3456, 123-9345, 123-2365, 123-2545, 123-4345, 
+       123-1234, 123-2345, 
+( 868 )
+       678-5430, 678-5439, 678-5435, 678-5433, 678-5436, 
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       345-3333, 345-2222, 
+Total size of book = 21
+--------------------------------------------------------
+Test 22: Splitting nonexisting prefix out of area code 909 to area code 808
+Error: new area code already exists
+( 808 )
+       123-2222, 123-3333, 123-4444, 
+( 753 )
+       674-3456, 123-9345, 123-2365, 123-2545, 123-4345, 
+       123-1234, 123-2345, 
+( 868 )
+       678-5430, 678-5439, 678-5435, 678-5433, 678-5436, 
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       345-3333, 345-2222, 
+Total size of book = 21
+--------------------------------------------------------
+Test 23: Splitting 345 prefix out of area code 909 to existing area code
+Error: new area code already exists
+( 808 )
+       123-2222, 123-3333, 123-4444, 
+( 753 )
+       674-3456, 123-9345, 123-2365, 123-2545, 123-4345, 
+       123-1234, 123-2345, 
+( 868 )
+       678-5430, 678-5439, 678-5435, 678-5433, 678-5436, 
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+( 909 )
+       345-3333, 345-2222, 
+Total size of book = 21
+--------------------------------------------------------
+Test 24: Splitting 345 prefix out of area code 909 to 707 (909 is now empty)
+( 707 )
+       345-2222, 345-3333, 
+( 808 )
+       123-2222, 123-3333, 123-4444, 
+( 753 )
+       674-3456, 123-9345, 123-2365, 123-2545, 123-4345, 
+       123-1234, 123-2345, 
+( 868 )
+       678-5430, 678-5439, 678-5435, 678-5433, 678-5436, 
+( 818 )
+       888-1111, 999-3333, 999-2222, 999-1111, 
+Total size of book = 21
+--------------------------------------------------------

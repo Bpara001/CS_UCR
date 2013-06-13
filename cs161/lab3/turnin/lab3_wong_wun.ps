@@ -1,0 +1,7068 @@
+%!PS-Adobe-3.0
+%%Title: lab3_report.txt, lab3_vhdl.vhd, lab3_tb.vhd, main.cpp, Makefile, ALU_Control_S10.vhd, ALU_S10.vhd, Control_Unit_S10.vhd, Datapath_S10.vhd, Extra_components_S10.vhd
+%%For: Christopher Wong
+%%Creator: a2ps version 4.13
+%%CreationDate: Fri May 11 17:39:37 2012
+%%BoundingBox: 24 24 588 768
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 23
+%%PageOrder: Ascend
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontType get 0 eq {
+    currentfont /FontMatrix get 3 get
+  }{
+    currentfont /FontMatrix get 3 get 1000 mul
+  } ifelse
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% composite fonts for ASCII-EUC mixed string
+% Version 1.2 1/31/1990
+% Orignal Ken'ichi HANDA (handa@etl.go.jp)
+% Modified Norio Katayama (katayama@rd.nacsis.ac.jp),1998
+% Extend & Fix Koji Nakamaru (maru@on.cs.keio.ac.jp), 1999
+% Anyone can freely copy, modify, distribute this program.
+
+/copyfont {	% font-dic extra-entry-count  copyfont  font-dic
+	1 index maxlength add dict begin
+	{	1 index /FID ne 2 index /UniqueID ne and
+		{def} {pop pop} ifelse
+	} forall
+	currentdict
+	end
+} bind def
+
+/compositefont { % ASCIIFontName EUCFontName RomanScale RomanOffset Rot(T/F) compositefont font
+    /RomanRotation exch def
+    /RomanOffset exch def
+    /RomanScale exch def
+    userdict /fixeucfont_dict known not {
+	userdict begin
+	    /fixeucfont_dict 2 dict begin
+		/UpperByteEncoding [
+		    16#00 1 16#20 { pop 0 } for
+		    16#21 1 16#28 { 16#20 sub } for
+		    16#29 1 16#2F { pop 0 } for
+		    16#30 1 16#74 { 16#27 sub } for
+		    16#75 1 16#FF { pop 0 } for
+		] def
+	        /LowerByteEncoding [
+		    16#00 1 16#A0 { pop /.notdef } for
+		    16#A1 1 16#FE { 16#80 sub 16 2 string cvrs
+				    (cXX) dup 1 4 -1 roll
+				    putinterval cvn } for
+		    /.notdef
+		] def
+		currentdict
+	    end def
+	end
+    } if
+    findfont dup /FontType get 0 eq {
+	14 dict begin
+	    %
+	    % 7+8 bit EUC font
+	    %
+	    12 dict begin
+		/EUCFont exch def
+		/FontInfo (7+8 bit EUC font) readonly def
+		/PaintType 0 def
+		/FontType 0 def
+		/FontMatrix matrix def
+		% /FontName
+		/Encoding fixeucfont_dict /UpperByteEncoding get def
+		/FMapType 2 def
+		EUCFont /WMode known
+		{ EUCFont /WMode get /WMode exch def }
+		{ /WMode 0 def } ifelse
+		/FDepVector [
+		    EUCFont /FDepVector get 0 get
+		    [ 16#21 1 16#28 {} for 16#30 1 16#74 {} for ]
+		    {
+			13 dict begin
+			    /EUCFont EUCFont def
+			    /UpperByte exch 16#80 add def	
+			    % /FontName
+			    /FontInfo (EUC lower byte font) readonly def
+			    /PaintType 0 def
+			    /FontType 3 def
+			    /FontMatrix matrix def
+			    /FontBBox {0 0 0 0} def
+			    /Encoding
+				fixeucfont_dict /LowerByteEncoding get def
+			    % /UniqueID
+			    % /WMode
+			    /BuildChar {
+				gsave
+				exch dup /EUCFont get setfont
+				/UpperByte get
+				2 string
+				dup 0 4 -1 roll put
+				dup 1 4 -1 roll put
+				dup stringwidth setcharwidth
+				0 0 moveto show
+				grestore
+			    } bind def
+			    currentdict
+			end
+			/lowerbytefont exch definefont
+		    } forall
+		] def
+		currentdict
+	    end
+	    /eucfont exch definefont
+	    exch
+	    findfont 1 copyfont dup begin
+		RomanRotation {
+			/FontMatrix FontMatrix
+			[ 0 RomanScale neg RomanScale 0 RomanOffset neg 0 ]
+			matrix concatmatrix def
+		}{
+			/FontMatrix FontMatrix
+			[ RomanScale 0 0 RomanScale 0 RomanOffset ] matrix concatmatrix
+			def
+			/CDevProc
+			    {pop pop pop pop 0 exch -1000 exch 2 div 880} def
+		} ifelse
+	    end
+	    /asciifont exch definefont
+	    exch
+	    /FDepVector [ 4 2 roll ] def
+	    /FontType 0 def
+	    /WMode 0 def
+	    /FMapType 4 def
+	    /FontMatrix matrix def
+	    /Encoding [0 1] def
+	    /FontBBox {0 0 0 0} def
+%	    /FontHeight 1.0 def % XXXX
+	    /FontHeight RomanScale 1.0 ge { RomanScale }{ 1.0 } ifelse def
+	    /Descent -0.3 def   % XXXX
+	    currentdict
+	end
+	/tmpfont exch definefont
+	pop
+	/tmpfont findfont
+    }{
+	pop findfont 0 copyfont
+    } ifelse
+} def	
+
+/slantfont {	% FontName slant-degree  slantfont  font'
+    exch findfont 1 copyfont begin
+    [ 1 0 4 -1 roll 1 0 0 ] FontMatrix exch matrix concatmatrix
+    /FontMatrix exch def
+    currentdict
+    end
+} def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 612 def
+/sw 792 def
+/llx 24 def
+/urx 768 def
+/ury 588 def
+/lly 24 def
+/#copies 1 def
+/th 15.000000 def
+/fnfs 11 def
+/bfs 7.060185 def
+/cw 4.236111 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   520.335631 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 5 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (Names: Hans Wun, Chris Wong) p n
+(2) # (Login: wunh, wongc) N
+(3) # (Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (Lab Section: 0##) N
+(5) # (Assignment: Lab #3) N
+(6) # (I acknowledge all content is original.) N
+(7) # () N
+(8) # (I. Lab objective) N
+(9) # () N
+(10) # () N
+(11) # (II . Personal contributions) N
+(12) # () N
+(13) # () N
+(14) # (III. Skill learned & knowledge gained.) N
+(15) # () N
+(16) # () N
+(17) # (IV. Known bugs locations) N
+(18) # () N
+(19) # () N
+(20) # (V. Feedback on the lab) N
+(21) # () N
+(lab3_report.txt) (Page 1/1) (Apr 26, 12 15:28) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(lab3_report.txt) (1/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (///////////////////////////////////////////////////) c n
+(2) # (//Names: Hans Wun, Chris Wong) N
+(3) # (//Login: wunh, wongc) N
+(4) # (//Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(5) # (//Lab Section: 0##) N
+(6) # (//Assignment: Lab #3) N
+(7) # (//I acknowledge all content is original.) N
+(8) # (////////////////////////////////////////////////////) N
+(9) # () N
+(10) # () S
+(#include) K
+( <iostream>) p n
+(11) # () S
+(#include) K
+( <fstream>) p n
+(12) # () S
+(#include) K
+( <assert.h>) p n
+(13) # () S
+(#include) K
+( <vector>) p n
+(14) # () S
+(#include) K
+( <stdlib.h>) p n
+(15) # () S
+(using) K
+( ) p
+(namespace) K
+( std;) p n
+(16) # () N
+(17) # (vector<string> data,text;) N
+(18) # () N
+(19) # () N
+(20) # () S
+(/**) c n
+(21) # (* Converts integer to its binary equivlent) N
+(22) # (* Parameters: int n, int size, bool sign_flag) N
+(23) # (*       num <- integer that we are giong to convert) N
+(24) # (*       size <- total number of bits to convert to) N
+(25) # (*       sign_flag <-'false'\(defualt\) binary will be unsigned, 'true' -> signed) N
+(26) # (* Returns: string containing 'binary' equivlanet) N
+(27) # (* Purpose: To print the binary equivalent of the given integer) N
+(28) # (*/) N
+(29) # () S
+(string to_bin\() p
+(const) K
+( ) p
+(int) k
+( &num,) p
+(const) K
+( ) p
+(int) k
+( &size, ) p
+(const) K
+( ) p
+(bool) k
+( &sign_flag = ) p
+(false) k
+(\){) p n
+(30) # () N
+(31) # (    ) S
+(//declare variables) c n
+(32) # () S
+(    ) p
+(int) k
+( n = num, temp1, s_size_temp;) p n
+(33) # (    string s, s_reverse;) N
+(34) # (    ) S
+(bool) k
+( neg_flag = ) p
+(false) k
+(;) p n
+(35) # () N
+(36) # (    ) S
+(//check correct input) c n
+(37) # () S
+(    ) p
+(if) K
+(\(n < 0 \) assert\(sign_flag\); ) p
+(//output error when neg and unsigned) c n
+(38) # () N
+(39) # () S
+(    ) p
+(//check to see if its a negative number when signed binary) c n
+(40) # () S
+(    ) p
+(if) K
+(\(sign_flag && n < 0\){) p n
+(41) # (        neg_flag = ) S
+(true) k
+(;) p n
+(42) # (        n = \(n * -1\) - 1; ) S
+(//convert negative when necessary to pos) c n
+(43) # () S
+(    }) p n
+(44) # () N
+(45) # (    ) S
+(//push in 1 or 0 when appropriate) c n
+(46) # () S
+(    ) p
+(while) K
+(\( n != 0 \){) p n
+(47) # (        temp1 = n % 2;) N
+(48) # (        ) S
+(if) K
+(\( temp1 == 1 && !neg_flag\) s += ") p
+(1) str
+(";) p n
+(49) # (        ) S
+(else) K
+( ) p
+(if) K
+( \(temp1 == 0 && !neg_flag\) s +=") p
+(0) str
+(";) p n
+(50) # (        ) S
+(else) K
+( ) p
+(if) K
+( \(temp1 == 1 && neg_flag\) s +=") p
+(0) str
+(";) p n
+(51) # (        ) S
+(else) K
+( ) p
+(if) K
+( \(temp1 == 0 && neg_flag\) s +=") p
+(1) str
+(";) p n
+(52) # (        ) S
+(else) K
+( assert\() p
+(true) k
+(\);  ) p
+(//kill program if something weird happens) c n
+(53) # () S
+(        n /= 2;) p n
+(54) # (    }) N
+(55) # () N
+(56) # (    ) S
+(//check for overflow) c n
+(57) # () S
+(    s_size_temp = size - s.size\(\);) p n
+(58) # (    ) S
+(if) K
+(\(!sign_flag\) assert\(s_size_temp >= 0\);) p n
+(59) # (    ) S
+(else) K
+( assert\(s_size_temp > 0\);) p n
+(60) # () N
+(61) # (    ) S
+(//pad with 1's or 0's) c n
+(62) # () S
+(    ) p
+(for) K
+(\() p
+(int) k
+( i = 0; i < s_size_temp; i++\){) p n
+(63) # (        ) S
+(if) K
+(\(!neg_flag\) s += ") p
+(0) str
+(";) p n
+(64) # (        ) S
+(else) K
+( s += ") p
+(1) str
+(";) p n
+(65) # (    }) N
+(66) # () N
+(67) # (    ) S
+(//reverse string output to s_reverse) c n
+(68) # () S
+(    ) p
+(for) K
+(\() p
+(int) k
+( i = \(s.size\(\) -1\); i >= 0; i--\) s_reverse += s.substr\(i,1\);) p n
+(69) # () N
+(70) # (    ) S
+(//if signed, set first bit to it's appropratie flag) c n
+(71) # () S
+(    ) p
+(if) K
+(\(sign_flag && !neg_flag\) s.substr\(0,1\) == ") p
+(0) str
+(";) p n
+(72) # (    ) S
+(else) K
+( ) p
+(if) K
+(\(sign_flag && neg_flag\) s.substr\(0,1\) == ") p
+(1) str
+(";) p n
+(73) # () N
+(main.cpp) (Page 1/9) (May 10, 12 13:42) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(74) # (    ) p
+(//return solution) c n
+(75) # () S
+(    ) p
+(return) K
+( s_reverse;) p n
+(76) # (}) N
+(77) # () N
+(78) # () S
+(//parameter: ex v0 v1 v2) c n
+(79) # () S
+(string find_reg\() p
+(const) K
+( string &s\)) p n
+(80) # ({) N
+(81) # (    string temp;) N
+(82) # (    ) S
+(for) K
+(\() p
+(int) k
+( i  = 0; i < data.size\(\);i++\){) p n
+(83) # (        ) S
+(if) K
+(\(data[i].substr\(0,data[i].find\(") p
+(:) str
+("\)\) == s.substr\(0,s.find\(") p
+(:) str
+("\)\)\){) p n
+(84) # () N
+(85) # (            temp = data[i].substr\(data[i].find\(") S
+(d) str
+("\)+1\);) p n
+(86) # (            ) S
+(while) K
+(\(temp.substr\(0,1\) != ") p
+( ) str
+("\) temp = temp.substr\(1\);) p n
+(87) # (            ) S
+(return) K
+( to_bin\(atoi\(temp.c_str\(\)\),16,) p
+(true) k
+(\);) p n
+(88) # (        }) N
+(89) # (    }) N
+(90) # () N
+(91) # (}) N
+(92) # () N
+(93) # () N
+(94) # () S
+(//======================================) c n
+(95) # (// Assembler specific helper functions) N
+(96) # (//======================================) N
+(97) # (/**) N
+(98) # (* Converts the getline'd string to a binary string) N
+(99) # (* Parameter: entire string line to convert) N
+(100) # (* Returns: the appropiate converted binary string) N
+(101) # (*/) N
+(102) # () N
+(103) # () S
+(string assem_add\() p
+(const) K
+( string &s\){) p n
+(104) # (    string s1 = ") S
+(000000) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(105) # () S
+(    ) p
+(int) k
+( temp;) p n
+(106) # () N
+(107) # (    ) S
+(//set d) c n
+(108) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(109) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(110) # (    string d = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(111) # () N
+(112) # (    ) S
+(//set ss) c n
+(113) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(114) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(115) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(116) # () N
+(117) # (    ) S
+(//set t) c n
+(118) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(119) # (    temp = atoi\(s_temp.c_str\(\)\);) N
+(120) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(121) # () N
+(122) # (    ) S
+(//push everything back) c n
+(123) # () S
+(    s1 += ss;) p n
+(124) # (    s1 += t;) N
+(125) # (    s1 += d;) N
+(126) # (    s1 += ") S
+(00000100000) str
+(";) p n
+(127) # (    ) S
+(return) K
+( \(s1\);) p n
+(128) # (}) N
+(129) # () N
+(130) # (string assem_addu\() S
+(const) K
+( string &s\){) p n
+(131) # () N
+(132) # (    string s1 = ") S
+(000000) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(133) # () S
+(    ) p
+(int) k
+( temp;) p n
+(134) # () N
+(135) # (    ) S
+(//set d) c n
+(136) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(137) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(138) # (    string d = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(139) # () N
+(140) # (    ) S
+(//set ss) c n
+(141) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(142) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(143) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(144) # () N
+(145) # (    ) S
+(//set t) c n
+(146) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(main.cpp) (Page 2/9) (May 10, 12 13:42) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(main.cpp) (2/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 3
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(147) # (    temp = atoi\(s_temp.c_str\(\)\);) p n
+(148) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(149) # () N
+(150) # (    ) S
+(//push everything back) c n
+(151) # () S
+(    s1 += ss;) p n
+(152) # (    s1 += t;) N
+(153) # (    s1 += d;) N
+(154) # (    s1 += ") S
+(00000100001) str
+(";) p n
+(155) # (    ) S
+(return) K
+( \(s1\);) p n
+(156) # (}) N
+(157) # () N
+(158) # (string assem_sub\() S
+(const) K
+( string &s\){) p n
+(159) # () N
+(160) # (    string s1 = ") S
+(000000) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(161) # () S
+(    ) p
+(int) k
+( temp;) p n
+(162) # () N
+(163) # (    ) S
+(//set d) c n
+(164) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(165) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(166) # (    string d = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(167) # () N
+(168) # (    ) S
+(//set ss) c n
+(169) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(170) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(171) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(172) # () N
+(173) # (    ) S
+(//set t) c n
+(174) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(175) # (    temp = atoi\(s_temp.c_str\(\)\);) N
+(176) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(177) # () N
+(178) # (    ) S
+(//push everything back) c n
+(179) # () S
+(    s1 += ss;) p n
+(180) # (    s1 += t;) N
+(181) # (    s1 += d;) N
+(182) # (    s1 += ") S
+(00000100010) str
+(";) p n
+(183) # (    ) S
+(return) K
+( \(s1\);) p n
+(184) # (}) N
+(185) # () N
+(186) # (string assem_subu\() S
+(const) K
+( string &s\){) p n
+(187) # () N
+(188) # (    string s1 = ") S
+(000000) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(189) # () S
+(    ) p
+(int) k
+( temp;) p n
+(190) # () N
+(191) # (    ) S
+(//set d) c n
+(192) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(193) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(194) # (    string d = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(195) # () N
+(196) # (    ) S
+(//set ss) c n
+(197) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(198) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(199) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(200) # () N
+(201) # (    ) S
+(//set t) c n
+(202) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(203) # (    temp = atoi\(s_temp.c_str\(\)\);) N
+(204) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(205) # () N
+(206) # (    ) S
+(//push everything back) c n
+(207) # () S
+(    s1 += ss;) p n
+(208) # (    s1 += t;) N
+(209) # (    s1 += d;) N
+(210) # (    s1 += ") S
+(00000100011) str
+(";) p n
+(211) # (    ) S
+(return) K
+( \( s1\);) p n
+(212) # (}) N
+(213) # () N
+(214) # (string assem_and\() S
+(const) K
+( string &s\){) p n
+(215) # () N
+(216) # (    string s1 = ") S
+(000000) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(217) # () S
+(    ) p
+(int) k
+( temp;) p n
+(218) # () N
+(219) # (    ) S
+(//set d) c n
+(main.cpp) (Page 3/9) (May 10, 12 13:42) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(220) # (    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(221) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(222) # (    string d = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(223) # () N
+(224) # (    ) S
+(//set ss) c n
+(225) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(226) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(227) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(228) # () N
+(229) # (    ) S
+(//set t) c n
+(230) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(231) # (    temp = atoi\(s_temp.c_str\(\)\);) N
+(232) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(233) # () N
+(234) # (    ) S
+(//push everything back) c n
+(235) # () S
+(    s1 += ss;) p n
+(236) # (    s1 += t;) N
+(237) # (    s1 += d;) N
+(238) # (    s1 += ") S
+(00000100100) str
+(";) p n
+(239) # (    ) S
+(return) K
+( \( s1\);) p n
+(240) # (}) N
+(241) # () N
+(242) # (string assem_or\() S
+(const) K
+( string &s\){) p n
+(243) # () N
+(244) # (    string s1 = ") S
+(000000) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(245) # () S
+(    ) p
+(int) k
+( temp;) p n
+(246) # () N
+(247) # (    ) S
+(//set d) c n
+(248) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(249) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(250) # (    string d = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(251) # () N
+(252) # (    ) S
+(//set ss) c n
+(253) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(254) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(255) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(256) # () N
+(257) # (    ) S
+(//set t) c n
+(258) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(259) # (    temp = atoi\(s_temp.c_str\(\)\);) N
+(260) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(261) # () N
+(262) # (    ) S
+(//push everything back) c n
+(263) # () S
+(    s1 += ss;) p n
+(264) # (    s1 += t;) N
+(265) # (    s1 += d;) N
+(266) # (    s1 += ") S
+(00000100101) str
+(";) p n
+(267) # (    ) S
+(return) K
+( \( s1\);) p n
+(268) # (}) N
+(269) # () N
+(270) # (string assem_slt\() S
+(const) K
+( string &s\){) p n
+(271) # () N
+(272) # (    string s1 = ") S
+(000000) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(273) # () S
+(    ) p
+(int) k
+( temp;) p n
+(274) # () N
+(275) # (    ) S
+(//set d) c n
+(276) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(277) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(278) # (    string d = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(279) # () N
+(280) # (    ) S
+(//set ss) c n
+(281) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(282) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(283) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(284) # () N
+(285) # (    ) S
+(//set t) c n
+(286) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(287) # (    temp = atoi\(s_temp.c_str\(\)\);) N
+(288) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(289) # () N
+(290) # (    ) S
+(//push everything back) c n
+(291) # () S
+(    s1 += ss;) p n
+(292) # (    s1 += t;) N
+(main.cpp) (Page 4/9) (May 10, 12 13:42) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(main.cpp) (3/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5-6) 4
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(293) # (    s1 += d;) p n
+(294) # (    s1 += ") S
+(00000101010) str
+(";) p n
+(295) # (    ) S
+(return) K
+( \( s1\);) p n
+(296) # (}) N
+(297) # () N
+(298) # (string assem_lw\() S
+(const) K
+( string &s\){) p n
+(299) # () N
+(300) # () N
+(301) # (    string s1 = ") S
+(100011) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(302) # () S
+(    ) p
+(int) k
+( temp;) p n
+(303) # (    string offset;) N
+(304) # () N
+(305) # (    ) S
+(//set t) c n
+(306) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(307) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(308) # (    string t = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(309) # () N
+(310) # (    ) S
+(//set offset) c n
+(311) # () N
+(312) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+(,) str
+("\)+1\);) p n
+(313) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(\() str
+("\)\).c_str\(\)\);) p n
+(314) # (    ) S
+(if) K
+(\(s.find\(") p
+(V) str
+("\) == -1\) offset= to_bin\(temp,16,) p
+(true) k
+(\);) p n
+(315) # (    ) S
+(else) K
+( offset = find_reg\(s_temp.substr\(0,s_temp.find\(") p
+(\() str
+("\)\)\);) p n
+(316) # () N
+(317) # (    ) S
+(//set ss) c n
+(318) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(319) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(\)) str
+("\)\).c_str\(\)\);) p n
+(320) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(321) # () N
+(322) # (    ) S
+(//push everything back) c n
+(323) # () S
+(    s1 += ss;) p n
+(324) # (    s1 += t;) N
+(325) # (    s1 += offset;) N
+(326) # () N
+(327) # (    ) S
+(return) K
+( \( s1\);) p n
+(328) # (}) N
+(329) # () N
+(330) # (string assem_sw\() S
+(const) K
+( string &s\){) p n
+(331) # () N
+(332) # (   string s1 = ") S
+(101011) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(333) # () S
+(    ) p
+(int) k
+( temp;) p n
+(334) # () N
+(335) # (    ) S
+(//set t) c n
+(336) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(337) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(338) # (    string t = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(339) # () N
+(340) # (    ) S
+(//set offset) c n
+(341) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+(,) str
+("\)+1\);) p n
+(342) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(\() str
+("\)\).c_str\(\)\);) p n
+(343) # (    string offset= to_bin\(temp,16,) S
+(true) k
+(\);) p n
+(344) # () N
+(345) # (    ) S
+(//set ss) c n
+(346) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(347) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(\)) str
+("\)\).c_str\(\)\);) p n
+(348) # (    string ss= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(349) # () N
+(350) # (    ) S
+(//push everything back) c n
+(351) # () S
+(    s1 += ss;) p n
+(352) # (    s1 += t;) N
+(353) # (    s1 += offset;) N
+(354) # (    ) S
+(return) K
+( \( s1\);) p n
+(355) # (}) N
+(356) # () N
+(357) # (string assem_beq\() S
+(const) K
+( string &s\){) p n
+(358) # () N
+(359) # (    string s1 = ") S
+(000100) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(360) # () S
+(    ) p
+(int) k
+( temp;) p n
+(361) # () N
+(362) # (    ) S
+(//set s) c n
+(363) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(364) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(365) # (    string ss = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(main.cpp) (Page 5/9) (May 10, 12 13:42) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(366) # () p n
+(367) # (    ) S
+(//set t) c n
+(368) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+($) str
+("\)+1\);) p n
+(369) # (    temp = atoi\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\).c_str\(\)\);) p n
+(370) # (    string t= to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(371) # () N
+(372) # (    ) S
+(//set offsetname) c n
+(373) # () S
+(    s_temp = s_temp.substr\(s_temp.find\(") p
+(,) str
+("\)\);) p n
+(374) # (    string offset= s_temp;) N
+(375) # () N
+(376) # (    ) S
+(//push everything back) c n
+(377) # () S
+(    s1 += ss;) p n
+(378) # (    s1 += t;) N
+(379) # (    s1 += offset;) N
+(380) # (    ) S
+(return) K
+( \( s1\);) p n
+(381) # (}) N
+(382) # () N
+(383) # (string assem_j\() S
+(const) K
+( string &s\){) p n
+(384) # () N
+(385) # (    string s1 = ") S
+(000010,) str
+(", s_temp;   ) p
+(//set the opcode, make the return string) c n
+(386) # () S
+(    ) p
+(int) k
+( temp;) p n
+(387) # () N
+(388) # (    ) S
+(//set offsetname) c n
+(389) # () S
+(    s_temp = s.substr\(s.find\(") p
+( ) str
+("\)+1\);) p n
+(390) # (    string offset= s_temp;) N
+(391) # () N
+(392) # (    ) S
+(//push everything back) c n
+(393) # () S
+(    s1 += offset;) p n
+(394) # (    ) S
+(return) K
+( \(s1\);) p n
+(395) # (}) N
+(396) # () N
+(397) # (string assem_word\() S
+(const) K
+( string &s\){) p n
+(398) # () N
+(399) # (    string s1 = "", s_temp;   ) S
+(//set the opcode, make the return string) c n
+(400) # () S
+(    ) p
+(int) k
+( temp;) p n
+(401) # () N
+(402) # (    ) S
+(//set offsetname) c n
+(403) # () S
+(    s_temp = s.substr\(s.find\(") p
+(:) str
+("\)+1\);) p n
+(404) # (    s_temp = s_temp.substr\(s_temp.find\(") S
+(d) str
+("\)+1\);) p n
+(405) # (    ) S
+(while) K
+(\(s_temp.substr\(0,1\) == ") p
+( ) str
+("\) s_temp = s_temp.substr\(1\);) p n
+(406) # (    temp = atoi\(\(s_temp.c_str\(\)\)\);) N
+(407) # () N
+(408) # (    ) S
+(//push everything back) c n
+(409) # () S
+(    s1 += to_bin\(temp,32,) p
+(false) k
+(\);) p n
+(410) # (    ) S
+(return) K
+( \( s1\);) p n
+(411) # (}) N
+(412) # () N
+(413) # (string assem_dbnz\() S
+(const) K
+( string &s\){) p n
+(414) # () N
+(415) # () N
+(416) # (    string s1 =") S
+(000110) str
+(", s_temp, offset;) p n
+(417) # (    ) S
+(int) k
+( temp;) p n
+(418) # () N
+(419) # (    ) S
+(//set s) c n
+(420) # () S
+(    s_temp = s.substr\(s.find\(") p
+($) str
+("\)+1\);) p n
+(421) # (    temp = atoi\(\(s_temp.substr\(0,s_temp.find\(") S
+(,) str
+("\)\)\).c_str\(\)\);) p n
+(422) # (    string ss = to_bin\(temp,5,) S
+(false) k
+(\);) p n
+(423) # () N
+(424) # (    offset = s_temp.substr\(s_temp.find\(") S
+(,) str
+("\)\);) p n
+(425) # () N
+(426) # (    s1 += ss;) N
+(427) # (    s1 += offset;) N
+(428) # (    ) S
+(return) K
+( s1;) p n
+(429) # () N
+(430) # (}) N
+(431) # () N
+(432) # (string assem_label\() S
+(const) K
+( string&s\){) p n
+(433) # () N
+(434) # (    ) S
+(return) K
+(  ") p
+(label:) str
+(" + s;) p n
+(435) # () N
+(436) # (}) N
+(437) # () N
+(438) # () N
+(main.cpp) (Page 6/9) (May 10, 12 13:42) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(main.cpp) (4/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (7-8) 5
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(439) # () p n
+(440) # () N
+(441) # () S
+(/**) c n
+(442) # (* Main function) N
+(443) # (* Parameter: name of mip's file) N
+(444) # (* Purpose: Acts as an assembler by assembling the argumennt's mip's code.) N
+(445) # (*/) N
+(446) # () S
+(int) k
+( main\() p
+(int) k
+( argc, ) p
+(char) k
+(** argv\){) p n
+(447) # () N
+(448) # (    ) S
+(//=======CHECK FILE PHASE ========) c n
+(449) # () S
+(    ) p
+(//Check for correct user input) c n
+(450) # () S
+(    ) p
+(if) K
+(\(argc != 2\){) p n
+(451) # (        cerr << ") S
+(INCORRECT Usage: ) str
+(" << argv[0] << ") p
+( <mips_file.s>) str
+(" <<) p n
+(452) # (             ") S
+( \\nexiting program) str
+(" << endl;) p n
+(453) # (        exit\(1\);) N
+(454) # (    }) N
+(455) # () N
+(456) # (    ) S
+(//open file for reading, check to make sure file can be opened) c n
+(457) # () S
+(    ifstream infile\(argv[1]\);) p n
+(458) # (    ) S
+(if) K
+(\(!infile\){) p n
+(459) # (        cerr << ") S
+(Can't open input file ') str
+(" << argv[1] <<") p
+(') str
+(" << endl;) p n
+(460) # (        exit\(1\);) N
+(461) # (    }) N
+(462) # () N
+(463) # (    ) S
+(//======READING PHASE =======) c n
+(464) # () S
+(    string line;) p n
+(465) # (    ) S
+(bool) k
+( text_readin = ) p
+(false) k
+(, data_readin = ) p
+(false) k
+(;) p n
+(466) # (    ) S
+(const) K
+( string blankline = ") p
+(00000000000000000000000000000000) str
+(";) p n
+(467) # () N
+(468) # (    ) S
+(//Reading logic loop: getline of file, read it, find command and push) c n
+(469) # () S
+(    getline\(infile,line\);    ) p
+(//get the first line) c n
+(470) # () S
+(    ) p
+(while) K
+(\(!infile.eof\(\)\){) p n
+(471) # () N
+(472) # (    ) S
+(//figure out which mode to read) c n
+(473) # () S
+(        ) p
+(if) K
+(\(line.substr\(0,5\) == ") p
+(.data) str
+("\) {) p n
+(474) # (            data_readin = ) S
+(true) k
+(;) p n
+(475) # (            getline\(infile,line\);) N
+(476) # (        }) N
+(477) # (        ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,5\) == ") p
+(.text) str
+("\) {) p n
+(478) # (            text_readin = ) S
+(true) k
+(;) p n
+(479) # (            data_readin = ) S
+(false) k
+(;) p n
+(480) # (            getline\(infile,line\);) N
+(481) # (        }) N
+(482) # () N
+(483) # (        ) S
+(//read the 'data' portion) c n
+(484) # () S
+(        ) p
+(if) K
+(\(data_readin\){) p n
+(485) # (            ) S
+(if) K
+(\(line.size\(\) != 0\)data.push_back\(line\);) p n
+(486) # (           ) S
+(// else data.push_back\(blankline\);) c n
+(487) # () S
+(        }) p n
+(488) # () N
+(489) # (        ) S
+(//read the 'text' portion) c n
+(490) # () S
+(        ) p
+(else) K
+( ) p
+(if) K
+(\(text_readin\){) p n
+(491) # () N
+(492) # (            ) S
+(if) K
+(\(line.size\(\) != 0\){) p n
+(493) # () N
+(494) # (                ) S
+(//cut off whitespace for line) c n
+(495) # () S
+(                ) p
+(while) K
+(\(line.substr\(0,1\) == ") p
+( ) str
+("\)line = line.substr\(1\);) p n
+(496) # () N
+(497) # (                ) S
+(//figure out which function to call) c n
+(498) # () S
+(                ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(add) str
+("\)) p n
+(499) # (                    text.push_back\(assem_add\(line\)\);) N
+(500) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(addu) str
+("\)) p n
+(501) # (                    text.push_back\(assem_addu\(line\)\);) N
+(502) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(sub) str
+("\)) p n
+(503) # (                    text.push_back\(assem_sub\(line\)\);) N
+(504) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(subu) str
+("\)) p n
+(505) # (                    text.push_back\(assem_subu\(line\)\);) N
+(506) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(and) str
+("\)) p n
+(507) # (                    text.push_back\(assem_and\(line\)\);) N
+(508) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(or) str
+("\)) p n
+(509) # (                    text.push_back\(assem_or\(line\)\);) N
+(510) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(slt) str
+("\)) p n
+(511) # (                    text.push_back\(assem_slt\(line\)\);) N
+(main.cpp) (Page 7/9) (May 10, 12 13:42) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(512) # (                ) p
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(lw) str
+("\)) p n
+(513) # (                    text.push_back\(assem_lw\(line\)\);) N
+(514) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(sw) str
+("\)) p n
+(515) # (                    text.push_back\(assem_sw\(line\)\);) N
+(516) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(beq) str
+("\)) p n
+(517) # (                    text.push_back\(assem_beq\(line\)\);) N
+(518) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(j) str
+("\)) p n
+(519) # (                    text.push_back\(assem_j\(line\)\);) N
+(520) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) == ") p
+(dbnz) str
+("\)) p n
+(521) # (                    text.push_back\(assem_dbnz\(line\)\);) N
+(522) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(line.substr\(0,line.find\(") p
+( ) str
+("\)\) != ""\)) p n
+(523) # (                    text.push_back\(assem_label\(line\)\);) N
+(524) # (                ) S
+(else) K
+( cerr << ") p
+(something went horribly wrong) str
+(" << endl;) p n
+(525) # (            }) N
+(526) # (            ) S
+(else) K
+( data.push_back\(blankline\);) p n
+(527) # (        }) N
+(528) # () N
+(529) # (        ) S
+(// read the next line) c n
+(530) # () S
+(        getline\(infile,line\);) p n
+(531) # (    }) N
+(532) # () N
+(533) # (    ) S
+(//=====SECOND PASS FOR READING) c n
+(534) # () S
+(    ) p
+(int) k
+( count = 0;) p n
+(535) # (    ) S
+(for) K
+(\() p
+(int) k
+( i = 0; i < text.size\(\); i++\){) p n
+(536) # (        ) S
+(if) K
+(\(text[i].substr\(0,6\) == ") p
+(000100) str
+(" || text[i].substr\(0,6\) == ") p
+(000010) str
+("||) p n
+(537) # (           text[i].substr\(0,6\) == ") S
+(000110) str
+("\){) p n
+(538) # () N
+(539) # (            ) S
+(int) k
+( s_offset = 0;) p n
+(540) # () N
+(541) # (            string s_label = text[i].substr\(text[i].find\(") S
+(,) str
+("\)+1\);) p n
+(542) # () N
+(543) # (            ) S
+(for) K
+(\() p
+(int) k
+( j = 0; j < text.size\(\); j++\){) p n
+(544) # (                ) S
+(if) K
+(\(text[j].substr\(6,text[j].size\(\)- 7\) == s_label\){ ) p
+(//its found) c n
+(545) # () S
+(                    s_offset = j-i - count + 1;) p n
+(546) # () N
+(547) # (                    ) S
+(if) K
+(\(text[i].substr\(0,6\) == ") p
+(000100) str
+("\) ) p
+(//if beq) c n
+(548) # () S
+(                        text[i] = text[i].substr\(0,16\)) p n
+(549) # (                        + to_bin\(s_offset,16,) S
+(true) k
+(\);) p n
+(550) # (                    ) S
+(else) K
+( ) p
+(if) K
+(\(text[i].substr\(0,6\) == ") p
+(000010) str
+("\) ) p
+(// ifjump) c n
+(551) # () S
+(                        text[i] = text[i].substr\(0,6\)) p n
+(552) # (                        + to_bin\(s_offset,26,) S
+(true) k
+(\);) p n
+(553) # (                    ) S
+(else) K
+( ) p
+(if) K
+(\(text[i].substr\(0,6\) == ") p
+(000110) str
+("\)) p
+(//if dbnz) c n
+(554) # () S
+(                        text[i] = text[i].substr\(0,11\)) p n
+(555) # (                        + ") S
+(00000) str
+(" + to_bin\(s_offset,16,) p
+(true) k
+(\);) p n
+(556) # (                    ) S
+(break) K
+(;) p n
+(557) # (                }) N
+(558) # () N
+(559) # (                ) S
+(else) K
+( ) p
+(if) K
+(\(text[j].substr\(0,6\) == ") p
+(label:) str
+(" && text[j] != s_label\)) p n
+(560) # (                    count++;) N
+(561) # (            }) N
+(562) # (        }) N
+(563) # (    }) N
+(564) # () N
+(565) # () S
+(for) K
+(\() p
+(int) k
+( i = 0; i < text.size\(\); i++\){) p n
+(566) # (    ) S
+(if) K
+(\(text[i].substr\(0,6\) == ") p
+(label:) str
+("\){) p n
+(567) # (        text.erase\(text.begin\(\) + i\);) N
+(568) # (         i--;) N
+(569) # (    }) N
+(570) # () N
+(571) # (}) N
+(572) # () N
+(573) # () N
+(574) # (    ) S
+(for) K
+(\() p
+(int) k
+( i = 0; i < data.size\(\); i++\) data[i] = assem_word\(data[i]\);) p n
+(575) # () N
+(576) # () N
+(577) # (    ) S
+(//======WRITING PHASE =====) c n
+(578) # () S
+(    ofstream outfile\(") p
+(init.coe) str
+("\);) p n
+(579) # (    outfile << ") S
+(memory_initialization_radix = 2;) str
+(" << endl;) p n
+(580) # (    outfile << ") S
+(memory_initialization_vector =) str
+(";) p n
+(581) # () N
+(582) # (    ) S
+(//Write to the file) c n
+(583) # () S
+(    ) p
+(for) K
+(\() p
+(int) k
+( i = 0; i < text.size\(\); i++\) outfile << endl << text[i];) p n
+(584) # (    ) S
+(for) K
+(\() p
+(int) k
+( i = text.size\(\); i < 127; i++\)outfile << endl << blankline;) p n
+(main.cpp) (Page 8/9) (May 10, 12 13:42) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(main.cpp) (5/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (9) 6
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(585) # (    ) p
+(for) K
+(\() p
+(int) k
+( i = 1; i < data.size\(\); i++\) outfile << endl << data[i];) p n
+(586) # (    ) S
+(for) K
+(\() p
+(int) k
+( i = data.size\(\); i < 130; i++\) outfile << endl << blankline;) p n
+(587) # (    outfile << ") S
+(;) str
+("; ) p
+(// output final semicolon) c n
+(588) # () N
+(589) # () N
+(590) # () S
+(    ) p
+(//close files, exit program) c n
+(591) # () S
+(    outfile.close\(\);) p n
+(592) # (    infile.close\(\);) N
+(593) # (    cout << ") S
+(=====Program Complete====) str
+(" << endl;) p n
+(594) # (    ) S
+(return) K
+( 0;) p n
+(595) # (}) N
+(main.cpp) (Page 9/9) (May 10, 12 13:42) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(main.cpp) (6/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 7
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (#Names: Hans Wun, Chris Wong) c n
+(2) # (#Login: wunh, wongc) N
+(3) # (#Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (#Lab Section: 0##) N
+(5) # (###############################################################################) N
+(6) # (#Variable to hold lab number) N
+(7) # () S
+(LABNUM) l
+(=3) p n
+(8) # () N
+(9) # () S
+(#Variable to hold first lastname) c n
+(10) # () S
+(LASTNAME1) l
+(=wong) p n
+(11) # () N
+(12) # () S
+(#Variable to hold second lastname) c n
+(13) # () S
+(LASTNAME2) l
+(=wun) p n
+(14) # () N
+(15) # () S
+(#Variable of Tarball generated) c n
+(16) # () S
+(TAR) l
+(=lab$\(LABNUM\)_$\(LASTNAME1\)_$\(LASTNAME2\).tgz) p n
+(17) # () N
+(18) # () S
+(#Variable of Post Script generated) c n
+(19) # () S
+(PSPRINT) l
+(=lab$\(LABNUM\)_$\(LASTNAME1\)_$\(LASTNAME2\).ps) p n
+(20) # () S
+(PDFPRINT) l
+(=lab$\(LABNUM\)_$\(LASTNAME1\)_$\(LASTNAME2\).pdf) p n
+(21) # () N
+(22) # () S
+(#File hiearachy is lab$\(LABNUM\)_$\(PART\)$\(SUBPART\)$\(TESTBENCH\).$\(EXTENSION\)) c n
+(23) # (#$\(LABNUM\)= lab number) N
+(24) # (#$\(PART\)= if a lab part exists in order from 1 to infinity) N
+(25) # (#$\(SUBPART\)= if other components were used to make this component that were) N
+(26) # (#            not included then put them here in order from a to z. If "a") N
+(27) # (#            requires sub parts then put "a"$\(subsubpart\) I.E. "a1" now) N
+(28) # (#            numbering. Continue letter/number trend to infinity.) N
+(29) # (#$\(TESTBENCH\)= if this is a test bench file then put "tb" to indicate it) N
+(30) # (#              is test bench for this part) N
+(31) # (#$\(EXTENSION\)= is the character file extension) N
+(32) # () N
+(33) # (#Files to be included in the PS/PDF print) N
+(34) # () S
+(FILES) l
+(=lab3_report.txt lab3_vhdl.vhd lab3_tb.vhd main.cpp Makefile ALU_Control_S1) p n
+0 T (0.vhd ALU_S10.vhd Control_Unit_S10.vhd Datapath_S10.vhd Extra_components_S10.vhd) N
+0 T ( Generic_register_s10.vhd MIPS_lib.vhd Mux.vhd Reg_File_S10.vhd Wrapper_S10.vhd) N
+(35) # () N
+(36) # () S
+(#Variable of to use G++ GNU compiler to compile C files) c n
+(37) # () S
+(COMPILER) l
+(=gcc) p n
+(38) # () N
+(39) # () S
+(# -g Produce debug information, necessary for debugging.) c n
+(40) # (# -Wall ) S 16 T (Show all reasonable warnings...) N
+(41) # (# -Werror Make all warnings into errors.) N
+(42) # (# -ansi This flag tells the compiler to enforce ANSI C standards) N
+(43) # (# -pedantic More pedantic ansi, warnings for stuff you probably didn't mean.) N
+(44) # (# -O2 Optimize even more. GCC performs nearly all supported optimizations that) N
+(45) # (#  do not involve a space-speed tradeoff. As compared to -O, this option) N
+(46) # (#) S 8 T (increases both compilation time and the performance of the generated cod) N
+0 T (e.) N
+(47) # (# -O3 Optimize yet more. -O3 turns on all optimizations specified by -O2) N
+(48) # (#  and also turns on the -finline-functions, -funswitch-loops,) N
+(49) # (#  -fpredictive-commoning, -fgcse-after-reload, -ftree-vectorize and) N
+(50) # (#  -fipa-cp-clone options.) N
+(51) # () N
+(52) # (#Variable of GCC Compiler flags) N
+(53) # () S
+(COMPILEFLAGS) l
+(= -g -O3) p n
+(54) # () N
+(55) # () S
+(#Compiler) c n
+(56) # () S
+(CXX) l
+(=g++) p n
+(57) # () N
+(58) # () S
+(#Compiler Flags) c n
+(59) # () S
+(CXXFLAGS) l
+(=-g) p n
+(60) # () N
+(61) # () S
+(#Include) c n
+(62) # () S
+(INCLUDE) l
+(=-I/usr/local/include -I/usr/csshare/include -I/usr/csshare/freetype2) p n
+(63) # () N
+(64) # () S
+(#Library locations) c n
+(65) # () S
+(LIBDIRS) l
+(=-L/usr/lib -L/usr/local/lib -L/usr/csshare/lib) p n
+(66) # () N
+(67) # () S
+(#Libraries) c n
+(68) # () S
+(LIBS) l
+(=-lSDL -lSDL_image -lGL -lfreetype -lz -lSDL_mixer) p n
+(69) # () N
+(70) # () S
+(#Main program) c n
+(Makefile) (Page 1/2) (May 11, 12 17:39) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(71) # (MAIN) l
+(=main.cpp) p n
+(72) # () N
+(73) # () S
+(#Object files) c n
+(74) # () S
+(OBJECTS) l
+(=) p n
+(75) # () N
+(76) # () N
+(77) # () S
+(#Variable of Program name) c n
+(78) # () S
+(PROGRAM) l
+(=genvhdl) p n
+(79) # () N
+(80) # () S
+(#Targets) c n
+(81) # (#Compile all, specifically first clean, print,) N
+(82) # (# turnin, and compile in this order) N
+(83) # () S
+(all) L
+(: $\(OBJECTS\) $\(MAIN\)) p n
+(84) # () S 8 T ($\(CXX\) $\(CXXFLAGS\) $\(INCLUDE\) $\(LIBDIRS\) $\(LIBS\) -o my_assembler $\(MAIN\)) N
+0 T ( $\(OBJECTS\)) N
+(85) # () S 8 T (clean print turnin) N
+(86) # () N
+(87) # () S
+(#Compile C code) c n
+(88) # () S
+(compile) L
+(:) p n
+(89) # () S 8 T ($\(COMPILER\) $\(COMPILEFLAGS\) -o $\(PROGRAM\) gen.c) N
+(90) # () N
+(91) # () S
+(#Remove unnecessary files) c n
+(92) # () S
+(clean) L
+(:) p n
+(93) # () S 8 T (rm -rf *~ $\(PSPRINT\) $\(PDFPRINT\) $\(TAR\) $\(PROGRAM\) my_assembler init.coe) N
+(94) # () N
+(95) # () S
+(#Print files to a .ps document) c n
+(96) # () S
+(print) L
+(:) p n
+(97) # () S 8 T (a2ps -M letter --line-numbers=1 -o $\(PSPRINT\) $\(FILES\)) N
+(98) # () N
+(99) # () S
+(printpdf) L
+(:) p n
+(100) # () S 8 T (enscript -2 --fancy-header --line-numbers=1 --truncate-lines \\) N
+(101) # () S 8 T (--word-wrap --style=emacs --tabsize=3 --landscape $\(FILES\) \\) N
+(102) # () S 8 T (-o - | ps2pdfwr - $\(PDFPRINT\)) N
+(103) # () N
+(104) # () S
+(#Create a tar ball for project turn in) c n
+(105) # () S
+(turnin) L
+(:) p n
+(106) # () S 8 T (tar -czvf $\(TAR\) $\(PSPRINT\) $\(FILES\)) N
+(107) # () N
+(Makefile) (Page 2/2) (May 11, 12 17:39) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Makefile) (7/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 8
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # () N
+(7) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(8) # () S
+(use) K
+( IEEE.std_logic_1164.) p
+(all) K
+(;) p n
+(9) # () S
+(use) K
+( IEEE.std_logic_arith.) p
+(all) K
+(;) p n
+(10) # () N
+(11) # () S
+(entity) K
+( ) p
+(ALUControl) l
+( ) p
+(is) K n
+(12) # () S
+(    ) p
+(port) K
+(\() p n
+(13) # () S 8 T () S 16 T (alu_op ) S 24 T () S 32 T (: ) S
+(in) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(14) # (    ) S 8 T (ins_5_0   ) S 24 T (: ) S
+(in) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(15) # (        alu_control : ) S
+(out) K
+( std_logic_vector\( 2 ) p
+(downto) K
+( 0 \)) p n
+(16) # (        \);) N
+(17) # (    ) N
+(18) # () S
+(end) K
+( ALUControl;) p n
+(19) # () N
+(20) # () S
+(architecture) K
+( bhv ) p
+(of) K
+( ALUControl ) p
+(is) K n
+(21) # () N
+(22) # (begin) S
+(  ) p
+(-- bhv) c n
+(23) # () S
+() p 8 T () S
+(process) K
+( \(alu_op, ins_5_0\)) p n
+(24) # () S 8 T () S 16 T () S
+(variable) K
+( alu_control_out_temp : std_logic_vector\( 2 ) p
+(downto) K
+( 0 \);) p n
+(25) # () S 8 T () S
+(begin) K n
+(26) # () S
+() p 8 T () N
+(27) # () S 8 T () S 16 T () S
+(if) K
+( \( alu_op = ") p
+(00) str
+(" \) ) p
+(then) K n
+(28) # () S
+() p 8 T () S 16 T () S 24 T (alu_control_out_temp := ") S
+(010) str
+(";) p n
+(29) # () S 8 T () S 16 T () S
+(elsif) K
+( \(alu_op = ") p
+(01) str
+(" \) ) p
+(then) K
+( ) p n
+(30) # () S 8 T () S 16 T () S 24 T (alu_control_out_temp := ") S
+(110) str
+(";) p n
+(31) # () S 8 T () S 16 T () S 24 T () N
+(32) # () S 8 T () S 16 T () S
+(else) K n
+(33) # () S
+() p 8 T () S 16 T () S 24 T () S
+(case) K
+( ins_5_0\( 3 ) p
+(downto) K
+( 0\) ) p
+(is) K n
+(34) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(when) K
+( ") p
+(0000) str
+(" => ) p n
+(35) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (alu_control_out_temp := ") S
+(010) str
+(";) p n
+(36) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(37) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(when) K
+( ") p
+(0010) str
+(" =>) p n
+(38) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (alu_control_out_temp := ") S
+(110) str
+(";) p n
+(39) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(40) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(when) K
+( ") p
+(0100) str
+(" =>) p n
+(41) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (alu_control_out_temp := ") S
+(000) str
+(";) p n
+(42) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(43) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(when) K
+( ") p
+(0101) str
+(" =>) p n
+(44) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (alu_control_out_temp := ") S
+(001) str
+(";) p n
+(45) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(46) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(when) K
+( ") p
+(1010) str
+(" =>) p n
+(47) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (alu_control_out_temp := ") S
+(111) str
+(";) p n
+(48) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(49) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(when) K
+( ) p
+(others) K
+( =>) p n
+(50) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (alu_control_out_temp := ") S
+(000) str
+(";) p n
+(51) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(52) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(case) K
+(;) p n
+(53) # () S 8 T () S 16 T () S 24 T () N
+(54) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(if) K
+(;) p 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+(55) # () S 8 T () S 16 T () N
+(56) # () S 8 T () S 16 T (alu_control <= alu_control_out_temp;) N
+(57) # (  ) S 8 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(58) # () N
+(59) # () S
+(end) K
+( bhv;) p n
+(ALU_Control_S10.vhd) (Page 1/1) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(ALU_Control_S10.vhd) (8/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 9
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # () N
+(7) # (-------------------------------------------------------------------------------) N
+(8) # (-- ALU) N
+(9) # (-------------------------------------------------------------------------------) N
+(10) # () N
+(11) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(12) # () S
+(use) K
+( IEEE.std_logic_1164.) p
+(all) K
+(;) p n
+(13) # () S
+(use) K
+( IEEE.std_logic_arith.) p
+(all) K
+(; ) p n
+(14) # () S
+(use) K
+( IEEE.std_logic_unsigned.) p
+(all) K
+(;) p n
+(15) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(16) # () N
+(17) # () S
+(entity) K
+( ) p
+(ALU) l
+( ) p
+(is) K n
+(18) # () S
+(    ) p
+(port) K
+(\() p n
+(19) # () S 8 T (input_a    : ) S
+(in) K
+( std_logic_vector\( 31 ) p
+(downto) K
+( 0\);) p n
+(20) # () S 8 T (input_b    : ) S
+(in) K
+( std_logic_vector\( 31 ) p
+(downto) K
+( 0 \);) p n
+(21) # () S 8 T (operation  : ) S
+(in) K
+( std_logic_vector\( 2 ) p
+(downto) K
+( 0 \);) p 56 T () N
+(22) # () S 8 T (zero       : ) S
+(out) K
+( std_logic;) p n
+(23) # () S 8 T (result     : ) S
+(out) K
+( std_logic_vector\( 31 ) p
+(downto) K
+( 0 \)) p n
+(24) # () S 8 T (\);) N
+(25) # () S
+(end) K
+( ALU;) p n
+(26) # () N
+(27) # () S
+(architecture) K
+( bhv ) p
+(of) K
+( ALU ) p
+(is) K n
+(28) # (begin) N
+(29) # () S
+(    ) p
+(process) K
+(\( input_a, input_b, operation \) ) p n
+(30) # () S 8 T () S
+(variable) K
+( temp_result : std_logic_vector\( 31 ) p
+(downto) K
+( 0 \);) p n
+(31) # () N
+(32) # (        ) S
+(constant) K
+( ALU_AND : STD_LOGIC_VECTOR\(2 ) p
+(downto) K
+( 0\) := ") p
+(000) str
+(";) p n
+(33) # (        ) S
+(constant) K
+( ALU_OR  : STD_LOGIC_VECTOR\(2 ) p
+(downto) K
+( 0\) := ") p
+(001) str
+(";) p n
+(34) # (        ) S
+(constant) K
+( ALU_ADD : STD_LOGIC_VECTOR\(2 ) p
+(downto) K
+( 0\) := ") p
+(010) str
+(";) p n
+(35) # (        ) S
+(constant) K
+( ALU_SUB : STD_LOGIC_VECTOR\(2 ) p
+(downto) K
+( 0\) := ") p
+(110) str
+(";) p n
+(36) # (        ) S
+(constant) K
+( ALU_LT  : STD_LOGIC_VECTOR\(2 ) p
+(downto) K
+( 0\) := ") p
+(111) str
+(";) p n
+(37) # (        ) N
+(38) # (    ) S
+(begin) K
+() p 16 T () N
+(39) # () S 8 T () S
+(case) K
+( operation ) p
+(is) K n
+(40) # () S
+() p 8 T (    ) S
+(when) K
+( ALU_AND => temp_result := input_a ) p
+(and) K
+( input_b;) p n
+(41) # () S 8 T (    ) S
+(when) K
+( ALU_OR  => temp_result := input_b ) p
+(or) K
+( input_a;) p n
+(42) # (            ) S
+(when) K
+( ALU_ADD => temp_result := input_a + input_b;) p n
+(43) # () S 8 T (    ) S
+(when) K
+( ALU_SUB => temp_result := input_a - input_b;) p 64 T () S 72 T () N
+(44) # () S 8 T (    ) S
+(when) K
+( ALU_LT  => ) p n
+(45) # () S 8 T () S 16 T () S
+(if) K
+( \( input_a < input_b \) ) p
+(then) K n
+(46) # () S
+() p 8 T () S 16 T (    temp_result := C1_32;) N
+(47) # () S 8 T () S 16 T () S
+(else) K n
+(48) # () S
+() p 8 T () S 16 T (    temp_result := C0_32;) N
+(49) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(if) K
+(;) p 24 T () N
+(50) # () S 8 T () N
+(51) # () S 8 T (    ) S
+(when) K
+( ) p
+(others) K
+( => temp_result := C0_32;) p n
+(52) # () S 8 T () S
+(end) K
+( ) p
+(case) K
+(;) p 24 T () S 32 T () S 40 T () S 48 T (   ) N
+(53) # () S 8 T () S 16 T () N
+(54) # () S 8 T () S
+(if) K
+(\( temp_result = C0_32 \) ) p
+(then) K n
+(55) # () S
+() p 8 T (    zero <= ') S
+(1) str
+(';) p n
+(56) # () S 8 T () S
+(else) K n
+(57) # () S
+() p 8 T (    zero <= ') S
+(0) str
+(';) p n
+(58) # () S 8 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(59) # () S 8 T () N
+(60) # () S 8 T (result <= temp_result;) N
+(61) # () S 8 T () N
+(62) # (    ) S
+(end) K
+( ) p
+(process) K
+(;) p n
+(63) # () S
+(end) K
+( bhv;) p n
+(ALU_S10.vhd) (Page 1/1) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(ALU_S10.vhd) (9/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 10
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # (------------------) N
+(7) # (-- Design of MIPS Controller) N
+(8) # (------------------) N
+(9) # () N
+(10) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(11) # () S
+(use) K
+( IEEE.std_logic_1164.) p
+(all) K
+(;) p n
+(12) # () S
+(use) K
+( IEEE.std_logic_arith.) p
+(all) K
+(;) p n
+(13) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(14) # () N
+(15) # () S
+(entity) K
+( ) p
+(Control) l
+( ) p
+(is) K n
+(16) # () S
+(  ) p
+(port) K
+(\() p n
+(17) # (    rst : ) S
+(in) K
+( std_logic;) p n
+(18) # (    clk : ) S
+(in) K
+( std_logic;) p n
+(19) # (    alu_src_A  : ) S
+(out) K
+( std_logic;) p n
+(20) # (    alu_src_B  : ) S
+(out) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(21) # (    alu_op     : ) S
+(out) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(22) # (    reg_write  : ) S
+(out) K
+( std_logic;) p n
+(23) # (    reg_dst    : ) S
+(out) K
+( std_logic;) p n
+(24) # (    pc_source  : ) S
+(out) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(25) # () S 8 T ( pc_write_cond: ) S
+(out) K
+( std_logic;) p n
+(26) # (    pc_write    : ) S
+(out) K
+( std_logic;) p n
+(27) # (    i_or_d     : ) S
+(out) K
+( std_logic;) p n
+(28) # (    mem_read   : ) S
+(out) K
+( std_logic;) p n
+(29) # (    mem_write  : ) S
+(out) K
+( std_logic_vector\(0 ) p
+(downto) K
+( 0\);) p n
+(30) # (    mem_to_reg : ) S
+(out) K
+( std_logic;) p n
+(31) # (    IR_write   : ) S
+(out) K
+( std_logic;) p n
+(32) # (    ins_31_26 : ) S
+(in) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(33) # (    alu_zero  : ) S
+(in) K
+( std_logic) p n
+(34) # (    \);) N
+(35) # () N
+(36) # () S
+(end) K
+( Control;) p n
+(37) # () N
+(38) # () S
+(architecture) K
+( bhv ) p
+(of) K
+( Control ) p
+(is) K n
+(39) # () N
+(40) # () S
+(  ) p
+(type) K
+( state_type ) p
+(is) K
+( \(S0, S1, S2, S3, S4, S5, S6, S7, S8, S9\);) p n
+(41) # (  ) S
+(signal) K
+( state, next_state : state_type;) p n
+(42) # (  ) N
+(43) # (  ) N
+(44) # (  ) S
+(signal) K
+( s_mem_read : std_logic;) p n
+(45) # (  ) S
+(signal) K
+( s_alu_src_a : std_logic;) p n
+(46) # (  ) S
+(signal) K
+( s_i_or_d : std_logic;) p n
+(47) # (  ) S
+(signal) K
+( s_ir_write : std_logic;) p n
+(48) # (  ) S
+(signal) K
+( s_alu_src_b : std_logic_vector\(1 ) p
+(DOWNTO) K
+( 0\);) p n
+(49) # (  ) S
+(signal) K
+( s_alu_op : std_logic_vector\(1 ) p
+(DOWNTO) K
+( 0\);) p n
+(50) # (  ) S
+(signal) K
+( s_pc_write : std_logic;) p n
+(51) # (  ) S
+(signal) K
+( s_pc_src : std_logic_vector\(1 ) p
+(DOWNTO) K
+( 0\);) p n
+(52) # (  ) S
+(signal) K
+( s_pc_write_cond : std_logic;) p n
+(53) # (  ) S
+(signal) K
+( s_reg_write : std_logic;) p n
+(54) # (  ) S
+(signal) K
+( s_reg_dst : std_logic;) p n
+(55) # (  ) S
+(signal) K
+( s_mem_write : std_logic_vector\(0 ) p
+(downto) K
+( 0\);) p n
+(56) # (  ) S
+(signal) K
+( s_mem_to_reg : std_logic;) p n
+(57) # (  ) N
+(58) # () S
+(-- will be defined in "mips_lib.vhd") c n
+(59) # (-- constant LW     : std_logic_vector\( 5 downto 0 \) := "100011";) N
+(60) # (-- constant SW     : std_logic_vector\( 5 downto 0 \) := "101011";) N
+(61) # (-- constant RTYPE  : std_logic_vector\( 5 downto 0 \) := "000000";) N
+(62) # (-- constant BEQ    : std_logic_vector\( 5 downto 0 \) := "000100";) N
+(63) # (-- constant JUMP   : std_logic_vector\( 5 downto 0 \) := "000010";) N
+(64) # (-- constant DONE   : std_logic_vector\( 5 downto 0 \) := "111111";) N
+(65) # () N
+(66) # () N
+(67) # () S
+(begin) K n
+(68) # () S
+() p 8 T () N
+(69) # () S 8 T (mem_read <= s_mem_read;) N
+(70) # () S 8 T (alu_src_a <= s_alu_src_A;) N
+(71) # () S 8 T (i_or_d <= s_i_or_d;) N
+(72) # () S 8 T (IR_write <= s_IR_write;) N
+(73) # () S 8 T (alu_src_B <= s_alu_src_b;) N
+(Control_Unit_S10.vhd) (Page 1/5) (May 11, 12 17:31) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(74) # () p 8 T (alu_op <= s_alu_op;) N
+(75) # () S 8 T (pc_source <= s_pc_src;) N
+(76) # () S 8 T (pc_write_cond <= s_pc_write_cond;) N
+(77) # () S 8 T (reg_write <= s_reg_write;) N
+(78) # () S 8 T (reg_dst <= s_reg_dst;) N
+(79) # () S 8 T (mem_write <= s_mem_write;) N
+(80) # () S 8 T (mem_to_reg <= s_mem_to_reg;) N
+(81) # () S 8 T () N
+(82) # (  ) S
+(process) K
+( \(rst, clk\)) p n
+(83) # (  ) S
+(begin) K n
+(84) # () N
+(85) # () S
+(    ) p
+(if) K
+( \(clk = ') p
+(1) str
+(' ) p
+(and) K
+( clk'event\) ) p
+(then) K n
+(86) # () S
+(      state <= next_state;) p n
+(87) # () N
+(88) # (    ) S
+(end) K
+( ) p
+(if) K
+(;) p n
+(89) # () N
+(90) # (  ) S
+(end) K
+( ) p
+(process) K
+(;) p n
+(91) # () N
+(92) # (  ) S
+(process) K
+( \(clk, rst, ins_31_26, alu_zero, state\)) p n
+(93) # (  ) S
+(begin) K n
+(94) # () N
+(95) # () S
+(    ) p
+(if) K
+( \(rst = ') p
+(1) str
+('\) ) p
+(then) K n
+(96) # () S
+(    ) p 8 T (next_state <= S0;) N
+(97) # () S 8 T (  ) N
+(98) # (    ) S
+(else) K n
+(99) # () S
+() p 8 T () S 16 T () S 24 T () S
+(case) K
+( state ) p
+(is) K n
+(100) # () S
+() p 8 T () S 16 T () S 24 T (  ) N
+(101) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S0 =>) p 40 T () N
+(102) # () S 8 T () S 16 T () S 24 T () S 32 T (next_state <= S1;) S 56 T () N
+(103) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(104) # () S 8 T () S 16 T () S 24 T () N
+(105) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S1 =>) p n
+(106) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(107) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(if) K
+( \(ins_31_26 = LW\) ) p
+(then) K
+( ) p n
+(108) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S2;) S 64 T () N
+(109) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () N
+(110) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(elsif) K
+( \(ins_31_26 = SW\) ) p
+(then) K
+( ) p n
+(111) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S2;) S 64 T ( ) N
+(112) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () N
+(113) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(elsif) K
+( \(ins_31_26 = RTYPE\) ) p
+(then) K
+( ) p n
+(114) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S6;) N
+(115) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () N
+(116) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(elsif) K
+( \(ins_31_26 = BEQ\) ) p
+(then) K
+( ) p n
+(117) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S8;) N
+(118) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () N
+(119) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(elsif) K
+( \(ins_31_26 = JUMP\) ) p
+(then) K
+( ) p n
+(120) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S9;) N
+(121) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () N
+(122) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(else) K n
+(123) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S0;  ) N
+(124) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () N
+(125) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(126) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () N
+(127) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S2 =>) p n
+(128) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(if) K
+(\(ins_31_26 = LW\) ) p
+(then) K n
+(129) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S3;) S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () N
+(130) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(elsif) K
+( \(ins_31_26 = SW\) ) p
+(then) K n
+(131) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S5;) S 64 T () N
+(132) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(else) K n
+(133) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S 40 T (next_state <= S0 ;) N
+(134) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(135) # () S 8 T () S 16 T () S 24 T () N
+(136) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S3 =>) p 40 T () N
+(137) # () S 8 T () S 16 T () S 24 T () S 32 T (next_state <= S4;) S 56 T () N
+(138) # () S 8 T () S 16 T () S 24 T () N
+(139) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S4 => ) p n
+(140) # () S 8 T () S 16 T () S 24 T () S 32 T (next_state <= S0;) S 56 T () N
+(141) # () S 8 T () S 16 T () S 24 T () N
+(142) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S5 => ) p n
+(143) # () S 8 T () S 16 T () S 24 T () S 32 T (next_state <= S0;) S 56 T () N
+(144) # () S 8 T () S 16 T () S 24 T () N
+(145) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S6 =>) p n
+(Control_Unit_S10.vhd) (Page 2/5) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Control_Unit_S10.vhd) (10/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 11
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(146) # () p 8 T () S 16 T () S 24 T () S 32 T (next_state <= S7;) S 56 T () S 64 T () S 72 T () N
+(147) # () S 8 T () S 16 T () S 24 T () N
+(148) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S7 =>) p 40 T () N
+(149) # () S 8 T () S 16 T () S 24 T () S 32 T (next_state <= S0;) S 56 T () N
+(150) # () S 8 T () S 16 T () S 24 T () N
+(151) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S8 =>) p 40 T () N
+(152) # () S 8 T () S 16 T () S 24 T () S 32 T (next_state <= S0;) S 56 T () N
+(153) # () S 8 T () S 16 T () S 24 T () N
+(154) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S9 =>) p n
+(155) # () S 8 T () S 16 T () S 24 T () S 32 T (next_state <= S0;) S 56 T () N
+(156) # () N
+(157) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(case) K
+(;) p n
+(158) # () S 8 T () S 16 T ( ) N
+(159) # (     ) S
+(end) K
+( ) p
+(if) K
+(;) p n
+(160) # () N
+(161) # () S
+(end) K
+( ) p
+(process) K
+(;) p 16 T () N
+(162) # () N
+(163) # () S
+(process) K
+( \(clk, rst, ins_31_26, alu_zero, state, s_pc_write_cond, s_pc_write\)) p n
+(164) # () S 8 T (  ) S
+(begin) K n
+(165) # () S
+() p 8 T (  ) N
+(166) # () S 8 T (  pc_write <= s_pc_write ) S
+(OR) K
+( \(alu_zero ) p
+(AND) K
+( s_pc_write_cond\);) p n
+(167) # () S 8 T (  pc_write_cond <= s_pc_write_cond;) N
+(168) # () S 8 T (  ) N
+(169) # () S 8 T (  ) S
+(case) K
+( state ) p
+(is) K n
+(170) # () S
+() p 8 T () S 16 T () S 24 T (  ) S
+(when) K
+( S0 =>) p 40 T () N
+(171) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(1) str
+(';) p n
+(172) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(';) p n
+(173) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(174) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(1) str
+(';) p n
+(175) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(01) str
+(";) p n
+(176) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(177) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(1) str
+(';) p n
+(178) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(179) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(180) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(181) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(182) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(183) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(184) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(185) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(186) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S1 =>) p n
+(187) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(188) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(';) p n
+(189) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(190) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(191) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(11) str
+(";) p n
+(192) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(193) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(194) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(195) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(196) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(197) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(198) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(199) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(200) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(201) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S2 =>) p n
+(202) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(203) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(1) str
+(';) p n
+(204) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(205) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(206) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(10) str
+(";) p n
+(207) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(208) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(209) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(210) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(211) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(212) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(213) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(214) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(215) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(216) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(217) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S3 =>) p 40 T () N
+(218) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(1) str
+(';) p n
+(Control_Unit_S10.vhd) (Page 3/5) (May 11, 12 17:31) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(219) # () p 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(';) p n
+(220) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(1) str
+(';) p 56 T () S 64 T () N
+(221) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(222) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(";) p n
+(223) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(224) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(225) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(226) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(227) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(228) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(229) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(230) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(231) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(232) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(233) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S4 => ) p n
+(234) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(235) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(';) p n
+(236) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(237) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(238) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(";) p n
+(239) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(240) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(241) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(242) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(243) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(1) str
+(';) p n
+(244) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(245) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(246) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(1) str
+(';) p n
+(247) # () N
+(248) # () S 8 T () S 16 T () S 24 T () N
+(249) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S5 => ) p n
+(250) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(251) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(';) p n
+(252) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(1) str
+(';) p 56 T () S 64 T () N
+(253) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(254) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(";) p n
+(255) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(256) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(257) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(258) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(259) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(260) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(261) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(1) str
+(';) p n
+(262) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(263) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(264) # () S 8 T () S 16 T () S 24 T () N
+(265) # () S 8 T () S 16 T () S 24 T () N
+(266) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S6 =>) p n
+(267) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(268) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(1) str
+(';) p n
+(269) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(270) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(271) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(";) p n
+(272) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(10) str
+(";) p n
+(273) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(274) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(275) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(276) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(277) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(278) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(279) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(280) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(281) # () S 8 T () S 16 T () S 24 T () N
+(282) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S7 =>) p n
+(283) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(284) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(';) p n
+(285) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(286) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(287) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(";) p n
+(288) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(289) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(290) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(00) str
+(";) p n
+(291) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(Control_Unit_S10.vhd) (Page 4/5) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Control_Unit_S10.vhd) (11/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5) 12
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(292) # () p 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(1) str
+(';) p n
+(293) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(1) str
+(';) p n
+(294) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(295) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(296) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(297) # () S 8 T () S 16 T () N
+(298) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S8 =>) p 40 T () N
+(299) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(300) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(1) str
+(';) p n
+(301) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(302) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(303) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(";) p n
+(304) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(01) str
+(";) p n
+(305) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(0) str
+(';) p n
+(306) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(01) str
+(";) p n
+(307) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(1) str
+(';) p n
+(308) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(309) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(310) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(311) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(312) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(313) # () S 8 T () S 16 T () S 24 T () S
+(when) K
+( S9 =>) p n
+(314) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(';) p n
+(315) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(';) p n
+(316) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(';) p 56 T () S 64 T () N
+(317) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(';) p n
+(318) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(";) p n
+(319) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(";) p n
+(320) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(1) str
+(';) p n
+(321) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(10) str
+(";) p n
+(322) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(';) p n
+(323) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(';) p n
+(324) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(';) p n
+(325) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(';) p n
+(326) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(';) p n
+(327) # () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () N
+(328) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(329) # () S 8 T () S 16 T () S
+(when) K
+( ) p
+(others) K
+(=>) p n
+(330) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_read <= ') S
+(0) str
+(' ;) p n
+(331) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_A <= ') S
+(0) str
+(' ;) p n
+(332) # () S 8 T () S 16 T () S 24 T () S 32 T (s_i_or_d <= ') S
+(0) str
+(' ;) p 56 T () S 64 T () N
+(333) # () S 8 T () S 16 T () S 24 T () S 32 T (s_IR_write <= ') S
+(0) str
+(' ;) p n
+(334) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_src_B <= ") S
+(00) str
+(" ;) p n
+(335) # () S 8 T () S 16 T () S 24 T () S 32 T (s_alu_op <= ") S
+(00) str
+(" ;) p n
+(336) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write <= ') S
+(1) str
+(' ;) p n
+(337) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_src <= ") S
+(10) str
+(" ;) p n
+(338) # () S 8 T () S 16 T () S 24 T () S 32 T (s_pc_write_cond <= ') S
+(0) str
+(' ;) p n
+(339) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_write <= ') S
+(0) str
+(' ;) p n
+(340) # () S 8 T () S 16 T () S 24 T () S 32 T (s_reg_dst <= ') S
+(0) str
+(' ;) p n
+(341) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_write\(0\) <= ') S
+(0) str
+(' ;) p n
+(342) # () S 8 T () S 16 T () S 24 T () S 32 T (s_mem_to_reg <= ') S
+(0) str
+(' ;) p n
+(343) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(case) K
+(;  ) p n
+(344) # () N
+(345) # (  ) S
+(end) K
+( ) p
+(process) K
+(;) p 16 T () N
+(346) # (  ) N
+(347) # () S
+(end) K
+( bhv;) p n
+(348) # () N
+(349) # () N
+(Control_Unit_S10.vhd) (Page 5/5) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Control_Unit_S10.vhd) (12/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 13
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # (-- Datapath) N
+(7) # (--) N
+(8) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(9) # () S
+(use) K
+( IEEE.std_logic_1164.) p
+(all) K
+(;) p n
+(10) # () S
+(use) K
+( IEEE.std_logic_arith.) p
+(all) K
+(;) p n
+(11) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(12) # () N
+(13) # () S
+(entity) K
+( ) p
+(Datapath) l
+( ) p
+(is) K n
+(14) # () S
+(    ) p
+(port) K
+(\() p n
+(15) # () S 8 T ( ) N
+(16) # () S 8 T (rst : ) S
+(in) K
+( std_logic;) p n
+(17) # () S 8 T (clk : ) S
+(in) K
+( std_logic;) p n
+(18) # (        ) S
+(--control signals) c n
+(19) # () S
+() p 8 T (alu_src_A : ) S
+(in) K
+( std_logic;) p n
+(20) # () S 8 T (alu_src_B : ) S
+(in) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(21) # (        ) S
+(-- output from the ALU control ) c n
+(22) # () S
+() p 8 T (alu_control : ) S
+(in) K
+( std_logic_vector\( 2 ) p
+(downto) K
+( 0 \);) p n
+(23) # () S 8 T (reg_write : ) S
+(in) K
+( std_logic;) p n
+(24) # () S 8 T (reg_dst : ) S
+(in) K
+( std_logic;) p n
+(25) # () S 8 T (pc_source : ) S
+(in) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(26) # (        ) S
+(-- output from the or gate, combining PCWriteCond and PCWrite) c n
+(27) # () S
+(   pc_write : ) p
+(in) K
+( std_logic;) p n
+(28) # () S 8 T (i_or_d : ) S
+(in) K
+(  std_logic;) p n
+(29) # () S 8 T (mem_read : ) S
+(in) K
+( std_logic;) p n
+(30) # () S 8 T (mem_write : ) S
+(in) K
+( std_logic_vector\(0 ) p
+(downto) K
+( 0\);) p n
+(31) # () S 8 T (mem_to_reg : ) S
+(in) K
+( std_logic;) p n
+(32) # () S 8 T (IR_write : ) S
+(in) K
+(  std_logic;) p n
+(33) # (        ) N
+(34) # (        ) S
+(-- output to controller) c n
+(35) # () S
+() p 8 T (ins_31_26 : ) S
+(out) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(36) # (        ) S
+(-- output to ALU control) c n
+(37) # () S
+(   ins_5_0   : ) p
+(out) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(38) # (        ) S
+(-- output to PC write logic) c n
+(39) # () S
+(   alu_zero   : ) p
+(out) K
+( std_logic;) p n
+(40) # () N
+(41) # (        ) S
+(-- used for testing) c n
+(42) # () S
+(   testing_alu_result    : ) p
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(43) # (   testing_mem_data : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(44) # (   testing_read_data_1  : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(45) # (   testing_read_data_2  : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\) \);) p n
+(46) # (    ) N
+(47) # () S
+(end) K
+( Datapath;) p n
+(48) # () N
+(49) # () S
+(-- purpose: connect all the components) c n
+(50) # () S
+(architecture) K
+( bhv ) p
+(of) K
+( Datapath ) p
+(is) K n
+(51) # () N
+(52) # (component) S
+( Generic_Register) p n
+(53) # () S
+(generic) K
+( \( NUMBITS : integer := 32\) ;) p n
+(54) # (  ) S
+(port) K
+(\() p n
+(55) # (      rst   : ) S
+(in) K
+( std_logic;) p n
+(56) # (      clk   : ) S
+(in) K
+( std_logic;) p n
+(57) # (      load : ) S
+(in) K
+( std_logic;) p n
+(58) # (      input : ) S
+(in) K
+( std_logic_vector \(31 ) p
+(downto) K
+( 0\);) p n
+(59) # (      output: ) S
+(out) K
+( std_logic_vector \(31 ) p
+(downto) K
+( 0\)) p n
+(60) # (      \);) N
+(61) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(62) # () N
+(63) # (  ) N
+(64) # () S
+(component) K
+( Mux_32_2_1) p n
+(65) # (    ) S
+(port) K
+(\() p n
+(66) # () S 8 T (sel ) S 16 T (: ) S
+(in) K
+( std_logic;) p n
+(67) # () S 8 T (input_a) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(68) # () S 8 T (input_b) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(69) # () S 8 T (output) S 16 T (: ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(70) # () S 8 T (\);) N
+(71) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(72) # () N
+(73) # () S
+(component) K
+( Mux_5_2_1) p n
+(Datapath_S10.vhd) (Page 1/6) (May 11, 12 17:31) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(74) # (    ) p
+(port) K
+(\() p n
+(75) # () S 8 T (sel ) S 16 T (: ) S
+(in) K
+( std_logic;) p n
+(76) # () S 8 T (input_a) S 16 T (: ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(77) # () S 8 T (input_b) S 16 T (: ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(78) # () S 8 T (output) S 16 T (: ) S
+(out) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\)) p n
+(79) # () S 8 T (\);) N
+(80) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(81) # () N
+(82) # () S
+(component) K
+( Mux_32_4_1) p n
+(83) # (    ) S
+(port) K
+(\() p n
+(84) # () S 8 T (sel ) S 16 T (: ) S
+(in) K
+( std_logic_vector\(1 ) p
+(downto) K
+( 0\);) p n
+(85) # () S 8 T (input_a) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(86) # () S 8 T (input_b) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(87) # (   input_c) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(88) # (   input_d) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(89) # () S 8 T (output) S 16 T (: ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(90) # () S 8 T (\);) N
+(91) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(92) # () N
+(93) # () S
+(component) K
+( Mux_32_3_1) p n
+(94) # (    ) S
+(port) K
+(\() p n
+(95) # () S 8 T (sel ) S 16 T (: ) S
+(in) K
+( std_logic_vector\(1 ) p
+(downto) K
+( 0\);) p n
+(96) # () S 8 T (input_a) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(97) # () S 8 T (input_b) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(98) # () S 8 T (input_c) S 16 T (: ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(99) # () S 8 T (output) S 16 T (: ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(100) # () S 8 T (\);) N
+(101) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(102) # () N
+(103) # () S
+(component) K
+( my_MEM_256x32) p n
+(104) # (    ) S
+(port) K
+(\( ) p n
+(105) # () S 8 T (clka       ) S 24 T (: ) S
+(in) K
+(  std_logic;) p n
+(106) # () S 8 T () S
+(--ena ) c 16 T () S 24 T () S 32 T (: IN STD_LOGIC;) N
+(107) # () S
+() p 8 T (dina       ) S 24 T (: ) S
+(in) K
+(  std_logic_vector \(31 ) p
+(downto) K
+( 0\);) p n
+(108) # () S 8 T (addra    ) S 24 T (: ) S
+(in) K
+(  std_logic_vector \(7 ) p
+(downto) K
+( 0\);) p n
+(109) # () S 8 T (wea        ) S 24 T (: ) S
+(in) K
+(  std_logic_vector\(0 ) p
+(downto) K
+( 0\);) p n
+(110) # () S 8 T (douta   ) S 24 T (: ) S
+(out) K
+( std_logic_vector \(31 ) p
+(downto) K
+( 0\)) p n
+(111) # () S 8 T (\);) N
+(112) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(113) # () N
+(114) # () S
+(component) K
+( Reg_File) p n
+(115) # (    ) S
+(port) K
+( \( ) p n
+(116) # () S 8 T (rst        : ) S
+(in) K
+( std_logic;) p n
+(117) # () S 8 T (clk        : ) S
+(in) K
+( std_logic;) p n
+(118) # () S 8 T (reg_write  : std_logic;) N
+(119) # () S 8 T (read_reg_1  : ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(120) # () S 8 T (read_reg_2  : ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(121) # () S 8 T (write_reg  : ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(122) # () S 8 T (write_data : ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(123) # () S 8 T (read_data_1 : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(124) # () S 8 T (read_data_2 : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(125) # () S 8 T (\);) S 16 T () S 24 T () N
+(126) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(127) # () N
+(128) # () S
+(component) K
+( SignExt_16_32) p n
+(129) # (    ) S
+(port) K
+(\() p n
+(130) # () S 8 T (input) S 16 T (: ) S
+(in) K
+( std_logic_vector\(15 ) p
+(downto) K
+( 0\);) p n
+(131) # () S 8 T (output) S 16 T (: ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(132) # () S 8 T (\);) N
+(133) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(134) # () N
+(135) # () S
+(component) K
+( ALU) p n
+(136) # (    ) S
+(port) K
+(\() p n
+(137) # () S 8 T (input_a    : ) S
+(in) K
+( std_logic_vector\( 31 ) p
+(downto) K
+( 0\);) p n
+(138) # () S 8 T (input_b    : ) S
+(in) K
+( std_logic_vector\( 31 ) p
+(downto) K
+( 0 \);) p n
+(139) # () S 8 T (operation  : ) S
+(in) K
+( std_logic_vector\( 2 ) p
+(downto) K
+( 0 \);) p 56 T () N
+(140) # () S 8 T (zero       : ) S
+(out) K
+( std_logic;) p n
+(141) # () S 8 T (result     : ) S
+(out) K
+( std_logic_vector\( 31 ) p
+(downto) K
+( 0 \)) p n
+(142) # () S 8 T (\);) N
+(143) # () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(144) # () N
+(145) # () N
+(146) # () S
+(-- memory address, connect to output of MUX) c n
+(Datapath_S10.vhd) (Page 2/6) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Datapath_S10.vhd) (13/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 14
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(147) # (signal) K
+( address   : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(148) # () S
+(-- data to write to memory, connect to output of B register) c n
+(149) # () S
+(signal) K
+( mem_write_data : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(150) # () S
+(-- data read from Memory, connect to input of IR and MDR) c n
+(151) # () S
+(signal) K
+( mem_data   : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(152) # () N
+(153) # () S
+(-- value going into and coming out of PC register) c n
+(154) # () S
+(signal) K
+( new_pc           : std_logic_vector\(31 ) p
+(downto) K
+( 0\) := ") p
+(000000000000000000000000) str n
+0 T (00000000) S
+(";) p n
+(155) # () S
+(signal) K
+( pc               : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(156) # () S
+(signal) K
+( pc_crap ) p 16 T () S 24 T () S 32 T (: std_logic_vector \(7 ) S
+(downto) K
+( 0\);) p n
+(157) # () S
+(-- output from IR) c n
+(158) # () S
+(signal) K
+( instr            : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(159) # () S
+(signal) K
+( instr_25_0         : std_logic_vector\(25 ) p
+(downto) K
+( 0\);) p n
+(160) # () S
+(signal) K
+( instr_31_26        : std_logic_vector\(5 ) p
+(downto) K
+( 0\);) p n
+(161) # () S
+(signal) K
+( instr_25_21        : std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(162) # () S
+(signal) K
+( instr_20_16        : std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(163) # () S
+(signal) K
+( instr_15_11        : std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(164) # () S
+(signal) K
+( instr_5_0          : std_logic_vector\(5 ) p
+(downto) K
+( 0\);) p n
+(165) # () S
+(signal) K
+( instr_15_0         : std_logic_vector\(15 ) p
+(downto) K
+( 0\);) p n
+(166) # () N
+(167) # () S
+(-- output from Memory Data Register) c n
+(168) # () S
+(signal) K
+( MDR_out            : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(169) # () N
+(170) # () S
+(-- inputs to register file) c n
+(171) # () S
+(signal) K
+( write_reg           : std_logic_vector\( 4 ) p
+(downto) K
+( 0\);) p n
+(172) # () S
+(signal) K
+( RF_write_data          : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(173) # () N
+(174) # () S
+(signal) K
+( mem_write_s : std_logic_vector\( 0 ) p
+(downto) K
+( 0\);) p n
+(175) # () N
+(176) # () S
+(-- output from register file) c n
+(177) # () S
+(signal) K
+( read_data_1          : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(178) # () S
+(signal) K
+( read_data_2          : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(179) # () N
+(180) # () S
+(-- output from A and B register) c n
+(181) # () S
+(signal) K
+( reg_A_out            : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(182) # () S
+(signal) K
+( reg_B_out            : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(183) # () N
+(184) # () S
+(-- constant 4, used as input to mux) c n
+(185) # () S
+(signal) K
+( four               : std_logic_vector\(31 ) p
+(downto) K
+( 0\) := ") p
+(000000000000000000000) str n
+0 T (00000000100) S
+(";) p n
+(186) # () N
+(187) # () S
+(-- sign extender output) c n
+(188) # () S
+(signal) K
+( sign_ext_out         : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(189) # () S
+(-- sign extender output shift left twice) c n
+(190) # () S
+(signal) K
+( sign_ext_out_SL2     : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(191) # () N
+(192) # () S
+(-- ALU inputs and output) c n
+(193) # () S
+(signal) K
+( alu_input_A        : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(194) # () S
+(signal) K
+( alu_input_B        : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(195) # () S
+(signal) K
+( alu_result        : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(196) # () N
+(197) # () S
+(-- output from ALUOut register) c n
+(198) # () S
+(signal) K
+( alu_out           : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(199) # () N
+(200) # () S
+(-- input to 3 to 1 PC Mux) c n
+(201) # () S
+(signal) K
+( jump_addr         : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(202) # () N
+(203) # () N
+(204) # () S
+(begin) K
+(  ) p
+(-- bhv) c n
+(205) # () N
+(206) # () S
+(  ) p
+(-- PC REGISTER) c n
+(207) # () S
+() p 8 T (U_PCREG: Generic_Register ) S 40 T () N
+(208) # () S 8 T () S 16 T () S
+(generic) K
+( ) p
+(map) K
+( \(NUMBITS => 32\)) p n
+(209) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+( \() p n
+(210) # () S 8 T () S 16 T () S 24 T (rst => rst,) N
+(211) # (         clk => clk,) N
+(212) # (         load => pc_write,) N
+(213) # (         input => new_pc,) N
+(214) # (         output => pc) N
+(215) # () S 8 T () S 16 T (\);) N
+(216) # () S 8 T () N
+(217) # () S 8 T (IR: Generic_Register) N
+(Datapath_S10.vhd) (Page 3/6) (May 11, 12 17:31) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(218) # () p 8 T () S 16 T () S
+(generic) K
+( ) p
+(map) K
+( \(NUMBITS => 32\)) p n
+(219) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(220) # () S 8 T () S 16 T () S 24 T (rst => rst,) N
+(221) # () S 8 T () S 16 T () S 24 T (clk => clk,) N
+(222) # () S 8 T () S 16 T () S 24 T (load => ') S
+(1) str
+(',) p n
+(223) # () S 8 T () S 16 T () S 24 T (input => mem_data,) N
+(224) # () S 8 T () S 16 T () S 24 T (output => instr) N
+(225) # () S 8 T () S 16 T (\);) N
+(226) # () S 8 T () N
+(227) # () S 8 T () S 16 T () S 24 T (instr_31_26 <= instr\(31 ) S
+(downto) K
+( 26\);) p n
+(228) # () S 8 T () S 16 T () S 24 T (instr_25_21 <= instr\(25 ) S
+(downto) K
+( 21\);) p n
+(229) # () S 8 T () S 16 T () S 24 T (instr_20_16 <= instr\(20 ) S
+(downto) K
+( 16\);) p n
+(230) # () S 8 T () S 16 T () S 24 T (instr_15_11 <= instr\(15 ) S
+(downto) K
+( 11\);) p n
+(231) # () S 8 T () S 16 T () S 24 T (instr_15_0 <= instr\(15 ) S
+(downto) K
+( 0\);) p n
+(232) # () S 8 T () S 16 T () S 24 T (instr_25_0 <= instr\(25 ) S
+(downto) K
+( 0\);) p n
+(233) # () S 8 T () S 16 T () S 24 T (instr_5_0 <= instr\(5 ) S
+(downto) K
+( 0\);) p n
+(234) # () S 8 T () S 16 T () S 24 T () N
+(235) # () S 8 T () S 16 T () N
+(236) # () S 8 T () S 16 T () S 24 T (ins_5_0 <= instr\(5 ) S
+(downto) K
+( 0\);) p n
+(237) # () S 8 T () S 16 T () S 24 T (ins_31_26 <= instr\(31 ) S
+(downto) K
+( 26\);) p n
+(238) # () S 8 T () N
+(239) # () S 8 T (A_REG : Generic_Register) N
+(240) # () S 8 T () S 16 T () S
+(generic) K
+( ) p
+(map) K
+( \(NUMBITS => 32\)) p n
+(241) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(242) # () S 8 T () S 16 T () S 24 T (rst => rst,) N
+(243) # () S 8 T () S 16 T () S 24 T (clk => clk,) N
+(244) # () S 8 T () S 16 T () S 24 T (load => ') S
+(1) str
+(',) p n
+(245) # () S 8 T () S 16 T () S 24 T (input => read_data_1,) N
+(246) # () S 8 T () S 16 T () S 24 T (output => reg_A_out) N
+(247) # () S 8 T () S 16 T (\);) N
+(248) # () S 8 T () N
+(249) # () S 8 T (B_REG : Generic_Register) N
+(250) # () S 8 T () S 16 T () S
+(generic) K
+( ) p
+(map) K
+( \(NUMBITS => 32\)) p n
+(251) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(252) # () S 8 T () S 16 T () S 24 T (rst => rst,) N
+(253) # () S 8 T () S 16 T () S 24 T (clk => clk,) N
+(254) # () S 8 T () S 16 T () S 24 T (load => ') S
+(1) str
+(',) p n
+(255) # () S 8 T () S 16 T () S 24 T (input => read_data_2,) N
+(256) # () S 8 T () S 16 T () S 24 T (output => reg_B_out) N
+(257) # () S 8 T () S 16 T () S 24 T () N
+(258) # () S 8 T () S 16 T (\);) N
+(259) # () S 8 T () S
+(--Memory Data Register) c n
+(260) # () S
+() p 8 T (MDR : Generic_Register) N
+(261) # () S 8 T () S 16 T () S
+(generic) K
+( ) p
+(map) K
+( \(NUMBITS => 32\)) p n
+(262) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+( \() p n
+(263) # () S 8 T () S 16 T () S 24 T (rst => rst,) N
+(264) # () S 8 T () S 16 T () S 24 T (clk => clk,) N
+(265) # () S 8 T () S 16 T () S 24 T (load => ') S
+(1) str
+(',) p n
+(266) # () S 8 T () S 16 T () S 24 T (input => mem_data,) N
+(267) # () S 8 T () S 16 T () S 24 T (output => MDR_out) N
+(268) # () S 8 T () S 16 T () S 24 T (\);) N
+(269) # () N
+(270) # () S 8 T (ALUOut : Generic_Register) N
+(271) # () S 8 T () S 16 T () S
+(generic) K
+( ) p
+(map) K
+( \(NUMBITS => 32\)) p n
+(272) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(273) # () S 8 T () S 16 T () S 24 T (rst => rst,) N
+(274) # () S 8 T () S 16 T () S 24 T (clk => clk,) N
+(275) # () S 8 T () S 16 T () S 24 T (load => ') S
+(1) str
+(',) p n
+(276) # () S 8 T () S 16 T () S 24 T (input => alu_result,) N
+(277) # () S 8 T () S 16 T () S 24 T (output => alu_out) N
+(278) # () S 8 T () S 16 T () S 24 T (\);) N
+(279) # () S 8 T () S
+(-- MUX taking data from PC) c n
+(280) # () S
+() p 8 T (PCtoMux :  Mux_32_2_1) N
+(281) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(282) # () S 8 T () S 16 T () S 24 T (sel => i_or_d, ) N
+(283) # () S 8 T () S 16 T () S 24 T (input_a => pc,) N
+(284) # () S 8 T () S 16 T () S 24 T (input_b => alu_out,) N
+(285) # () S 8 T () S 16 T () S 24 T (output => address) N
+(286) # () S 8 T () S 16 T (\);) N
+(287) # () N
+(288) # () S 8 T () S
+(--Global memory unit taking from PC->MUX) c n
+(289) # () S
+() p 8 T (mem_write_data <= reg_B_out;) N
+(290) # () S 8 T (Memory_Unit :  my_MEM_256x32) N
+(Datapath_S10.vhd) (Page 4/6) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Datapath_S10.vhd) (14/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5-6) 15
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(291) # () p 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\( ) p n
+(292) # () S 8 T () S 16 T () S 24 T (clka => clk,) N
+(293) # () S
+(--) c 8 T () S 16 T () S 24 T (ena => mem_read,) N
+(294) # () S
+() p 8 T () S 16 T () S 24 T (dina => mem_write_data,) N
+(295) # () S 8 T () S 16 T () S 24 T (addra => pc_crap,) N
+(296) # () S 8 T () S 16 T () S 24 T (wea => mem_write,) N
+(297) # () S 8 T () S 16 T () S 24 T (douta => mem_data) N
+(298) # () S 8 T (\);) N
+(299) # () S 8 T () N
+(300) # () S 8 T (pc_crap <= pc\(7 ) S
+(downto) K
+( 0\);) p n
+(301) # () S 8 T () S
+(-- MUX 5bit) c n
+(302) # () S
+() p 8 T (IRtoMUX : Mux_5_2_1) N
+(303) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(304) # () S 8 T () S 16 T () S 24 T (sel => reg_dst,) N
+(305) # () S 8 T () S 16 T () S 24 T (input_a) S 32 T (=> instr_20_16,) N
+(306) # () S 8 T () S 16 T () S 24 T (input_b) S 32 T (=> instr_15_11,) N
+(307) # () S 8 T () S 16 T () S 24 T (output => write_reg) N
+(308) # () S 8 T (\);) N
+(309) # () S 8 T () N
+(310) # () S 8 T () S
+(-- MUX 32bit 4 input) c n
+(311) # () S
+(    BtoMUX: Mux_32_4_1) p n
+(312) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(313) # () S 8 T () S 16 T () S 24 T (sel => alu_src_B,) N
+(314) # () S 8 T () S 16 T () S 24 T (input_a) S 32 T (=> reg_B_out,) N
+(315) # () S 8 T () S 16 T () S 24 T (input_b) S 32 T (=> four,) N
+(316) # () S 8 T () S 16 T () S 24 T (input_c) S 32 T (=> sign_ext_out,) N
+(317) # () S 8 T () S 16 T () S 24 T (input_d) S 32 T (=> sign_ext_out_SL2,) N
+(318) # () S 8 T () S 16 T () S 24 T (output) S 32 T (=> alu_input_B) N
+(319) # () S 8 T (\);) N
+(320) # () S 8 T () N
+(321) # () S 8 T (sign_ext_out_SL2 <= sign_ext_out\(29 ) S
+(downto) K
+( 0\) & ") p
+(00) str
+(";) p n
+(322) # () S 8 T () S
+(-- MUX 32bit 3 input) c n
+(323) # () S
+() p 8 T (JumpMux: Mux_32_3_1) N
+(324) # () S 8 T (    ) S
+(port) K
+( ) p
+(map) K
+(\() p n
+(325) # () S 8 T () S 16 T () S 24 T (sel => pc_source,) N
+(326) # () S 8 T () S 16 T () S 24 T (input_a) S 32 T (=> alu_result,) N
+(327) # () S 8 T () S 16 T () S 24 T (input_b) S 32 T (=> alu_out,) N
+(328) # () S 8 T () S 16 T () S 24 T (input_c) S 32 T (=> jump_addr,) N
+(329) # () S 8 T () S 16 T () S 24 T (output) S 32 T (=> new_pc) N
+(330) # () S 8 T (\);) N
+(331) # () S 8 T (jump_addr <= pc\(31 ) S
+(downto) K
+( 28\) & \(instr_25_0\) & ") p
+(00) str
+(";) p n
+(332) # () S 8 T () N
+(333) # () S 8 T () S
+(-- Memory Data Register to MUX) c n
+(334) # () S
+() p 8 T (MDRtoMUX : Mux_32_2_1) N
+(335) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(336) # () S 8 T () S 16 T () S 24 T (sel => mem_to_reg,) N
+(337) # () S 8 T () S 16 T () S 24 T (input_a => alu_out,) N
+(338) # () S 8 T () S 16 T () S 24 T (input_b => MDR_out,) N
+(339) # () S 8 T () S 16 T () S 24 T (output => RF_write_data) N
+(340) # () S 8 T (\);) N
+(341) # () S 8 T () N
+(342) # () S 8 T (AtoMUX : Mux_32_2_1) N
+(343) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(344) # () S 8 T () S 16 T () S 24 T (sel => alu_src_A,) N
+(345) # () S 8 T () S 16 T () S 24 T (input_a => pc,) N
+(346) # () S 8 T () S 16 T () S 24 T (input_b => reg_A_out,) N
+(347) # () S 8 T () S 16 T () S 24 T (output => alu_input_A) N
+(348) # () S 8 T () S 16 T () S 24 T () N
+(349) # () S 8 T (\);) N
+(350) # () S 8 T () S
+(-- REG FILE) c n
+(351) # () S
+() p 8 T (RegFile:REG_File) N
+(352) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\( ) p n
+(353) # () S 8 T () S 16 T () S 24 T (rst => rst,) N
+(354) # () S 8 T () S 16 T () S 24 T (clk => clk,) N
+(355) # () S 8 T () S 16 T () S 24 T (reg_write  => reg_write,) N
+(356) # () S 8 T () S 16 T () S 24 T (read_reg_1 => instr_25_21,) N
+(357) # () S 8 T () S 16 T () S 24 T (read_reg_2 => instr_20_16,) N
+(358) # () S 8 T () S 16 T () S 24 T (write_reg  => write_reg,) S 56 T () S 64 T () N
+(359) # () S 8 T () S 16 T () S 24 T (write_data => RF_write_data,) S 56 T () S 64 T () N
+(360) # () S 8 T () S 16 T () S 24 T (read_data_1 => read_data_1,) S 56 T () S 64 T () N
+(361) # () S 8 T () S 16 T () S 24 T (read_data_2 => read_data_2) N
+(362) # () S 8 T (\);) S 16 T () S 24 T () N
+(363) # () N
+(Datapath_S10.vhd) (Page 5/6) (May 11, 12 17:31) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(364) # () p 8 T (MEM_REGtoSIGN_EXT: SignExt_16_32) N
+(365) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(366) # () S 8 T () S 16 T () S 24 T (input) S 32 T (=> instr_15_0,) N
+(367) # () S 8 T () S 16 T () S 24 T (output => sign_ext_out) N
+(368) # () S 8 T (\);) N
+(369) # () S 8 T () N
+(370) # () S 8 T (Muxes_to_Alu: ALU) N
+(371) # () S 8 T () S 16 T () S
+(port) K
+( ) p
+(map) K
+(\() p n
+(372) # () S 8 T () S 16 T () S 24 T (input_a => alu_input_A,) N
+(373) # () S 8 T () S 16 T () S 24 T (input_b => alu_input_B,) N
+(374) # () S 8 T () S 16 T () S 24 T (operation => alu_control,) N
+(375) # () S 8 T () S 16 T () S 24 T (zero => alu_zero,) N
+(376) # () S 8 T () S 16 T () S 24 T (result => alu_result) N
+(377) # () S 8 T (\);) S 16 T () N
+(378) # () S 8 T () N
+(379) # () S 8 T (testing_alu_result <= alu_result;) N
+(380) # () S 8 T (testing_mem_data <= mem_data;) N
+(381) # () S 8 T (testing_read_data_1 <= read_data_1;) N
+(382) # () S 8 T (testing_read_data_2 <= read_data_2;) N
+(383) # () S 8 T () N
+(384) # () S 8 T () N
+(385) # () N
+(386) # () N
+(387) # () S
+(end) K
+( bhv;) p n
+(Datapath_S10.vhd) (Page 6/6) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Datapath_S10.vhd) (15/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 16
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # (-------------------------------------------------------------------------------) N
+(7) # (-- Sign Extend Unit) N
+(8) # (-------------------------------------------------------------------------------) N
+(9) # () N
+(10) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(11) # () S
+(use) K
+( IEEE.std_logic_1164.) p
+(all) K
+(;) p n
+(12) # () S
+(use) K
+( IEEE.std_logic_arith.) p
+(all) K
+(; ) p n
+(13) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(14) # () N
+(15) # () S
+(entity) K
+( ) p
+(SignExt_16_32) l
+( ) p
+(is) K n
+(16) # () S
+(    ) p
+(port) K
+(\() p n
+(17) # () S 8 T (input) S 16 T (: ) S
+(in) K
+( std_logic_vector\(15 ) p
+(downto) K
+( 0\);) p n
+(18) # () S 8 T (output) S 16 T (: ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(19) # () S 8 T (\);) N
+(20) # () S
+(end) K
+( SignExt_16_32;) p n
+(21) # () N
+(22) # () S
+(architecture) K
+( bhv ) p
+(of) K
+( SignExt_16_32 ) p
+(is) K n
+(23) # (begin) N
+(24) # () N
+(25) # () S
+() p 8 T (output\(31 ) S
+(downto) K
+( 16\) <= \() p
+(others) K
+( => input\(15\)\) ;) p n
+(26) # () S 8 T (output\(15 ) S
+(downto) K
+( 0\) <= input\(15 ) p
+(downto) K
+( 0\) ;) p n
+(27) # () N
+(28) # () S
+(end) K
+( bhv;) p n
+(Extra_components_S10.vhd) (Page 1/1) (May 11, 12 17:31) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Extra_components_S10.vhd) (16/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 17
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(7) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(8) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(ALL) K
+(;) p n
+(9) # () S
+(use) K
+( IEEE.STD_LOGIC_UNSIGNED.) p
+(ALL) K
+(;) p n
+(10) # () N
+(11) # () S
+(entity) K
+( ) p
+(Generic_Register) l
+( ) p
+(is) K n
+(12) # () S
+() p 8 T () S
+(generic) K
+( \( NUMBITS : integer := 32\) ;) p n
+(13) # () S 8 T () S
+(port) K
+(\() p n
+(14) # () S 8 T () S 16 T (rst   : ) S
+(in) K
+( std_logic;) p n
+(15) # (      clk   : ) S
+(in) K
+( std_logic;) p n
+(16) # (      load : ) S
+(in) K
+( std_logic;) p n
+(17) # (      input : ) S
+(in) K
+( std_logic_vector \(NUMBITS-1 ) p
+(downto) K
+( 0\);) p n
+(18) # (      output: ) S
+(out) K
+( std_logic_vector \(NUMBITS-1 ) p
+(downto) K
+( 0\)\);) p n
+(19) # () S
+(end) K
+( Generic_Register ;) p n
+(20) # () N
+(21) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( Generic_Register ) p
+(is) K n
+(22) # () N
+(23) # (constant) S
+( zeros : STD_LOGIC_VECTOR\(NUMBITS-1 ) p
+(DOWNTO) K
+( 0\) := \() p
+(others) K
+( => ') p
+(0) str
+('\) ;) p n
+(24) # () N
+(25) # () S
+(begin) K n
+(26) # () N
+(27) # () S
+() p 8 T () S
+(process) K
+(\(rst, clk, input, load\)) p n
+(28) # () S 8 T () S 16 T () S
+(begin) K n
+(29) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\( rst = ') p
+(1) str
+(' \) ) p
+(then) K n
+(30) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= zeros ;) N
+(31) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+(\( clk = ') p
+(1) str
+(' ) p
+(and) K
+( clk'event ) p
+(and) K
+( load = ') p
+(1) str
+(' \)) p
+(then) K n
+(32) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input ;) N
+(33) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(34) # () S 8 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(35) # () N
+(36) # () S
+(end) K
+( Behavioral;) p n
+(Generic_register_s10.vhd) (Page 1/1) (May 11, 12 17:32) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Generic_register_s10.vhd) (17/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 18
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # (-------------------------------------------------------------------------------) N
+(7) # () N
+(8) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(9) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(all) K
+(;) p n
+(10) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(all) K
+(;) p n
+(11) # () N
+(12) # () S
+(-------------------------------------------------------------------------------) c n
+(13) # () N
+(14) # () S
+(package) K
+( MIPS_LIB ) p
+(is) K n
+(15) # () N
+(16) # () S
+(    ) p
+(constant) K
+( CD_32    : std_logic_vector \(31 ) p
+(downto) K
+( 0\) := ") p
+(----------------------) str n
+0 T (----------) S
+(";) p n
+(17) # (    ) S
+(constant) K
+( CD_26    : std_logic_vector \(25 ) p
+(downto) K
+( 0\) := ") p
+(----------------------) str n
+0 T (----) S
+(";) p n
+(18) # (    ) S
+(constant) K
+( CD_16    : std_logic_vector \(15 ) p
+(downto) K
+( 0\) := ") p
+(----------------) str
+(";) p n
+(19) # (    ) S
+(constant) K
+( CD_6     : std_logic_vector \(5 ) p
+(downto) K
+( 0\) := ") p
+(------) str
+(";) p n
+(20) # (    ) S
+(constant) K
+( CD_5     : std_logic_vector \(4 ) p
+(downto) K
+( 0\) := ") p
+(-----) str
+(";) p n
+(21) # (    ) S
+(constant) K
+( C0_32    : std_logic_vector \(31 ) p
+(downto) K
+( 0\) := ") p
+(0000000000000000000000000) str n
+0 T (0000000) S
+(";) p n
+(22) # (    ) S
+(constant) K
+( CM_32    : std_logic_vector \(31 ) p
+(downto) K
+( 0\) := ") p
+(1111111111111111111111111) str n
+0 T (1111111) S
+(";) p n
+(23) # (    ) S
+(constant) K
+( C1_32    : std_logic_vector \(31 ) p
+(downto) K
+( 0\) := ") p
+(0000000000000000000000000) str n
+0 T (0000001) S
+(";) p n
+(24) # (    ) S
+(constant) K
+( C4_32    : std_logic_vector \(31 ) p
+(downto) K
+( 0\) := ") p
+(0000000000000000000000000) str n
+0 T (0000100) S
+(";) p n
+(25) # (    ) S
+(constant) K
+( C128_32  :) p 24 T (std_logic_vector \(31 ) S
+(downto) K
+( 0\) := ") p
+(0000000000000000000000001) str n
+0 T (0000000) S
+(";) p n
+(26) # () N
+(27) # (    ) S
+(constant) K
+( C0_16    : std_logic_vector \(15 ) p
+(downto) K
+( 0\) := ") p
+(0000000000000000) str
+(";) p n
+(28) # (    ) S
+(constant) K
+( CM_16    : std_logic_vector \(15 ) p
+(downto) K
+( 0\) := ") p
+(1111111111111111) str
+(";) p n
+(29) # () N
+(30) # () S
+(-- opcodes) c n
+(31) # () S
+(    ) p n
+(32) # (    ) S
+(constant) K
+( LW     : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \) := ") p
+(100011) str
+(";) p n
+(33) # (    ) S
+(constant) K
+( SW     : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \) := ") p
+(101011) str
+(";) p n
+(34) # (    ) S
+(constant) K
+( RTYPE  : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \) := ") p
+(000000) str
+(";) p n
+(35) # (    ) S
+(constant) K
+( BEQ    : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \) := ") p
+(000100) str
+(";) p n
+(36) # (    ) S
+(constant) K
+( JUMP   : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \) := ") p
+(000010) str
+(";) p n
+(37) # (    ) S
+(constant) K
+( DONE   : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \) := ") p
+(111111) str
+(";) p n
+(38) # () N
+(39) # () S
+(-- Registers) c n
+(40) # () S
+(    ) p
+(constant) K
+( zero : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00000) str
+(";  ) p
+(-- always zero) c n
+(41) # () S
+(    ) p
+(constant) K
+( at   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00001) str
+(";  ) p n
+(42) # (    ) S
+(constant) K
+( v0   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00010) str
+(";  ) p n
+(43) # (    ) S
+(constant) K
+( v1   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00011) str
+("; ) p n
+(44) # (    ) S
+(constant) K
+( a0   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00100) str
+("; ) p n
+(45) # (    ) S
+(constant) K
+( a1   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00101) str
+("; ) p n
+(46) # (    ) S
+(constant) K
+( a2   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00110) str
+("; ) p n
+(47) # (    ) S
+(constant) K
+( a3   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(00111) str
+("; ) p n
+(48) # (    ) S
+(constant) K
+( t0   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01000) str
+(";) p n
+(49) # (    ) S
+(constant) K
+( t1   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01001) str
+(";) p 64 T () N
+(50) # (    ) S
+(constant) K
+( t2   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01010) str
+(";) p n
+(51) # (    ) S
+(constant) K
+( t3   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01011) str
+(";) p n
+(52) # (    ) S
+(constant) K
+( t4   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01100) str
+(";) p n
+(53) # (    ) S
+(constant) K
+( t5   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01101) str
+(";) p n
+(54) # (    ) S
+(constant) K
+( t6   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01110) str
+(";) p n
+(55) # (    ) S
+(constant) K
+( t7   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(01111) str
+(";) p n
+(56) # (    ) S
+(constant) K
+( s0   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10000) str
+(";) p n
+(57) # (    ) S
+(constant) K
+( s1   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10001) str
+(";) p 64 T () N
+(58) # (    ) S
+(constant) K
+( s2   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10010) str
+(";) p n
+(59) # (    ) S
+(constant) K
+( s3   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10011) str
+(";) p n
+(60) # (    ) S
+(constant) K
+( s4   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10100) str
+(";) p n
+(61) # (    ) S
+(constant) K
+( s5   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10101) str
+(";) p n
+(62) # (    ) S
+(constant) K
+( s6   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10110) str
+(";) p n
+(63) # (    ) S
+(constant) K
+( s7   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(10111) str
+(";) p n
+(64) # (    ) S
+(constant) K
+( t8   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11000) str
+("; ) p n
+(65) # (    ) S
+(constant) K
+( t9   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11001) str
+(";) p n
+(66) # (    ) S
+(constant) K
+( k0   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11010) str
+(";) p n
+(MIPS_lib.vhd) (Page 1/2) (May 11, 12 17:32) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(67) # (    ) p
+(constant) K
+( k1   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11011) str
+("; ) p n
+(68) # (    ) S
+(constant) K
+( gp   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11100) str
+(";) p n
+(69) # (    ) S
+(constant) K
+( sp   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11101) str
+(";) p n
+(70) # (    ) S
+(constant) K
+( fp   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11110) str
+(";) p n
+(71) # (    ) S
+(constant) K
+( ra   : std_logic_vector\( 4 ) p
+(downto) K
+( 0 \) := ") p
+(11111) str
+("; ) p n
+(72) # () S 8 T () N
+(73) # () S
+(end) K
+( MIPS_LIB;) p n
+(74) # () N
+(75) # () S
+(-------------------------------------------------------------------------------) c n
+(76) # (-- end of file --) N
+(MIPS_lib.vhd) (Page 2/2) (May 11, 12 17:32) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(MIPS_lib.vhd) (18/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 19
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(7) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(8) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(all) K
+(;) p n
+(9) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(10) # () N
+(11) # () N
+(12) # () S
+(entity) K
+( ) p
+(Mux_32_2_1) l
+( ) p
+(is) K n
+(13) # () S
+(    ) p
+(Port) K
+( \( input_a : ) p
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(14) # (           input_b : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(15) # (           output : ) S
+(out) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(16) # (           sel : ) S
+(in) K
+(  STD_LOGIC) p n
+(17) # () S 8 T () S 16 T () S 24 T ( \);) N
+(18) # () S
+(end) K
+( Mux_32_2_1;) p n
+(19) # () N
+(20) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( Mux_32_2_1 ) p
+(is) K n
+(21) # () N
+(22) # (begin) N
+(23) # () S
+() p 8 T () S 16 T () N
+(24) # () S 8 T () S 16 T () S
+(process) K
+(\(sel, input_a, input_b\)) p n
+(25) # () S 8 T () S 16 T () S
+(begin) K n
+(26) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(sel = ') p
+(0) str
+('\) ) p
+(THEN) K n
+(27) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_a;) N
+(28) # () S 8 T () S 16 T () N
+(29) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+( \(sel = ') p
+(1) str
+('\) ) p
+(THEN) K n
+(30) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_b;) N
+(31) # () S 8 T () S 16 T () N
+(32) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(33) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(null) K
+(;) p n
+(34) # () N
+(35) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(36) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(37) # () S
+(end) K
+( Behavioral;) p n
+(38) # () N
+(39) # () S
+(--====================) c n
+(40) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(41) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(42) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(all) K
+(;) p n
+(43) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(44) # () N
+(45) # () S
+(entity) K
+( ) p
+(Mux_32_3_1) l
+( ) p
+(is) K n
+(46) # () S
+(    ) p
+(Port) K
+( \( input_a : ) p
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(47) # (           input_b : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(48) # () S 8 T () S 16 T () S 24 T (  input_c : ) S
+(in) K
+( STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(49) # (           output : ) S
+(out) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(50) # (           sel : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(1 ) p
+(downto) K
+( 0\)) p n
+(51) # () S 8 T () S 16 T () S 24 T ( \);) N
+(52) # () S
+(end) K
+( Mux_32_3_1;) p n
+(53) # () N
+(54) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( Mux_32_3_1 ) p
+(is) K n
+(55) # () N
+(56) # (begin) N
+(57) # () N
+(58) # () S
+() p 8 T () S 16 T () S
+(process) K
+(\(sel, input_a, input_b, input_c\)) p n
+(59) # () S 8 T () S 16 T () S
+(begin) K n
+(60) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(sel = ") p
+(00) str
+("\)  ) p
+(THEN) K n
+(61) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_a;) N
+(62) # () S 8 T () S 16 T () N
+(63) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+( \(sel = ") p
+(01) str
+("\) ) p
+(THEN) K n
+(64) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_b;) N
+(65) # () S 8 T () S 16 T () N
+(66) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+( \(sel = ") p
+(10) str
+("\) ) p
+(THEN) K n
+(67) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_c;) N
+(68) # () S 8 T () S 16 T () S 24 T () N
+(69) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(70) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(null) K
+(;) p n
+(71) # () S 8 T () S 16 T () S 24 T () N
+(72) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(73) # () S 8 T () S 16 T () S 24 T () N
+(Mux.vhd) (Page 1/3) (May 11, 12 17:32) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(74) # () p 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(75) # () N
+(76) # () S
+(end) K
+( Behavioral;) p n
+(77) # () N
+(78) # () S
+(--=====================) c n
+(79) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(80) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(81) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(all) K
+(;) p n
+(82) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(83) # () N
+(84) # () S
+(entity) K
+( ) p
+(Mux_32_4_1) l
+( ) p
+(is) K n
+(85) # () S
+(    ) p
+(Port) K
+( \( input_a : ) p
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(86) # (           input_b : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(87) # () S 8 T () S 16 T () S 24 T (  input_c : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(88) # () S 8 T () S 16 T () S 24 T (  input_d : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(89) # (           output : ) S
+(out) K
+(  STD_LOGIC_VECTOR\(31 ) p
+(downto) K
+( 0\);) p n
+(90) # (           sel : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(1 ) p
+(downto) K
+( 0\)) p n
+(91) # () S 8 T () S 16 T () S 24 T (\);) N
+(92) # () S
+(end) K
+( Mux_32_4_1;) p n
+(93) # () N
+(94) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( Mux_32_4_1 ) p
+(is) K n
+(95) # () N
+(96) # (begin) N
+(97) # () N
+(98) # () S
+() p 8 T () S 16 T () S
+(process) K
+(\(sel, input_a, input_b, input_c, input_d\)) p n
+(99) # () S 8 T () S 16 T () S
+(begin) K n
+(100) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(sel = ") p
+(00) str
+("\)  ) p
+(THEN) K n
+(101) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_a;) N
+(102) # () S 8 T () S 16 T () N
+(103) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+( \(sel = ") p
+(01) str
+("\) ) p
+(THEN) K n
+(104) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_b;) N
+(105) # () S 8 T () S 16 T () N
+(106) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+( \(sel = ") p
+(10) str
+("\) ) p
+(THEN) K n
+(107) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_c;) N
+(108) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(109) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+( \(sel = ") p
+(11) str
+("\) ) p
+(THEN) K n
+(110) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_d;) N
+(111) # () S 8 T () S 16 T () S 24 T () N
+(112) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(113) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(null) K
+(;) p n
+(114) # () N
+(115) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(116) # () S 8 T () S 16 T () S 24 T () N
+(117) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(118) # () S
+(end) K
+( Behavioral;) p n
+(119) # () N
+(120) # () S
+(--=======================) c n
+(121) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(122) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(123) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(all) K
+(;) p n
+(124) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(125) # () N
+(126) # () S
+(entity) K
+( ) p
+(Mux_5_2_1) l
+( ) p
+(is) K n
+(127) # () S
+(    ) p
+(Port) K
+( \( input_a : ) p
+(in) K
+(  STD_LOGIC_VECTOR\(4 ) p
+(downto) K
+( 0\);) p n
+(128) # (           input_b : ) S
+(in) K
+(  STD_LOGIC_VECTOR\(4 ) p
+(downto) K
+( 0\);) p n
+(129) # (           output : ) S
+(out) K
+(  STD_LOGIC_VECTOR\(4 ) p
+(downto) K
+( 0\);) p n
+(130) # (           sel : ) S
+(in) K
+(  STD_LOGIC) p n
+(131) # (         \);) N
+(132) # () S
+(end) K
+( Mux_5_2_1;) p n
+(133) # () N
+(134) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( Mux_5_2_1 ) p
+(is) K n
+(135) # () N
+(136) # (begin) N
+(137) # () N
+(138) # () S
+() p 8 T () S 16 T () S
+(process) K
+(\(sel, input_a, input_b\)) p n
+(139) # () S 8 T () S 16 T () S
+(begin) K n
+(140) # () S
+() p 8 T () S 16 T () N
+(141) # () S 8 T () S 16 T () S 24 T () S
+(if) K
+(\(sel = ') p
+(0) str
+('\)  ) p
+(THEN) K n
+(142) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_a;) N
+(143) # () S 8 T () S 16 T () S 24 T () N
+(144) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+( \(sel = ') p
+(1) str
+('\) ) p
+(THEN) K n
+(145) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (output <= input_b;) N
+(146) # () N
+(Mux.vhd) (Page 2/3) (May 11, 12 17:32) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Mux.vhd) (19/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 20
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(147) # () p 8 T () S 16 T () S 24 T () S
+(else) K n
+(148) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(null) K
+(;) p n
+(149) # () S 8 T () S 16 T () S 24 T () S 32 T () N
+(150) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(151) # () S 8 T () S 16 T () N
+(152) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(153) # () S
+(end) K
+( Behavioral;) p n
+(154) # () N
+(Mux.vhd) (Page 3/3) (May 11, 12 17:32) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Mux.vhd) (20/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 21
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(7) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(8) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(ALL) K
+(;) p n
+(9) # () S
+(use) K
+( IEEE.STD_LOGIC_UNSIGNED.) p
+(ALL) K
+(;) p n
+(10) # () N
+(11) # () S
+(entity) K
+( ) p
+(Reg_File) l
+( ) p
+(is) K n
+(12) # () S
+(    ) p
+(port) K
+( \( ) p n
+(13) # () S 8 T (rst        : ) S
+(in) K
+( std_logic;) p n
+(14) # () S 8 T (clk        : ) S
+(in) K
+( std_logic;) p n
+(15) # () S 8 T (reg_write  : ) S
+(in) K
+( std_logic;) p n
+(16) # () S 8 T (read_reg_1  : ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(17) # () S 8 T (read_reg_2  : ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(18) # () S 8 T (write_reg  : ) S
+(in) K
+( std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(19) # () S 8 T (write_data : ) S
+(in) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(20) # () S 8 T (read_data_1 : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(21) # () S 8 T (read_data_2 : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(22) # () S 8 T (\);) S 16 T () S 24 T () N
+(23) # () S
+(end) K
+( Reg_File;) p n
+(24) # () N
+(25) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( Reg_File ) p
+(is) K n
+(26) # () N
+(27) # (type) S
+( registers_type ) p
+(is) K
+( ) p
+(array) K
+(\(0 ) p
+(to) K
+( 31\) ) p
+(of) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(28) # () S
+(signal) K
+( registers : registers_type ;) p n
+(29) # () N
+(30) # () N
+(31) # () S
+(begin) K n
+(32) # () S
+() p 8 T () S
+(process) K
+(\(rst, clk\)) p n
+(33) # () S 8 T () S 16 T () S
+(begin) K n
+(34) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\( rst = ') p
+(1) str
+(' \) ) p
+(then) K n
+(35) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(for) K
+( i ) p
+(in) K
+( 0 ) p
+(to) K
+( 31 ) p
+(loop) K n
+(36) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S 40 T (registers\(i\) <= x") S
+(00000000) str
+(";) p n
+(37) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(end) K
+( ) p
+(loop) K
+(;) p n
+(38) # () S 8 T () S 16 T () S 24 T () S
+(elsif) K
+(\( clk'event ) p
+(and) K
+( clk = ') p
+(1) str
+('\) ) p
+(then) K n
+(39) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (read_data_1 <= registers\(conv_integer\(read_reg_1) N
+0 T (\)\);) N
+(40) # () S 8 T () S 16 T () S 24 T () S 32 T (read_data_2 <= registers\(conv_integer\(read_reg_2) N
+0 T (\)\);) N
+(41) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(if) K
+(\( reg_write = ') p
+(1) str
+(' \) ) p
+(then) K n
+(42) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S 40 T (registers\(conv_integer\(write_reg\)\) <= wr) N
+0 T (ite_data;) N
+(43) # () S 8 T () S 16 T () S 24 T () S 32 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(44) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(45) # () S 8 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(46) # () S 8 T () N
+(47) # () N
+(48) # () S
+(end) K
+( Behavioral;) p n
+(Reg_File_S10.vhd) (Page 1/1) (May 11, 12 17:32) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Reg_File_S10.vhd) (21/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 22
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Hans Wun, Chris Wong) c n
+(2) # (--Login: wunh, wongc) N
+(3) # (--Email: hwun001@ucr.edu, wongc@cs.ucr.edu) N
+(4) # (--Lab Section: 0##) N
+(5) # (--##############################################################################) N
+(6) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(7) # () S
+(use) K
+( IEEE.std_logic_1164.) p
+(all) K
+(;) p n
+(8) # () S
+(use) K
+( IEEE.std_logic_arith.) p
+(all) K
+(;) p n
+(9) # () S
+(use) K
+( work.MIPS_LIB.) p
+(all) K
+(;) p n
+(10) # () N
+(11) # () S
+(entity) K
+( ) p
+(wrapper) l
+( ) p
+(is) K n
+(12) # () S
+(    ) p
+(--port\() c n
+(13) # () S
+() p 8 T ( ) N
+(14) # () S 8 T () S
+(--rst : in std_logic;) c n
+(15) # () S
+() p 8 T () S
+(--clk : in std_logic;) c n
+(16) # () S
+(   ) p n
+(17) # (    ) S 8 T ( ) S
+(--used for testing) c n
+(18) # (-- ALU Output) N
+(19) # () S
+( ) p
+(--  testing_alu_result    : out std_logic_vector\(31 downto 0\);) c n
+(20) # (-- Memory Data Register) N
+(21) # () S
+() p 8 T () S
+(--testing_mem_data : out std_logic_vector\(31 downto 0\);) c n
+(22) # (-- Register File Output 1) N
+(23) # () S
+() p 8 T () S
+(--testing_read_data_1  : out std_logic_vector\(31 downto 0\);) c n
+(24) # (-- Register File Output 2) N
+(25) # () S
+() p 8 T () S
+(--testing_read_data_2  : out std_logic_vector\(31 downto 0\) ) c n
+(26) # () S
+() p 8 T () N
+(27) # () S 8 T () S
+(--\);) c n
+(28) # () S
+(    ) p n
+(29) # () S
+(end) K
+( wrapper ;) p n
+(30) # () N
+(31) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( wrapper ) p
+(is) K n
+(32) # () N
+(33) # (COMPONENT) S
+( Datapath) p n
+(34) # (    ) S
+(PORT) K
+(\() p n
+(35) # () S 8 T ( ) N
+(36) # () S 8 T (rst : ) S
+(in) K
+( std_logic;) p n
+(37) # () S 8 T (clk : ) S
+(in) K
+( std_logic;) p n
+(38) # (        ) S
+(--control signals) c n
+(39) # () S
+() p 8 T (alu_src_A : ) S
+(in) K
+( std_logic;) p n
+(40) # () S 8 T (alu_src_B : ) S
+(in) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(41) # (        ) S
+(-- output from the ALU control ) c n
+(42) # () S
+() p 8 T (alu_control : ) S
+(in) K
+( std_logic_vector\( 2 ) p
+(downto) K
+( 0 \);) p n
+(43) # () S 8 T (reg_write : ) S
+(in) K
+( std_logic;) p n
+(44) # () S 8 T (reg_dst : ) S
+(in) K
+( std_logic;) p n
+(45) # () S 8 T (pc_source : ) S
+(in) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(46) # (        ) S
+(-- output from the or gate, combining PCWriteCond and PCWrite) c n
+(47) # () S
+(   pc_write : ) p
+(in) K
+( std_logic;) p n
+(48) # () S 8 T (i_or_d : ) S
+(in) K
+(  std_logic;) p n
+(49) # () S 8 T (mem_read : ) S
+(in) K
+( std_logic;) p n
+(50) # () S 8 T (mem_write : ) S
+(in) K
+( std_logic_vector\(0 ) p
+(downto) K
+( 0\);) p n
+(51) # () S 8 T (mem_to_reg : ) S
+(in) K
+( std_logic;) p n
+(52) # () S 8 T (IR_write : ) S
+(in) K
+(  std_logic;) p n
+(53) # (        ) N
+(54) # (        ) S
+(-- output to controller) c n
+(55) # () S
+() p 8 T (ins_31_26 : ) S
+(out) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(56) # (        ) S
+(-- output to ALU control) c n
+(57) # () S
+(   ins_5_0   : ) p
+(out) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(58) # (        ) S
+(-- output to PC write logic) c n
+(59) # () S
+(   alu_zero   : ) p
+(out) K
+( std_logic;) p n
+(60) # () N
+(61) # (        ) S
+(-- used for testing) c n
+(62) # () S
+(   testing_alu_result    : ) p
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(63) # (   testing_mem_data : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(64) # (   testing_read_data_1  : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(65) # (   testing_read_data_2  : ) S
+(out) K
+( std_logic_vector\(31 ) p
+(downto) K
+( 0\) ) p n
+(66) # () S 8 T () N
+(67) # () S 8 T (\);) N
+(68) # (    ) S
+(END) K
+( ) p
+(COMPONENT) K
+(;) p n
+(69) # () S 8 T ( ) N
+(70) # () S
+(COMPONENT) K
+( Control) p n
+(71) # (    ) S
+(PORT) K
+(\() p n
+(72) # () S 8 T () N
+(73) # () S 8 T (rst : ) S
+(in) K
+( std_logic;) p n
+(Wrapper_S10.vhd) (Page 1/3) (May 11, 12 17:32) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(74) # (    clk : ) p
+(in) K
+( std_logic;) p n
+(75) # (    alu_src_A  : ) S
+(out) K
+( std_logic;) p n
+(76) # (    alu_src_B  : ) S
+(out) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(77) # (    alu_op     : ) S
+(out) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(78) # (    reg_write  : ) S
+(out) K
+( std_logic;) p n
+(79) # (    reg_dst    : ) S
+(out) K
+( std_logic;) p n
+(80) # (    pc_source  : ) S
+(out) K
+( std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(81) # () S 8 T ( pc_write_cond: ) S
+(out) K
+( std_logic;) p n
+(82) # (    pc_write    : ) S
+(out) K
+( std_logic;) p n
+(83) # (    i_or_d     : ) S
+(out) K
+( std_logic;) p n
+(84) # (    mem_read   : ) S
+(out) K
+( std_logic;) p n
+(85) # (    mem_write  : ) S
+(out) K
+( std_logic_vector\(0 ) p
+(downto) K
+( 0\);) p n
+(86) # (    mem_to_reg : ) S
+(out) K
+( std_logic;) p n
+(87) # (    IR_write   : ) S
+(out) K
+( std_logic;) p n
+(88) # (    ins_31_26 : ) S
+(in) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(89) # (    alu_zero  : ) S
+(in) K
+( std_logic) p n
+(90) # () N
+(91) # (    \);) N
+(92) # (    ) S
+(END) K
+( ) p
+(COMPONENT) K
+(;) p n
+(93) # () S 8 T ( ) N
+(94) # () S
+(COMPONENT) K
+( ALUControl) p n
+(95) # () S 8 T ( ) S
+(PORT) K
+(\() p n
+(96) # () S 8 T () S 16 T (alu_op : ) S
+(in) K
+( std_logic_vector \( 1 ) p
+(downto) K
+( 0\);) p n
+(97) # () S 8 T () S 16 T (ins_5_0   ) S 32 T (: ) S
+(in) K
+( std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(98) # (      alu_control : ) S
+(out) K
+( std_logic_vector\( 2 ) p
+(downto) K
+( 0 \)) p n
+(99) # () S 8 T () S 16 T (\);) N
+(100) # () S 8 T () S 16 T () N
+(101) # () S 8 T () S
+(END) K
+( ) p
+(COMPONENT) K
+(;) p n
+(102) # () N
+(103) # () S
+(signal) K
+( rst : std_logic;) p n
+(104) # () S
+(signal) K
+( clk : std_logic;) p n
+(105) # () S
+(signal) K
+( alu_src_A  : std_logic;) p n
+(106) # () S
+(signal) K
+( alu_src_B  : std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(107) # () S
+(signal) K
+( alu_op     : std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(108) # () S
+(signal) K
+( alu_control : std_logic_vector\( 2 ) p
+(downto) K
+( 0\);) p n
+(109) # () S
+(signal) K
+( reg_write  : std_logic;) p n
+(110) # () S
+(signal) K
+( reg_dst    : std_logic;) p n
+(111) # () S
+(signal) K
+( pc_source  : std_logic_vector\( 1 ) p
+(downto) K
+( 0 \);) p n
+(112) # () S
+(signal) K
+( pc_write_cond: std_logic;) p n
+(113) # () S
+(signal) K
+( pc_write    : std_logic;) p n
+(114) # () S
+(signal) K
+( i_or_d     : std_logic;) p n
+(115) # () S
+(signal) K
+( mem_read   : std_logic;) p n
+(116) # () S
+(signal) K
+( mem_write  : std_logic_vector\(0 ) p
+(downto) K
+( 0\);) p n
+(117) # () S
+(signal) K
+( mem_to_reg : std_logic;) p n
+(118) # () S
+(signal) K
+( IR_write   : std_logic;) p n
+(119) # () S
+(signal) K
+( ins_31_26 : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(120) # () S
+(signal) K
+( alu_zero  : std_logic;) p n
+(121) # () N
+(122) # () S
+(signal) K
+( ins_5_0   : std_logic_vector\( 5 ) p
+(downto) K
+( 0 \);) p n
+(123) # () S
+(signal) K
+( testing_alu_result    :  std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(124) # () S
+(signal) K
+( testing_mem_data :  std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(125) # () S
+(signal) K
+( testing_read_data_1  :  std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(126) # () S
+(signal) K
+( testing_read_data_2  : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(127) # () N
+(128) # () S
+(begin) K n
+(129) # () N
+(130) # () N
+(131) # () S
+() p 8 T (uut: Datapath ) S
+(PORT) K
+( ) p
+(MAP) K
+(\() p n
+(132) # () S 8 T () S 16 T (rst => rst,) N
+(133) # () S 8 T () S 16 T (clk => clk,) N
+(134) # () S 8 T () S 16 T (alu_src_A => alu_src_A,) N
+(135) # () S 8 T () S 16 T (alu_src_B => alu_src_B,) N
+(136) # () S 8 T () S 16 T (alu_control => alu_control,) N
+(137) # () S 8 T () S 16 T (reg_write => reg_write,) N
+(138) # () S 8 T () S 16 T (reg_dst => reg_dst,) N
+(139) # () S 8 T () S 16 T (pc_source => pc_source,) N
+(140) # () S 8 T () S 16 T (pc_write => pc_write,) N
+(141) # () S 8 T () S 16 T (i_or_d => i_or_d,) N
+(142) # () S 8 T () S 16 T (mem_read => mem_read,) N
+(143) # () S 8 T () S 16 T (mem_write => mem_write,) N
+(144) # () S 8 T () S 16 T (mem_to_reg  => mem_to_reg,) N
+(145) # () S 8 T () S 16 T (IR_write => IR_write,) N
+(146) # () S 8 T () S 16 T (ins_31_26 => ins_31_26,) N
+(Wrapper_S10.vhd) (Page 2/3) (May 11, 12 17:32) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Wrapper_S10.vhd) (22/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 23
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(147) # () p 8 T () S 16 T (ins_5_0 => ins_5_0,) N
+(148) # () S 8 T () S 16 T (alu_zero => alu_zero,) N
+(149) # () S 8 T () S 16 T () N
+(150) # () S 8 T () S 16 T (testing_alu_result  => testing_alu_result,) N
+(151) # () S 8 T () S 16 T (testing_mem_data => testing_mem_data,) N
+(152) # () S 8 T () S 16 T (testing_read_data_1 => testing_read_data_1,) N
+(153) # () S 8 T () S 16 T (testing_read_data_2  => testing_read_data_2 ) N
+(154) # () S 8 T (\);) N
+(155) # () S 8 T () N
+(156) # () S 8 T (uut2:Control ) S
+(PORT) K
+( ) p
+(MAP) K
+(\() p n
+(157) # () S 8 T () S 16 T ( rst => rst,) N
+(158) # () S 8 T () S 16 T ( clk => clk,) N
+(159) # () S 8 T () S 16 T ( alu_src_A  => alu_src_A,) N
+(160) # () S 8 T () S 16 T ( alu_src_B  => alu_src_B,) N
+(161) # () S 8 T () S 16 T ( alu_op     => alu_op,) N
+(162) # () S 8 T () S 16 T ( reg_write  =>  reg_write,) N
+(163) # () S 8 T () S 16 T ( reg_dst    => reg_dst,) N
+(164) # () S 8 T () S 16 T ( pc_source  => pc_source,) N
+(165) # () S 8 T () S 16 T ( pc_write_cond => pc_write_cond,) N
+(166) # () S 8 T () S 16 T ( pc_write => pc_write,) N
+(167) # () S 8 T () S 16 T ( i_or_d  => i_or_d,) N
+(168) # () S 8 T () S 16 T ( mem_read => mem_read,) N
+(169) # () S 8 T () S 16 T ( mem_write => mem_write,) N
+(170) # () S 8 T () S 16 T ( mem_to_reg => mem_to_reg,) N
+(171) # () S 8 T () S 16 T ( IR_write => IR_write,) N
+(172) # () S 8 T () S 16 T ( ins_31_26 => ins_31_26,) N
+(173) # () S 8 T () S 16 T ( alu_zero  => alu_zero) N
+(174) # () S 8 T () N
+(175) # () S 8 T () S 16 T (\);) N
+(176) # () S 8 T () N
+(177) # () S 8 T (uut3:ALUControl ) S
+(PORT) K
+( ) p
+(MAP) K
+(\() p n
+(178) # () S 8 T () S 16 T ( alu_op => alu_op,) N
+(179) # () S 8 T () S 16 T ( ins_5_0 => ins_5_0,) N
+(180) # () S 8 T () S 16 T ( alu_control => alu_control) N
+(181) # () S 8 T () S 16 T ( \);) N
+(182) # () N
+(183) # () S 8 T (rst <= ') S
+(0) str
+(';) p n
+(184) # () N
+(185) # ( stim_proc: ) S
+(process) K n
+(186) # () S
+(   ) p
+(begin) K n
+(187) # () S
+() p 8 T () N
+(188) # () S 8 T (clk <= ') S
+(1) str
+(';) p n
+(189) # () S 8 T () S
+(wait) K
+( ) p
+(for) K
+( 5ns;) p n
+(190) # () S 8 T (clk <= ') S
+(0) str
+(';) p n
+(191) # () S 8 T () S
+(wait) K
+( ) p
+(for) K
+( 5ns;) p n
+(192) # () S 8 T () N
+(193) # () S 8 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(194) # () S 8 T () N
+(195) # () S 8 T () N
+(196) # () S
+(end) K
+( Behavioral ;) p n
+(Wrapper_S10.vhd) (Page 3/3) (May 11, 12 17:32) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(Wrapper_S10.vhd) (23/23) (Friday May 11, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

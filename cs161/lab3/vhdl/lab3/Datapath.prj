@@ -1,0 +1,8 @@
+vhdl work "ipcore_dir/my_MEM_256x32.vhd"
+vhdl work "../MIPS_lib.vhd"
+vhdl work "../Reg_File_S10.vhd"
+vhdl work "Mux.vhd"
+vhdl work "../Generic_Register_S10.vhd"
+vhdl work "../Extra_Components_S10.vhd"
+vhdl work "../ALU_S10.vhd"
+vhdl work "../Datapath_S10.vhd"

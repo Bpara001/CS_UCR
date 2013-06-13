@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161041665
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161102406
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161110328
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161111279
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277161118869
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277161119757
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277161120557
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277161121365
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277161125305
+activated,view,org.eclipse.ui.console,3.5.0.v20090907,"org.eclipse.ui.console.ConsoleView",1277161126044
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277161129172
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161130565
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161134936
+error,log,,,"Error logged from Debug Core: ",1277161138823
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277161167521
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277161197659
+executed,command,org.eclipse.debug.ui,3.6.0.v20091204,"org.eclipse.debug.ui.commands.DebugLast",1277161198432
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161198506
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161203233
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277161203260
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277161203416
+activated,perspective,org.eclipse.debug.ui,3.6.0.v20091204,"org.eclipse.debug.ui.DebugPerspective",1277161209328
+opened,view,org.eclipse.debug.ui,3.6.0.v20091204,"org.eclipse.debug.ui.MemoryView",1277161209428
+opened,view,org.eclipse.debug.ui,3.6.0.v20091204,"org.eclipse.debug.ui.RegisterView",1277161209449
+opened,view,org.eclipse.debug.ui,3.6.0.v20091204,"org.eclipse.debug.ui.ModuleView",1277161209576

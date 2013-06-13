@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158112097
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158203496
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158335646
+activated,view,org.eclipse.ui.navigator.resources,3.4.200.I20091124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1277158589687
+opened,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158590032
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158590109
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158629903
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277158637856
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158639164
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158641473
+error,log,,,"Error logged from Debug Core: ",1277158643580
+activated,view,org.eclipse.ui.console,3.5.0.v20090907,"org.eclipse.ui.console.ConsoleView",1277158645627
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158715761
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158728084
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158764764
+activated,view,org.eclipse.ui.navigator.resources,3.4.200.I20091124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1277158820230
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158822194
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277158822554
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158824275
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158838872
+activated,view,org.eclipse.ui.navigator.resources,3.4.200.I20091124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1277158840806
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158856405
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277158866806
+opened,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158867012
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277158867114

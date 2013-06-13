@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+java.specification.version,sysinfo,,,"1.6",1277327745526
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1277327745526
+java.version,sysinfo,,,"1.6.0_14",1277327745526
+java.vm.info,sysinfo,,,"mixed mode",1277327745526
+java.vm.name,sysinfo,,,"Java HotSpot(TM) 64-Bit Server VM",1277327745526
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1277327745526
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1277327745526
+java.vm.specification.version,sysinfo,,,"1.0",1277327745526
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1277327745526
+java.vm.version,sysinfo,,,"14.0-b16",1277327745526
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277327749373
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277327791795
+activated,view,org.eclipse.team.ui,3.5.100.I20091209-0800,"org.eclipse.team.ui.GenericHistoryView",1277327793521
+activated,view,org.eclipse.team.cvs.ui,3.3.300.I20091209-0800,"org.eclipse.team.ccvs.ui.RepositoriesView",1277327794144
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277327796523
+started,bundle,org.eclipse.ui.workbench.texteditor,3.6.0.v20091207-1800,"org.eclipse.ui.workbench.texteditor",1277327815905
+started,bundle,org.eclipse.ui.editors,3.6.0.v20091207-1800,"org.eclipse.ui.editors",1277327815917
+started,bundle,org.eclipse.core.filebuffers,3.5.100.v20091207-1800,"org.eclipse.core.filebuffers",1277327816476
+started,bundle,org.eclipse.cdt.core,5.2.0.200912110805,"org.eclipse.cdt.core",1277327817127
+started,bundle,org.eclipse.ui.navigator,3.4.100.I20091124-0800,"org.eclipse.ui.navigator",1277327817455
+started,bundle,org.eclipse.ltk.core.refactoring,3.5.100.v20091207-1800,"org.eclipse.ltk.core.refactoring",1277327817592
+started,bundle,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui",1277327817636
+started,bundle,org.eclipse.cdt.make.ui,6.1.0.200912110805,"org.eclipse.cdt.make.ui",1277327817682
+started,bundle,org.eclipse.cdt.managedbuilder.core,6.1.0.200912110805,"org.eclipse.cdt.managedbuilder.core",1277327817777
+started,bundle,org.eclipse.search,3.5.100.v20091207-1800,"org.eclipse.search",1277327817967

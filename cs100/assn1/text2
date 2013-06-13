@@ -1,0 +1,57 @@
+.:
+total 72
+-rwx------ 1 wongc csmajs 21497 Apr  4 16:38 a.out
+drwx------ 4 wongc csmajs  4096 Apr  4 10:27 dummyfolder
+drwx------ 2 wongc csmajs  4096 Apr  4 10:27 dummyfolder2
+-rwx------ 1 wongc csmajs  5136 Apr  4 12:44 main.cpp
+-rwx------ 1 wongc csmajs  5592 Apr  4 12:55 main_final.cpp
+-rwx------ 1 wongc csmajs  4929 Apr  4 09:26 test.cpp
+-rwx------ 1 wongc csmajs  5071 Apr  4 10:05 test2.cpp
+-rwx------ 1 wongc csmajs  1665 Apr  4 12:56 text1
+-rwx------ 1 wongc csmajs  1665 Apr  4 12:57 text2
+
+./dummyfolder:
+total 8
+-rwx------ 1 wongc csmajs   44 Apr  3 10:37 dummyfile1&2
+-rw------- 1 wongc csmajs    4 Apr  3 10:37 dummyfile1&2~
+drwx------ 5 wongc csmajs 4096 Mar 30 15:18 folder1
+drwx------ 5 wongc csmajs 4096 Mar 30 15:19 folder2
+
+./dummyfolder/folder1:
+total 12
+-rwx------ 1 wongc csmajs    0 Mar 30 15:17 dummyfile1
+drwx------ 2 wongc csmajs 4096 Apr  4 10:22 folder1a
+drwx------ 2 wongc csmajs 4096 Mar 30 15:18 folder1b
+drwx------ 2 wongc csmajs 4096 Mar 30 15:18 folder1c
+
+./dummyfolder/folder1/folder1a:
+total 0
+-rwx------ 1 wongc csmajs 0 Apr  4 10:22 new file
+-rwx------ 1 wongc csmajs 0 Apr  4 10:22 new file 1
+-rwx------ 1 wongc csmajs 0 Apr  4 10:22 new file 2
+
+./dummyfolder/folder1/folder1b:
+total 0
+
+./dummyfolder/folder1/folder1c:
+total 0
+
+./dummyfolder/folder2:
+total 12
+-rwx------ 1 wongc csmajs    0 Mar 30 15:19 dummyfile2
+drwx------ 2 wongc csmajs 4096 Mar 30 15:18 folder2a
+drwx------ 2 wongc csmajs 4096 Mar 30 15:18 folder2b
+drwx------ 2 wongc csmajs 4096 Mar 30 15:19 folder2c
+
+./dummyfolder/folder2/folder2a:
+total 0
+
+./dummyfolder/folder2/folder2b:
+total 0
+
+./dummyfolder/folder2/folder2c:
+total 0
+
+./dummyfolder2:
+total 0
+~/Desktop/cs100/assn1

@@ -1,0 +1,15 @@
+Running: C:\Xilinx\13.3\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o Z:/Desktop/cs161/lab6/vhdl/cam_wrapper_tb_isim_beh.exe -prj Z:/Desktop/cs161/lab6/vhdl/cam_wrapper_tb_beh.prj work.cam_wrapper_tb 
+ISim O.76xd (signature 0x2f00eba5)
+Number of CPUs detected in this system: 2
+Turning on mult-threading, number of parallel sub-compilation jobs: 4 
+Determining compilation order of HDL files
+Parsing VHDL file "Z:/Desktop/cs161/lab6/vhdl/myFF.vhd" into library work
+Parsing VHDL file "Z:/Desktop/cs161/lab6/vhdl/CAM_Cell.vhd" into library work
+Parsing VHDL file "Z:/Desktop/cs161/lab6/vhdl/CAM_Row.vhd" into library work
+Parsing VHDL file "Z:/Desktop/cs161/lab6/vhdl/CAM_Array.vhd" into library work
+Parsing VHDL file "Z:/Desktop/cs161/lab6/vhdl/CAM_Wrapper.vhd" into library work
+Parsing VHDL file "Z:/Desktop/cs161/lab6/vhdl/cam_wrapper_tb.vhd" into library work
+Starting static elaboration
+ERROR:HDLCompiler:410 - "Z:/Desktop/cs161/lab6/vhdl/cam_wrapper_tb.vhd" Line 47: Expression has 8 elements ; expected 32
+ERROR:HDLCompiler:1156 - "Z:/Desktop/cs161/lab6/vhdl/cam_wrapper_tb.vhd" Line 48: Formal port <dont_care_mask> does not exist in entity <CAM_Wrapper>.  Please compare the definition of block <CAM_Wrapper> to its component declaration and its instantion to detect the mismatch.
+ERROR:Simulator:777 - Static elaboration of top level VHDL design unit cam_wrapper_tb in library work failed

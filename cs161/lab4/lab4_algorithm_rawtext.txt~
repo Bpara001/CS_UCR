@@ -1,0 +1,93 @@
+Names: Bryan Marsh, Chris Wong
+Login: marshb,wongc
+Email: bmars003@ucr.edu ,cwong030@ucr.edu
+Lab Section: #1
+Assignment: Lab #4
+I acknowledge all content is original
+
+Anywhere with “//” denotes the remainder of the line is a comment
+Define “/” as logical OR
+Define “F” as Fetch
+Define “D” as decode
+Define “X” as execute
+Define “M” as  MEM
+Define “W” as  Write Back
+Define “O” as output
+Define “LA” as Latch F/D
+Define “LB” as Latch D/X
+Define “LC” as Latch X/M
+Define “LD” as Latch M/W
+Define “LE” as Latch W/O
+
+Define “D1” as 1st previous instruction register destination
+Define “D2” as 2nd previous instruction register destination
+Define “D3” as 3rd previous instruction register destination
+Define “D4” as 4th previous instruction register destination
+
+Define “O1” as 1st previous instruction opcode
+Define “O2” as 2nd previous instruction opcode
+Define “O3” as 3rd previous instruction opcode
+Define “O4” as 4th pervious instruction opcode
+
+Define “S1” as a stall signal for all stages behind LA
+Define “S2” as a stall signal for all stages behind LB
+Define “S3” as a stall signal for all stages behind LC
+Define “S4” as a stall signal for all stages behind LD
+Define “S5” as a stall signal for all stages behind LE
+
+Define “D0” as current instruction register destination taken from LB
+Define “O0” as current instruction opcode taken from LB
+Define “B-type” as branch subset of I-type
+Define ‘-’ as stall
+Define highlighted colors like  X,M,W  as a way to represent forwarding.
+
+//SETTING UP SOURCE REGISTERS when applicable
+If D0 is equal to R-type OR D0 is equal to B-type,
+then do the following:
+       	Define “Rs” as current source1 register taken from LB
+Define “Rt” as current source2 register taken from LB
+If D0 is an I-Type instruction,
+then do the following:
+       	Define “Rs” as current source1 register taken from LB
+
+//LOGIC FOR FORWARDING
+Forward to ID/EX when:
+	
+*RT or RS is the same as D1		
+	<LC | LB>  forward stage LC in the to stage LB of D0
+
+*RT or RS is the same as D2 and when O1 is a R-type or I-Type excluding B-Types
+		<LD | LB> forward stage D od D2 in the to stage B of D0		
+
+
+*RT or RS is the same as D1 and when corresponding opcode is a LW
+		<LD | LB> forward stage D of D1 to stage B of D0		
+
+Forward to EX/MEM when:
+	* RT or RS are the same as D1 and when O1 is LW and when O0 is SW
+		<LD | LC> forward stage D of D1 to stage B of D0
+			
+//LOGIC FOR STALLING
+Stall when one of the following occurs:
+
+       	*RT or RS are the same as D1/D2/ D3/ D4 and when corresponding the opcode for LW
+       	 	Stall; set S3 to 1, and set S1,S2,S4,S5 to 0
+       		
+
+*  D1/D2/D3/D4 ‘s corresponding opcode is  a B-type instruction OR a J-type
+                   	Stall: S0,S1,S2,S4,S5 to 0
+
+
+
+//Logic for taking a new instruction every cycle updating Di’s and Oi’s
+D4 is assigned as the value from D3
+D3 is assigned as the value from D2
+D2 is assigned as the value from D1
+D1 is assigned as the value from D0
+O4 is assigned as the value from O3
+O3 is assigned as the value from O2
+O2 is assigned as the value from O1
+O1 is assigned as the value from O0
+
+
+

@@ -1,0 +1,867 @@
+Release 13.3 - xst O.76xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.19 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Reading design: Datapath.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Datapath.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Datapath"
+Output Format                      : NGC
+Target Device                      : xc6vlx240t-1-ff1156
+
+---- Source Options
+Top Module Name                    : Datapath
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\lab3\ipcore_dir\my_MEM_256x32.vhd" into library work
+Parsing entity <my_MEM_256x32>.
+Parsing architecture <my_MEM_256x32_a> of entity <my_mem_256x32>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\MIPS_lib.vhd" into library work
+Parsing package <MIPS_LIB>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\Reg_File_S10.vhd" into library work
+Parsing entity <Reg_File>.
+Parsing architecture <Behavioral> of entity <reg_file>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\lab3\Mux.vhd" into library work
+Parsing entity <Mux_32_2_1>.
+Parsing architecture <Behavioral> of entity <mux_32_2_1>.
+Parsing entity <Mux_32_3_1>.
+Parsing architecture <Behavioral> of entity <mux_32_3_1>.
+Parsing entity <Mux_32_4_1>.
+Parsing architecture <Behavioral> of entity <mux_32_4_1>.
+Parsing entity <Mux_5_2_1>.
+Parsing architecture <Behavioral> of entity <mux_5_2_1>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\Generic_Register_S10.vhd" into library work
+Parsing entity <Generic_Register>.
+Parsing architecture <Behavioral> of entity <generic_register>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\Extra_Components_S10.vhd" into library work
+Parsing entity <SignExt_16_32>.
+Parsing architecture <bhv> of entity <signext_16_32>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\ALU_S10.vhd" into library work
+Parsing entity <ALU>.
+Parsing architecture <bhv> of entity <alu>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\Datapath_S10.vhd" into library work
+Parsing entity <Datapath>.
+Parsing architecture <bhv> of entity <datapath>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <Datapath> (architecture <bhv>) from library <work>.
+WARNING:HDLCompiler:871 - "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\Datapath_S10.vhd" Line 180: Using initial value "00000000000000000000000000000100" for four since it is never assigned
+
+Elaborating entity <Generic_Register> (architecture <Behavioral>) with generics from library <work>.
+WARNING:HDLCompiler:1127 - "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\Datapath_S10.vhd" Line 222: Assignment to instr_31_26 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab3\vhdl\Datapath_S10.vhd" Line 228: Assignment to instr_5_0 ignored, since the identifier is never used
+
+Elaborating entity <Mux_32_2_1> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <my_MEM_256x32> (architecture <my_MEM_256x32_a>) from library <work>.
+
+Elaborating entity <Mux_5_2_1> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Mux_32_4_1> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Mux_32_3_1> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Reg_File> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <SignExt_16_32> (architecture <bhv>) from library <work>.
+
+Elaborating entity <ALU> (architecture <bhv>) from library <work>.
+WARNING:Xst:2972 - "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/datapath_s10.vhd" line 275. All outputs of instance <PCtoMux> of block <Mux_32_2_1> are unconnected in block <Datapath>. Underlying logic will be removed.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <Datapath>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/datapath_s10.vhd".
+WARNING:Xst:647 - Input <IR_write> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/datapath_s10.vhd" line 275: Output port <output> of the instance <PCtoMux> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <Datapath> synthesized.
+
+Synthesizing Unit <Generic_Register>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/generic_register_s10.vhd".
+        NUMBITS = 32
+    Found 32-bit register for signal <output>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <Generic_Register> synthesized.
+
+Synthesizing Unit <Mux_32_2_1>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/lab3/mux.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <Mux_32_2_1> synthesized.
+
+Synthesizing Unit <Mux_5_2_1>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/lab3/mux.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <Mux_5_2_1> synthesized.
+
+Synthesizing Unit <Mux_32_4_1>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/lab3/mux.vhd".
+    Found 32-bit 4-to-1 multiplexer for signal <output> created at line 98.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <Mux_32_4_1> synthesized.
+
+Synthesizing Unit <Mux_32_3_1>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/lab3/mux.vhd".
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[31]_MUX_242_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[30]_MUX_245_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[29]_MUX_248_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[28]_MUX_251_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[27]_MUX_254_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[26]_MUX_257_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[25]_MUX_260_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[24]_MUX_263_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[23]_MUX_266_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[22]_MUX_269_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[21]_MUX_272_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[20]_MUX_275_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[19]_MUX_278_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[18]_MUX_281_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[17]_MUX_284_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[16]_MUX_287_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[15]_MUX_290_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[14]_MUX_293_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[13]_MUX_296_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[12]_MUX_299_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[11]_MUX_302_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[10]_MUX_305_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[9]_MUX_308_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[8]_MUX_311_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[7]_MUX_314_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[6]_MUX_317_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[5]_MUX_320_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[4]_MUX_323_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[3]_MUX_326_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[2]_MUX_329_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[1]_MUX_332_o> created at line 74.
+    Found 1-bit 3-to-1 multiplexer for signal <output[31]_input_a[0]_MUX_335_o> created at line 74.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<30>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<29>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<28>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<27>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<26>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<25>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<24>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<23>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<22>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<21>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<20>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<19>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<18>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<17>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<16>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <output<31>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred  32 Latch(s).
+	inferred  32 Multiplexer(s).
+Unit <Mux_32_3_1> synthesized.
+
+Synthesizing Unit <Reg_File>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/reg_file_s10.vhd".
+    Found 32-bit register for signal <registers<1>>.
+    Found 32-bit register for signal <registers<2>>.
+    Found 32-bit register for signal <registers<3>>.
+    Found 32-bit register for signal <registers<4>>.
+    Found 32-bit register for signal <registers<5>>.
+    Found 32-bit register for signal <registers<6>>.
+    Found 32-bit register for signal <registers<7>>.
+    Found 32-bit register for signal <registers<8>>.
+    Found 32-bit register for signal <registers<9>>.
+    Found 32-bit register for signal <registers<10>>.
+    Found 32-bit register for signal <registers<11>>.
+    Found 32-bit register for signal <registers<12>>.
+    Found 32-bit register for signal <registers<13>>.
+    Found 32-bit register for signal <registers<14>>.
+    Found 32-bit register for signal <registers<15>>.
+    Found 32-bit register for signal <registers<16>>.
+    Found 32-bit register for signal <registers<17>>.
+    Found 32-bit register for signal <registers<18>>.
+    Found 32-bit register for signal <registers<19>>.
+    Found 32-bit register for signal <registers<20>>.
+    Found 32-bit register for signal <registers<21>>.
+    Found 32-bit register for signal <registers<22>>.
+    Found 32-bit register for signal <registers<23>>.
+    Found 32-bit register for signal <registers<24>>.
+    Found 32-bit register for signal <registers<25>>.
+    Found 32-bit register for signal <registers<26>>.
+    Found 32-bit register for signal <registers<27>>.
+    Found 32-bit register for signal <registers<28>>.
+    Found 32-bit register for signal <registers<29>>.
+    Found 32-bit register for signal <registers<30>>.
+    Found 32-bit register for signal <registers<31>>.
+    Found 32-bit register for signal <registers<0>>.
+    Found 32-bit register for signal <read_data_1>.
+    Found 32-bit register for signal <read_data_2>.
+INFO:Xst:3019 - HDL ADVISOR - 1024 flip-flops were inferred for signal <registers>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
+INFO:Xst:3019 - HDL ADVISOR - 1024 flip-flops were inferred for signal <registers>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
+    Found 32-bit 32-to-1 multiplexer for signal <read_reg_1[4]_registers[31][31]_wide_mux_0_OUT> created at line 34.
+    Found 32-bit 32-to-1 multiplexer for signal <read_reg_2[4]_registers[31][31]_wide_mux_1_OUT> created at line 35.
+    Summary:
+	inferred 1088 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+Unit <Reg_File> synthesized.
+
+Synthesizing Unit <SignExt_16_32>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/extra_components_s10.vhd".
+    Summary:
+	no macro.
+Unit <SignExt_16_32> synthesized.
+
+Synthesizing Unit <ALU>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab3/vhdl/alu_s10.vhd".
+    Found 32-bit adder for signal <input_a[31]_input_b[31]_add_2_OUT> created at line 36.
+    Found 32-bit subtractor for signal <GND_147_o_GND_147_o_sub_4_OUT<31:0>> created at line 37.
+    Found 32-bit 7-to-1 multiplexer for signal <temp_result> created at line 33.
+    Found 32-bit comparator greater for signal <input_a[31]_input_b[31]_LessThan_5_o> created at line 39
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+	inferred  11 Multiplexer(s).
+Unit <ALU> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 32-bit addsub                                         : 1
+# Registers                                            : 40
+ 32-bit register                                       : 40
+# Latches                                              : 32
+ 1-bit latch                                           : 32
+# Comparators                                          : 1
+ 32-bit comparator greater                             : 1
+# Multiplexers                                         : 49
+ 1-bit 3-to-1 multiplexer                              : 32
+ 32-bit 2-to-1 multiplexer                             : 13
+ 32-bit 32-to-1 multiplexer                            : 2
+ 32-bit 4-to-1 multiplexer                             : 1
+ 5-bit 2-to-1 multiplexer                              : 1
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Reading core <ipcore_dir/my_MEM_256x32.ngc>.
+Loading core <my_MEM_256x32> for timing and area information for instance <Memory_Unit>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 32-bit addsub                                         : 1
+# Registers                                            : 1280
+ Flip-Flops                                            : 1280
+# Comparators                                          : 1
+ 32-bit comparator greater                             : 1
+# Multiplexers                                         : 111
+ 1-bit 3-to-1 multiplexer                              : 32
+ 1-bit 32-to-1 multiplexer                             : 64
+ 32-bit 2-to-1 multiplexer                             : 13
+ 32-bit 4-to-1 multiplexer                             : 1
+ 5-bit 2-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1989 - Unit <Datapath>: instances <IR>, <MDR> of unit <Generic_Register> are equivalent, second instance is removed
+WARNING:Xst:2016 - Found a loop when searching source clock on port 'GND_112_o_GND_112_o_OR_136_o:GND_112_o_GND_112_o_OR_136_o'
+Last warning will be issued only once.
+
+Optimizing unit <Generic_Register> ...
+
+Optimizing unit <Datapath> ...
+
+Optimizing unit <ALU> ...
+
+Optimizing unit <Mux_32_3_1> ...
+
+Optimizing unit <Reg_File> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Datapath, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1248
+ Flip-Flops                                            : 1248
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : Datapath.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1055
+#      GND                         : 1
+#      INV                         : 1
+#      LUT2                        : 1
+#      LUT3                        : 70
+#      LUT4                        : 51
+#      LUT5                        : 107
+#      LUT6                        : 679
+#      MUXCY                       : 47
+#      MUXF7                       : 64
+#      VCC                         : 2
+#      XORCY                       : 32
+# FlipFlops/Latches                : 1280
+#      FDC                         : 128
+#      FDCE                        : 1056
+#      FDE                         : 64
+#      LD                          : 32
+# RAMS                             : 1
+#      RAMB18E1                    : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 28
+#      IBUF                        : 15
+#      OBUF                        : 13
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6vlx240tff1156-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1280  out of  301440     0%  
+ Number of Slice LUTs:                  909  out of  150720     0%  
+    Number used as Logic:               909  out of  150720     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   2025
+   Number with an unused Flip Flop:     745  out of   2025    36%  
+   Number with an unused LUT:          1116  out of   2025    55%  
+   Number of fully used LUT-FF pairs:   164  out of   2025     8%  
+   Number of unique control sets:        36
+
+IO Utilization: 
+ Number of IOs:                         159
+ Number of bonded IOBs:                  29  out of    600     4%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                1  out of    416     0%  
+    Number using Block RAM only:          1
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------------------------------------------------+--------------------------+-------+
+Clock Signal                                                                 | Clock buffer(FF name)    | Load  |
+-----------------------------------------------------------------------------+--------------------------+-------+
+JumpMux/GND_112_o_GND_112_o_OR_136_o(JumpMux/GND_112_o_GND_112_o_OR_136_o1:O)| BUFG(*)(JumpMux/output_0)| 32    |
+clk                                                                          | BUFGP                    | 1249  |
+-----------------------------------------------------------------------------+--------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 4.135ns (Maximum Frequency: 241.838MHz)
+   Minimum input arrival time before clock: 4.813ns
+   Maximum output required time after clock: 6.156ns
+   Maximum combinational path delay: 6.125ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.135ns (frequency: 241.838MHz)
+  Total number of paths / destination ports: 38613 / 2288
+-------------------------------------------------------------------------
+Delay:               4.135ns (Levels of Logic = 50)
+  Source:            B_REG/output_2 (FF)
+  Destination:       ALUOut/output_31 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: B_REG/output_2 to ALUOut/output_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.375   0.587  B_REG/output_2 (B_REG/output_2)
+     LUT5:I2->O            4   0.068   0.658  BtoMUX/Mmux_output231 (alu_input_B<2>)
+     LUT4:I0->O            1   0.068   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14>)
+     MUXCY:CI->O           2   0.219   0.423  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15>)
+     LUT6:I5->O            1   0.068   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_lut<0> (Muxes_to_Alu/Mmux_temp_result6_rs_lut<0>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<0> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<0>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<1> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<2> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<3> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<4> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<5> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<6> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<7> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<8> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<9> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<10> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<11> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<12> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<13> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<14> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<14>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<15> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<15>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<16> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<16>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<17> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<17>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<18> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<18>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<19> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<19>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<20> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<20>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<21> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<21>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<22> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<22>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<23> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<23>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<24> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<24>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<25> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<25>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<26> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<26>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<27> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<27>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<28> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<28>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<29> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<29>)
+     MUXCY:CI->O           0   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<30> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<30>)
+     XORCY:CI->O           3   0.239   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_xor<31> (alu_result<31>)
+     FDC:D                     0.011          ALUOut/output_31
+    ----------------------------------------
+    Total                      4.135ns (2.467ns logic, 1.668ns route)
+                                       (59.7% logic, 40.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'JumpMux/GND_112_o_GND_112_o_OR_136_o'
+  Total number of paths / destination ports: 18336 / 32
+-------------------------------------------------------------------------
+Offset:              4.813ns (Levels of Logic = 52)
+  Source:            alu_src_B<1> (PAD)
+  Destination:       JumpMux/output_31 (LATCH)
+  Destination Clock: JumpMux/GND_112_o_GND_112_o_OR_136_o falling
+
+  Data Path: alu_src_B<1> to JumpMux/output_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            32   0.003   0.928  alu_src_B_1_IBUF (alu_src_B_1_IBUF)
+     LUT5:I0->O            4   0.068   0.658  BtoMUX/Mmux_output231 (alu_input_B<2>)
+     LUT4:I0->O            1   0.068   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14>)
+     MUXCY:CI->O           2   0.220   0.423  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15>)
+     LUT6:I5->O            1   0.068   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_lut<0> (Muxes_to_Alu/Mmux_temp_result6_rs_lut<0>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<0> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<0>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<1> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<2> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<3> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<4> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<5> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<6> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<7> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<8> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<9> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<10> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<11> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<12> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<13> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<14> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<14>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<15> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<15>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<16> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<16>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<17> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<17>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<18> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<18>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<19> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<19>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<20> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<20>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<21> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<21>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<22> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<22>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<23> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<23>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<24> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<24>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<25> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<25>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<26> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<26>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<27> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<27>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<28> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<28>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<29> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<29>)
+     MUXCY:CI->O           0   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<30> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<30>)
+     XORCY:CI->O           3   0.239   0.652  Muxes_to_Alu/Mmux_temp_result6_rs_xor<31> (alu_result<31>)
+     LUT5:I1->O            1   0.068   0.000  JumpMux/Mmux_output[31]_input_a[31]_MUX_242_o11 (JumpMux/output[31]_input_a[31]_MUX_242_o)
+     LD:D                     -0.047          JumpMux/output_31
+    ----------------------------------------
+    Total                      4.813ns (2.152ns logic, 2.661ns route)
+                                       (44.7% logic, 55.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 26726 / 3366
+-------------------------------------------------------------------------
+Offset:              4.104ns (Levels of Logic = 51)
+  Source:            alu_src_B<1> (PAD)
+  Destination:       ALUOut/output_31 (FF)
+  Destination Clock: clk rising
+
+  Data Path: alu_src_B<1> to ALUOut/output_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            32   0.003   0.928  alu_src_B_1_IBUF (alu_src_B_1_IBUF)
+     LUT5:I0->O            4   0.068   0.658  BtoMUX/Mmux_output231 (alu_input_B<2>)
+     LUT4:I0->O            1   0.068   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14>)
+     MUXCY:CI->O           2   0.219   0.423  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15>)
+     LUT6:I5->O            1   0.068   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_lut<0> (Muxes_to_Alu/Mmux_temp_result6_rs_lut<0>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<0> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<0>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<1> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<2> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<3> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<4> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<5> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<6> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<7> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<8> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<9> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<10> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<11> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<12> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<13> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<14> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<14>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<15> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<15>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<16> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<16>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<17> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<17>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<18> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<18>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<19> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<19>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<20> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<20>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<21> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<21>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<22> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<22>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<23> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<23>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<24> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<24>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<25> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<25>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<26> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<26>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<27> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<27>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<28> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<28>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<29> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<29>)
+     MUXCY:CI->O           0   0.019   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<30> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<30>)
+     XORCY:CI->O           3   0.239   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_xor<31> (alu_result<31>)
+     FDC:D                     0.011          ALUOut/output_31
+    ----------------------------------------
+    Total                      4.104ns (2.095ns logic, 2.009ns route)
+                                       (51.1% logic, 48.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 22801 / 13
+-------------------------------------------------------------------------
+Offset:              6.156ns (Levels of Logic = 24)
+  Source:            B_REG/output_2 (FF)
+  Destination:       alu_zero (PAD)
+  Source Clock:      clk rising
+
+  Data Path: B_REG/output_2 to alu_zero
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.375   0.587  B_REG/output_2 (B_REG/output_2)
+     LUT5:I2->O            4   0.068   0.658  BtoMUX/Mmux_output231 (alu_input_B<2>)
+     LUT4:I0->O            1   0.068   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14>)
+     MUXCY:CI->O           2   0.220   0.423  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15>)
+     LUT6:I5->O            1   0.068   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_lut<0> (Muxes_to_Alu/Mmux_temp_result6_rs_lut<0>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<0> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<0>)
+     XORCY:CI->O           3   0.239   0.792  Muxes_to_Alu/Mmux_temp_result6_rs_xor<1> (alu_result<1>)
+     LUT6:I0->O            1   0.068   0.638  Muxes_to_Alu/zero<31>1 (Muxes_to_Alu/zero<31>)
+     LUT5:I1->O            1   0.068   0.581  Muxes_to_Alu/zero<31>2 (Muxes_to_Alu/zero<31>1)
+     LUT6:I3->O            1   0.068   0.399  Muxes_to_Alu/zero<31>8 (alu_zero_OBUF)
+     OBUF:I->O                 0.003          alu_zero_OBUF (alu_zero)
+    ----------------------------------------
+    Total                      6.156ns (2.078ns logic, 4.078ns route)
+                                       (33.8% logic, 66.2% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 18272 / 1
+-------------------------------------------------------------------------
+Delay:               6.125ns (Levels of Logic = 25)
+  Source:            alu_src_B<1> (PAD)
+  Destination:       alu_zero (PAD)
+
+  Data Path: alu_src_B<1> to alu_zero
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            32   0.003   0.928  alu_src_B_1_IBUF (alu_src_B_1_IBUF)
+     LUT5:I0->O            4   0.068   0.658  BtoMUX/Mmux_output231 (alu_input_B<2>)
+     LUT4:I0->O            1   0.068   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_lut<1>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<9>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<10>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<11>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<12>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<13>)
+     MUXCY:CI->O           1   0.020   0.000  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<14>)
+     MUXCY:CI->O           2   0.220   0.423  Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15> (Muxes_to_Alu/Mcompar_input_a[31]_input_b[31]_LessThan_5_o_cy<15>)
+     LUT6:I5->O            1   0.068   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_lut<0> (Muxes_to_Alu/Mmux_temp_result6_rs_lut<0>)
+     MUXCY:S->O            1   0.290   0.000  Muxes_to_Alu/Mmux_temp_result6_rs_cy<0> (Muxes_to_Alu/Mmux_temp_result6_rs_cy<0>)
+     XORCY:CI->O           3   0.239   0.792  Muxes_to_Alu/Mmux_temp_result6_rs_xor<1> (alu_result<1>)
+     LUT6:I0->O            1   0.068   0.638  Muxes_to_Alu/zero<31>1 (Muxes_to_Alu/zero<31>)
+     LUT5:I1->O            1   0.068   0.581  Muxes_to_Alu/zero<31>2 (Muxes_to_Alu/zero<31>1)
+     LUT6:I3->O            1   0.068   0.399  Muxes_to_Alu/zero<31>8 (alu_zero_OBUF)
+     OBUF:I->O                 0.003          alu_zero_OBUF (alu_zero)
+    ----------------------------------------
+    Total                      6.125ns (1.706ns logic, 4.419ns route)
+                                       (27.9% logic, 72.1% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock JumpMux/GND_112_o_GND_112_o_OR_136_o
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |         |         |    4.844|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk
+------------------------------------+---------+---------+---------+---------+
+                                    | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                        |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+------------------------------------+---------+---------+---------+---------+
+JumpMux/GND_112_o_GND_112_o_OR_136_o|         |    0.797|         |         |
+clk                                 |    4.135|         |         |         |
+------------------------------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 16.00 secs
+Total CPU time to Xst completion: 15.97 secs
+ 
+--> 
+
+Total memory usage is 161348 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   38 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
+

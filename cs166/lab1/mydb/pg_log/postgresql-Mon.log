@@ -1,0 +1,14 @@
+LOG:  database system was shut down at 2013-04-08 08:19:47 PDT
+LOG:  checkpoint record is at 0/38FFE0
+LOG:  redo record is at 0/38FFE0; undo record is at 0/0; shutdown TRUE
+LOG:  next transaction ID: 565; next OID: 10794
+LOG:  next MultiXactId: 1; next MultiXactOffset: 0
+LOG:  database system is ready
+LOG:  transaction ID wrap limit is 2147484146, limited by database "postgres"
+LOG:  transaction ID wrap limit is 2147484146, limited by database "postgres"
+ERROR:  NUMERIC precision 0 must be between 1 and 1000
+ERROR:  column "gpa" does not exist
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  logger shutting down

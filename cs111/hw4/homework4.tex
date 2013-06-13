@@ -1,0 +1,247 @@
+% <--- percent sign starts a comment line in LaTeX
+
+%----------------------------------------------------------
+% This is a sample assignment .tex file. Put your name,
+% assignment number and the due date below, as shown.
+% Before you typeset your own assignment try to preview
+% and print this one as follows:
+%   1. Save this in a file, say hw.tex
+%   2. do "latex hw"
+%	3. latex will produce a pdf file that should be named hw.pdf.
+%	4. Use any pdf viewer to view the document
+% ------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+\usepackage{fullpage,graphicx,latexsym,picinpar,amsbsy,amsmath,amsfonts}
+
+\input{macros.tex}
+
+\begin{document}
+
+% v -- YOUR NAME and SID in the braces
+\student{ Chris Wong }{ 860923521}
+% v -- ASSIGNMENT NUMBER in the braces
+\assignment{ 4 }
+% v-- DUE DATE in the braces
+\duedate{5/24/2011 }
+
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lineacross
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\tiny
+	Give the asymptotic value (using the $\Theta$-notation)
+for the number of words that will be printed by the algorithms below.
+Your solution needs to consist of an appropriate recurrence
+equation and its solution, with a brief justification.
+(See the suggested format at the bottom of the assignment).
+
+\bigskip
+\noindent
+(a)\ \
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Jazz} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``jazz") \\
+          \>\textbf{else} \\
+      		\>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $2n$ \textbf{do} print(``jazz")\\
+          \>\>  \textbf{for} $j\leftarrow 1$ \textbf{to} $4$
+				\textbf{do} \textsc{Jazz}$(\ceiling{n/4})$
+\end{tabbing}
+\end{minipage}
+
+\bigskip
+\noindent
+(b)\ \
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Salsa} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``salsa") \\
+          \>\textbf{else} \\
+          \>\>  \textbf{for} $j \leftarrow 1$ \textbf{to} $8$
+					\textbf{do} \textsc{Salsa}$(\floor{n/2})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $n^2$ \textbf{do} print(``salsa")
+\end{tabbing}
+\end{minipage}
+
+\bigskip
+\noindent
+(c)\ \
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Mariachi} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``mariachi") \\
+          \>\textbf{else} \\
+          \>\>  \textsc{Mariachi}$(\ceiling{n/4})$\\
+          \>\>  \textsc{Mariachi}$(\ceiling{n/4})$\\
+          \>\>  \textsc{Mariachi}$(\ceiling{n/4})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $3n$ \textbf{do} print(``mariachi")
+\end{tabbing}
+\end{minipage}
+
+\bigskip
+\noindent
+(d)\ \
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Reggae} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``reggae") \\
+          \>\textbf{else} \\
+          \>\>  \textsc{Reggae}$(\ceiling{n/3})$\\
+          \>\>  \textsc{Reggae}$(\floor{n/3})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $7$ \textbf{do} print(``reggae")
+\end{tabbing}
+\end{minipage}
+\bigskip
+\
+
+
+\bigskip
+\noindent
+(e)\ \
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Rhumba} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``rhumba") \\
+          \>\textbf{else} \\
+          \>\>  \textbf{for} $j \leftarrow 1$ \textbf{to} $16$
+					\textbf{do} \textsc{Rhumba}$(\floor{n/4})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $2n^3$ \textbf{do} print(``rhumba")
+\end{tabbing}
+\end{minipage}
+\bigskip
+\
+
+
+\end{problem}
+
+%---------------------------
+\pagebreak
+\footnotesize
+
+\begin{solution}
+\\\\
+	a)here are $4$ recursive calls, each with parameter $\ceiling{n/4}$. Since
+we are looking for an asymptotic solution, we can ignore rounding. Then
+the number of letters printed can be expressed by the recurrence:
+%
+\begin{eqnarray*}
+	T(n) &=& 4 T(n/4) + 2n.
+\end{eqnarray*}
+%
+We apply the Master Theorem with $a = 4$, $b = 4$, $d = 1$. Here, we
+have $a = b^d$, so the solution is $\Theta(nlog(n))$.\\\\\\
+
+b)here are $8$ recursive calls, each with parameter $\ceiling{n/2}$. Since
+we are looking for an asymptotic solution, we can ignore rounding. Then
+the number of letters printed can be expressed by the recurrence:
+%
+\begin{eqnarray*}
+	T(n) &=& 8 T(n/2) + n^2.
+\end{eqnarray*}
+%
+We apply the Master Theorem with $a = 8$, $b = 2$, $d = 2$. Here, we
+have $a > b^d$, so the solution is $\Theta(n^3)$.\\\\\\
+
+
+c)here are $3$ recursive calls, each with parameter $\ceiling{n/4}$. Since
+we are looking for an asymptotic solution, we can ignore rounding. Then
+the number of letters printed can be expressed by the recurrence:
+%
+\begin{eqnarray*}
+	T(n) &=& 3 T(n/4) + 3n.
+\end{eqnarray*}
+%
+We apply the Master Theorem with $a = 3$, $b = 4$, $d = 1$. Here, we
+have $a < b^d$, so the solution is $\Theta(n)$.\\\\\\
+
+
+d)here are $2$ recursive calls, each with parameter $\ceiling{n/3}$. Since
+we are looking for an asymptotic solution, we can ignore rounding. Then
+the number of letters printed can be expressed by the recurrence:
+%
+\begin{eqnarray*}
+	T(n) &=& 2 T(n/3) + 7.
+\end{eqnarray*}
+%
+We apply the Master Theorem with $a = 2$, $b = 3$, $d = 0$. Here, we
+have $a > b^d$, so the solution is $\Theta(n^{log_{3}2})$.\\\\\\
+
+
+e)here are $16$ recursive calls, each with parameter $\ceiling{n/4}$. Since
+we are looking for an asymptotic solution, we can ignore rounding. Then
+the number of letters printed can be expressed by the recurrence:
+%
+\begin{eqnarray*}
+	T(n) &=& 16 T(n/4) + 2n^3.
+\end{eqnarray*}
+%
+We apply the Master Theorem with $a = 16$, $b = 4$, $d = 3$. Here, we
+have $a < b^d$, so the solution is $\Theta(n^3)$.\\\\\\
+
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\begin{problem}
+	Determine (using the inclusion-exclusion principle)
+the number of integer solutions of the equation:
+%
+\begin{eqnarray*}
+x + y + z &=& 17,
+\end{eqnarray*}
+%
+under the constraints
+%
+\begin{eqnarray*}
+        0 \;\le\; x \;\le\; 4 \\
+        0 \;\le\; y \;\le\; 6 \\
+        0\;\le\; z  \;\le\; 9
+\end{eqnarray*}
+%
+Show your work.\\\\\\\\
+\end{problem}
+%-----------------------------
+\begin{solution}
+	\\\\s = solutions
+	\\$\Rightarrow$ s(x$\leq$4 $\cap$ y$\lep$6 $\cap$ z$\leq$9)
+	\\$\Rightarrow$ s - (x$\geq$5 $\cup$ y$\geq$7 $\cup$ z$\geq$10)
+	\\$\Rightarrow$ s -s(x$\geq$5) -s(y$\geq$7) -s(z$\geq$10)
+	+s(x$\geq$5 $\cup$ y$\geq$7) +s(x$\geq$5 $\cup$ z$\geq$10)
+	+s(y$\geq$5 $\cup$ z$\geq$10) +(x$\geq$5 $\cup$ y$\geq$7 $\cup$ z$\geq$10)
+	\\$\Rightarrow$ ${{19}\choose{2}}$ -${{14}\choose{2}}$ -${{12}\choose{2}}$
+	-${{9}\choose{2}}$ +${{7}\choose{2}}$ +${{4}\choose{2}}$ +${{2}\choose{2}}$
+	\\$\Rightarrow$ 171 -91 -66 -36 +21 +6 +1 = 6
+	\\Number of integer soultions of the equation: 6
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\begin{problem}
+ 	No partner
+\end{problem}
+
+%----------------------------
+
+\begin{solution}
+	No partner
+\end{solution}
+
+\end{document}

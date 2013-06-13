@@ -1,0 +1,1 @@
+/usr/bin/postgres "-D" "mydb" "-p" "1337"

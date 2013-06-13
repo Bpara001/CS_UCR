@@ -1,0 +1,27 @@
+# Output products list for <my_MEM_256x32>
+_xmsgs\pn_parser.xmsgs
+blk_mem_gen_ds512.pdf
+blk_mem_gen_v6_2_readme.txt
+my_MEM_256x32.asy
+my_MEM_256x32.gise
+my_MEM_256x32.mif
+my_MEM_256x32.ngc
+my_MEM_256x32.sym
+my_MEM_256x32.vhd
+my_MEM_256x32.vho
+my_MEM_256x32.xco
+my_MEM_256x32.xise
+my_MEM_256x32_flist.txt
+my_MEM_256x32_ste\example_design\bmg_wrapper.vhd
+my_MEM_256x32_ste\example_design\my_MEM_256x32_top.ucf
+my_MEM_256x32_ste\example_design\my_MEM_256x32_top.vhd
+my_MEM_256x32_ste\example_design\my_MEM_256x32_top.xdc
+my_MEM_256x32_ste\implement\implement.bat
+my_MEM_256x32_ste\implement\implement.sh
+my_MEM_256x32_ste\implement\planAhead_rdn.bat
+my_MEM_256x32_ste\implement\planAhead_rdn.sh
+my_MEM_256x32_ste\implement\planAhead_rdn.tcl
+my_MEM_256x32_ste\implement\xst.prj
+my_MEM_256x32_ste\implement\xst.scr
+my_MEM_256x32_xmdf.tcl
+summary.log

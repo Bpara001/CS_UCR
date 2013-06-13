@@ -1,0 +1,28 @@
+Command line:
+   lab2_vhdl_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  1175
+
+Mon Apr 23 15:18:24 2012
+
+
+ Elaboration Time: 0.09375 sec
+
+ Current Memory Usage: 470.733 Meg
+
+ Total Signals          : 12
+ Total Nets             : 156
+ Total Signal Drivers   : 11
+ Total Blocks           : 5
+ Total Primitive Blocks : 5
+ Total Processes        : 6
+ Total Traceable Variables  : 16
+ Total Scalar Nets and Variables : 616
+
+ Total Simulation Time: 0.140625 sec
+
+ Current Memory Usage: 470.733 Meg
+
+Mon Apr 23 15:18:33 2012
+

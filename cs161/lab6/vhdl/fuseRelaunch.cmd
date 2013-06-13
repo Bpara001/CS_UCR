@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "Z:/Desktop/cs161/lab6/vhdl/cam_wrapper_tb_isim_beh.exe" -prj "Z:/Desktop/cs161/lab6/vhdl/cam_wrapper_tb_beh.prj" "work.cam_wrapper_tb" 

@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.ui.console,3.5.0.v20090907,"org.eclipse.ui.console",1277327609903
+started,bundle,org.eclipse.ui.ide,3.6.0.I20091210-1200,"org.eclipse.ui.ide",1277327609903
+started,bundle,org.eclipse.ui.net,1.2.100.I20090714-0800,"org.eclipse.ui.net",1277327609903
+started,bundle,org.eclipse.ui.views,3.5.0.I20090914-0830,"org.eclipse.ui.views",1277327609903
+started,bundle,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"org.eclipse.ui.workbench",1277327609903
+started,bundle,org.eclipse.update.configurator,3.3.100.v20090813,"org.eclipse.update.configurator",1277327609904
+os,sysinfo,,,"linux",1277327609906
+arch,sysinfo,,,"x86_64",1277327609906
+ws,sysinfo,,,"gtk",1277327609906
+locale,sysinfo,,,"en_US",1277327609906
+processors,sysinfo,,,"2",1277327609906
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1277327609906
+java.runtime.version,sysinfo,,,"1.6.0_14-b08",1277327609906
+java.specification.name,sysinfo,,,"Java Platform API Specification",1277327609906
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1277327609906
+java.specification.version,sysinfo,,,"1.6",1277327609906
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1277327609906
+java.version,sysinfo,,,"1.6.0_14",1277327609907
+java.vm.info,sysinfo,,,"mixed mode",1277327609907
+java.vm.name,sysinfo,,,"Java HotSpot(TM) 64-Bit Server VM",1277327609907
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1277327609907
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1277327609907
+java.vm.specification.version,sysinfo,,,"1.0",1277327609907
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1277327609907
+java.vm.version,sysinfo,,,"14.0-b16",1277327609907

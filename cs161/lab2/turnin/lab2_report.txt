@@ -1,0 +1,30 @@
+Names: James Fang, Chris Wong
+Login: jfang003, wongc
+Email: jfang003@ucr.edu, cwong030@ucr.edu
+Lab Section: 0##
+Assignment: Lab #2
+I acknowledge all content is original.
+
+I. Lab objective
+The objective of this lab is to become familiar with fixed and floating point
+representations of numbers. It also included becoming more familiar with
+MIPS and VHDL. 
+
+II . Personal contributions
+Both me and my partner worked on both parts of the code.In both parts of the
+assignment, both of us wrote down on paper how to convert fixed to floating
+and floating to fixed to create an algorithm.  
+
+III. Skill learned & knowledge gained.
+Overall me and my partner learned about new functions in VHDL such as 
+conv_int. Also we learned how to use MIPS (opcodes and what they do)
+and it refreshed us on how assembly code works.
+
+IV. Known bugs locations
+For each test case, you must wait 20 seconds between each test case for the
+output to show up properly.  Also for the MIPS part, we could not get it to
+work for negative test cases.
+
+V. Feedback on the lab
+This lab was helpful in becoming familiar with VHDL and MIPS. We learned
+about various new data types and functions in VHDL.

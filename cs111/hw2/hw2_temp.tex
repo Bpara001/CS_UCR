@@ -1,0 +1,177 @@
+
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts,graphicx}
+
+\input{macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS/MATH111 ASSIGNMENT 2 (revised April 18)}
+\centerline{due Tuesday, April 26 (by midnight)}
+
+\vskip 0.2in
+\noindent{\bf Individual assignment:} Problems 1 and 2.
+
+\noindent{\bf Group assignment:} Problems 1,2 and 3.
+
+\vskip 0.2in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $\naturals_k = \braced{1,2,...,k}$ be the set of natural numbers between
+$1$ and $k$, where $k$ is some natural number.
+For a natural number $x$, by $F(x)$ we denote the set of its prime
+factors.
+For example, $F(24) = \braced{2,3}$, $F(1100) = \braced{2,5,11}$, etc.
+Note that $1$ does not have any prime factors, so $F(1) = \emptyset$.
+
+\medskip
+\noindent
+(a) We define relation $\bowtie$ on $\naturals_k$ as follows:
+$x \bowtie y$ if and only if $F(x) = F(y)$.
+For example $6 \bowtie 24$, because $F(6) = \braced{2,3} = F(24)$.
+
+It is easy to see that $\bowtie$ is an equivalence relation on
+$\naturals_k$ (you don't have  to prove it).
+List all equivalence classes of $\bowtie$ for $\naturals_{30}$.
+Use notation $[x]$ for the equivalence class of $x$.
+For example, for $\naturals_{10}$, the equivalence classes
+are $[1]= \braced{1}$,
+$[2] = \braced{2,4,8}$,
+$[3] = \braced{3,9}$,
+$[5] = \braced{5}$,
+$[6] = \braced{6}$,
+$[7] = \braced{7}$,
+$[10] = \braced{10}$.
+
+\medskip
+\noindent
+(b)
+Now define relation $\unlhd$ on the equivalence classes of
+$\bowtie$:
+$[x]\unlhd [y]$ if and only if $F(x) \subseteq F(y)$.
+For example, $[100]\unlhd [30]$
+because $F(100) = \braced{2,5}\subseteq  \braced{2,3,5} = F(30)$.
+(To emphasize, relation $\unlhd$ is between \emph{equivalence classes}
+of $\bowtie$ on $\naturals_k$, not between the elements of $\naturals_k$.)
+
+Prove that $\unlhd$ is a partial order.
+Also, draw the Hasse diagram of $\unlhd$ for $\naturals_{14}$. For example,
+the reverse page shows the Hasse diagram of $\unlhd$ for $\naturals_{10}$.
+
+\medskip
+Regarding the drawing in (b), you can draw it by hand and scan, or use any
+drawing software to create a pdf document. To see how you can include a pdf file
+in a {\LaTeX} document, see the source file for this homework.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+
+\begin{problem}
+In the RSA, Bob chooses $p =11$, $q = 17$.
+He is considering three choices for the public
+exponent $e$: $5$, $7$ and $33$,
+but he's not sure whether they are correct.
+
+\begin{description}
+
+\item{(a)} Which of these three choices for $e$ are correct?
+Justify your answer.
+
+\item{(b)} Let now $e$ be the smallest correct choice.
+Determine the value of the secret exponent $d$.
+
+\item{(c)} Suppose Alice wants to send $M = 26$ to
+Bob. Determine the ciphertext $C$.
+
+\item{(d)} What computation will Bob perform to
+decrypt $C$? Show the result.
+
+\end{description}
+
+In parts (b), (c), (d), you don't need to show the details of the
+computation (a calculator may be useful for this),
+but you need to explain what steps are required to obtain the result.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+
+\begin{problem}
+Give complete addition and multiplication tables modulo $10$
+for the numbers $0,1,...,9$. (Use the {\LaTeX} template on the next
+page.) Use the multiplication table to determine which of
+those numbers have inverses modulo $10$ and give those inverses.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+\paragraph{Submission.}
+You need to turn in your homework via Ilearn, no later than by midnight on
+Tuesday, April 26.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vfill
+\eject
+
+\noindent
+Template for Problem~3:
+
+\vskip 0.2in
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$+$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9
+\\ \hline
+0   & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9
+\\ \hline
+1   &   &   &   &   &   &   &   &   &  &
+\\ \hline
+2   &   &   &   &   &   &   &   &   &   &
+\\ \hline
+3   &   &   &   &   &   &   &   &   &    &
+\\ \hline
+4   &   &   &   &   &   &   &   &   &    &
+\\ \hline
+5   &   &   &   &   &   &   &   &   &    &
+\\ \hline
+6   &   &   &   &   &   &   &   &   &    &
+\\ \hline
+7   &   &   &   &   &   &   &   &   &   &
+\\ \hline
+8   &   &   &   &   &   &   &   &   &   &
+\\ \hline
+9   &   &   &   &   &   &   &   &   &   &
+\\ \hline
+\end{tabular}
+
+\vskip 1in
+\noindent
+\hrule
+\vskip 1in
+
+Hasse Diagram for $\naturals_{10}$:
+
+\vskip 0.2in
+
+\begin{center}
+\includegraphics[width=3in]{hasse_hw2.pdf}
+\end{center}
+
+\vfill
+
+
+
+
+\end{document}
+

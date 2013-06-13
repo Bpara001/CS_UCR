@@ -1,0 +1,16 @@
+/* Digraph 
+ * lab 5
+ * simple_bst.dot
+ * cs014_10spr 
+ */
+
+digraph G {
+
+  // nodes and edges	
+  key12 -> key8;  
+  key12 -> key16; 
+  key8  -> key1; 
+  key8  -> key11; 
+  key16 -> key13;
+  key16 -> key25;
+}

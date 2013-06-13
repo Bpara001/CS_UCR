@@ -1,0 +1,5 @@
+vhdl work "../vhdl2/myFF.vhd"
+vhdl work "../vhdl2/CAM_Cell.vhd"
+vhdl work "../vhdl2/CAM_Row.vhd"
+vhdl work "../vhdl2/CAM_Array.vhd"
+vhdl work "../vhdl2/CAM_Wrapper.vhd"

@@ -1,0 +1,19 @@
+ISim log file
+Running: C:\Documents and Settings\Embedded Systems Lab\Desktop\lab2_vhdl\lab2_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Documents and Settings/Embedded Systems Lab/Desktop/lab2_vhdl/lab2_tb_isim_beh.wdb 
+ISim O.76xd (signature 0x2f00eba5)
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+at 0 ps, Instance /lab2_tb/uut/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+at 0 ps, Instance /lab2_tb/uut/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+Finished circuit initialization process.
+at 20 ns: Note: Test case 1 (/lab2_tb/).
+at 40 ns: Note: Test case 2 (/lab2_tb/).
+at 60 ns: Note: Test case 3 (/lab2_tb/).
+at 80 ns: Note: Test case 4 (/lab2_tb/).
+at 100 ns: Note: Test case 5 (/lab2_tb/).
+at 120 ns: Note: Test case 6 (/lab2_tb/).
+at 140 ns: Note: Test case 1 (/lab2_tb/).

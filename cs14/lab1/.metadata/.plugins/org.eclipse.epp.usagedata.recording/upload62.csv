@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163176842
+error,log,,,"Error logged from Debug Core: ",1277163179419
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163196535
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163199853
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163201174
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163201715
+error,log,,,"Error logged from Debug Core: ",1277163205849
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163267382
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163273337
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163290234
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163292085
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163292705
+error,log,,,"Error logged from Debug Core: ",1277163296005
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163326863
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163329396
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163331066
+error,log,,,"Error logged from Debug Core: ",1277163336358
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163410105
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163414985
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163415602
+error,log,,,"Error logged from Debug Core: ",1277163418356
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163424476
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163424726
+error,log,,,"Error logged from Debug Core: ",1277163428336
+activated,view,org.eclipse.ui.console,3.5.0.v20090907,"org.eclipse.ui.console.ConsoleView",1277163435693

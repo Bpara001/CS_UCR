@@ -1,0 +1,135 @@
+Test 1
+Preorder = Die Hard, 
+Inorder = Die Hard, 
+Postorder = Die Hard, 
+----------------------------------------------------
+Test 2
+Preorder = Die Hard, Terminator, 
+Inorder = Die Hard, Terminator, 
+Postorder = Die Hard, Terminator, 
+----------------------------------------------------
+Test 3
+Preorder = Kill Bill Volume 1, Die Hard, Terminator, 
+Inorder = Die Hard, Kill Bill Volume 1, Terminator, 
+Postorder = Die Hard, Terminator, Kill Bill Volume 1, 
+----------------------------------------------------
+Test 4
+Preorder = Kill Bill Volume 1, Die Hard, Terminator, Pirates of the Caribbean, The Lord of the Rings, 
+Inorder = Die Hard, Kill Bill Volume 1, Pirates of the Caribbean, Terminator, The Lord of the Rings, 
+Postorder = Die Hard, Pirates of the Caribbean, Kill Bill Volume 1, The Lord of the Rings, Terminator, 
+----------------------------------------------------
+Test 5
+Preorder = Kill Bill Volume 1, Die Hard, Gladiator, Terminator, Pirates of the Caribbean, Star Wars, The Lord of the Rings, 
+Inorder = Die Hard, Gladiator, Kill Bill Volume 1, Pirates of the Caribbean, Star Wars, Terminator, The Lord of the Rings, 
+Postorder = Die Hard, Gladiator, Pirates of the Caribbean, Star Wars, Kill Bill Volume 1, The Lord of the Rings, Terminator, 
+----------------------------------------------------
+Test 6
+Preorder = Pirates of the Caribbean, Kill Bill Volume 1, Die Hard, Gladiator, Matrix, Terminator, Star Wars, The Lord of the Rings, 
+Inorder = Die Hard, Gladiator, Kill Bill Volume 1, Matrix, Pirates of the Caribbean, Star Wars, Terminator, The Lord of the Rings, 
+Postorder = Die Hard, Gladiator, Matrix, Kill Bill Volume 1, Star Wars, The Lord of the Rings, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 7
+Search phase passed
+----------------------------------------------------
+Test 8
+Preorder = 
+Inorder = 
+Postorder = 
+Preorder = 
+Inorder = 
+Postorder = 
+Preorder = Die Hard, 
+Inorder = Die Hard, 
+Postorder = Die Hard, 
+----------------------------------------------------
+Test 9
+Preorder = Die Hard, Terminator, 
+Inorder = Die Hard, Terminator, 
+Postorder = Die Hard, Terminator, 
+----------------------------------------------------
+Test 10
+Preorder = Kill Bill Volume 1, Terminator, 
+Inorder = Kill Bill Volume 1, Terminator, 
+Postorder = Kill Bill Volume 1, Terminator, 
+----------------------------------------------------
+Test 11
+Preorder = Die Hard, Kill Bill Volume 1, 
+Inorder = Die Hard, Kill Bill Volume 1, 
+Postorder = Die Hard, Kill Bill Volume 1, 
+----------------------------------------------------
+Test 12
+Preorder = Kill Bill Volume 1, Die Hard, Terminator, 
+Inorder = Die Hard, Kill Bill Volume 1, Terminator, 
+Postorder = Die Hard, Terminator, Kill Bill Volume 1, 
+----------------------------------------------------
+Test 13
+Preorder = Kill Bill Volume 1, Die Hard, Pirates of the Caribbean, Terminator, 
+Inorder = Die Hard, Kill Bill Volume 1, Pirates of the Caribbean, Terminator, 
+Postorder = Die Hard, Pirates of the Caribbean, Terminator, Kill Bill Volume 1, 
+----------------------------------------------------
+Test 14
+Preorder = Pirates of the Caribbean, Die Hard, Kill Bill Volume 1, Terminator, 
+Inorder = Die Hard, Kill Bill Volume 1, Pirates of the Caribbean, Terminator, 
+Postorder = Die Hard, Kill Bill Volume 1, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 15
+Preorder = Pirates of the Caribbean, Kill Bill Volume 1, Kill Bill Volume 2, Terminator, 
+Inorder = Kill Bill Volume 1, Kill Bill Volume 2, Pirates of the Caribbean, Terminator, 
+Postorder = Kill Bill Volume 1, Kill Bill Volume 2, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 16
+Preorder = Pirates of the Caribbean, Die Hard, Clerks, Kill Bill Volume 1, Gladiator, Matrix, Terminator, Star Wars, The Lord of the Rings, The Usual Suspects, 
+Inorder = Clerks, Die Hard, Gladiator, Kill Bill Volume 1, Matrix, Pirates of the Caribbean, Star Wars, Terminator, The Lord of the Rings, The Usual Suspects, 
+Postorder = Clerks, Gladiator, Die Hard, Matrix, Kill Bill Volume 1, Star Wars, The Lord of the Rings, The Usual Suspects, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 17
+Preorder = Pirates of the Caribbean, Die Hard, Aliens, Clerks, Kill Bill Volume 1, Enemy of the State, Gladiator, Matrix, Terminator, Silence of the Lambs, Star Wars, The Lord of the Rings, The Usual Suspects, 
+Inorder = Aliens, Clerks, Die Hard, Enemy of the State, Gladiator, Kill Bill Volume 1, Matrix, Pirates of the Caribbean, Silence of the Lambs, Star Wars, Terminator, The Lord of the Rings, The Usual Suspects, 
+Postorder = Aliens, Clerks, Enemy of the State, Gladiator, Die Hard, Matrix, Kill Bill Volume 1, Silence of the Lambs, Star Wars, The Lord of the Rings, The Usual Suspects, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 18
+Preorder = Pirates of the Caribbean, Die Hard, Aliens, Clerks, Kill Bill Volume 1, Enemy of the State, Gladiator, Matrix, Spaceballs, Silence of the Lambs, Terminator, Star Wars, The Lord of the Rings, The Usual Suspects, 
+Inorder = Aliens, Clerks, Die Hard, Enemy of the State, Gladiator, Kill Bill Volume 1, Matrix, Pirates of the Caribbean, Silence of the Lambs, Spaceballs, Star Wars, Terminator, The Lord of the Rings, The Usual Suspects, 
+Postorder = Aliens, Clerks, Enemy of the State, Gladiator, Die Hard, Matrix, Kill Bill Volume 1, Silence of the Lambs, Star Wars, Spaceballs, The Lord of the Rings, The Usual Suspects, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 19
+Preorder = Gladiator, Die Hard, Aliens, Clerks, Enemy of the State, Pirates of the Caribbean, Kill Bill Volume 1, Happy Gilmore, Matrix, Spaceballs, Silence of the Lambs, Terminator, Star Wars, The Lord of the Rings, The Usual Suspects, 
+Inorder = Aliens, Clerks, Die Hard, Enemy of the State, Gladiator, Happy Gilmore, Kill Bill Volume 1, Matrix, Pirates of the Caribbean, Silence of the Lambs, Spaceballs, Star Wars, Terminator, The Lord of the Rings, The Usual Suspects, 
+Postorder = Aliens, Clerks, Enemy of the State, Die Hard, Happy Gilmore, Matrix, Kill Bill Volume 1, Gladiator, Silence of the Lambs, Star Wars, Spaceballs, The Lord of the Rings, The Usual Suspects, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 20
+Preorder = Pirates of the Caribbean, Gladiator, Terminator, 
+Inorder = Gladiator, Pirates of the Caribbean, Terminator, 
+Postorder = Gladiator, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 21
+Preorder = Kill Bill Volume 2, Gladiator, Pirates of the Caribbean, Meet the Parents, Terminator, 
+Inorder = Gladiator, Kill Bill Volume 2, Meet the Parents, Pirates of the Caribbean, Terminator, 
+Postorder = Gladiator, Meet the Parents, Kill Bill Volume 2, Terminator, Pirates of the Caribbean, 
+----------------------------------------------------
+Test 22
+Preorder = Kill Bill Volume 2, Enemy of the State, Gladiator, Matrix, Meet the Parents, 
+Inorder = Enemy of the State, Gladiator, Kill Bill Volume 2, Matrix, Meet the Parents, 
+Postorder = Enemy of the State, Gladiator, Matrix, Meet the Parents, Kill Bill Volume 2, 
+Preorder = Kill Bill Volume 2, Enemy of the State, Gladiator, Matrix, Meet the Parents, 
+Inorder = Enemy of the State, Gladiator, Kill Bill Volume 2, Matrix, Meet the Parents, 
+Postorder = Enemy of the State, Gladiator, Matrix, Meet the Parents, Kill Bill Volume 2, 
+Preorder = Kill Bill Volume 2, Aliens, Enemy of the State, Matrix, Meet the Parents, 
+Inorder = Aliens, Enemy of the State, Kill Bill Volume 2, Matrix, Meet the Parents, 
+Postorder = Aliens, Enemy of the State, Matrix, Meet the Parents, Kill Bill Volume 2, 
+----------------------------------------------------
+Test 23
+Preorder = Kill Bill Volume 2, Aliens, Enemy of the State, Matrix, 
+Inorder = Aliens, Enemy of the State, Kill Bill Volume 2, Matrix, 
+Postorder = Aliens, Enemy of the State, Matrix, Kill Bill Volume 2, 
+----------------------------------------------------
+Test 24
+Preorder = Enemy of the State, Aliens, Clerks, Gladiator, Kill Bill Volume 2, 
+Inorder = Aliens, Clerks, Enemy of the State, Gladiator, Kill Bill Volume 2, 
+Postorder = Aliens, Clerks, Gladiator, Kill Bill Volume 2, Enemy of the State, 
+----------------------------------------------------
+Test 25
+Preorder = Enemy of the State, Aliens, Clerks, Gladiator, Kill Bill Volume 2, 
+Inorder = Aliens, Clerks, Enemy of the State, Gladiator, Kill Bill Volume 2, 
+Postorder = Aliens, Clerks, Gladiator, Kill Bill Volume 2, Enemy of the State, 
+----------------------------------------------------

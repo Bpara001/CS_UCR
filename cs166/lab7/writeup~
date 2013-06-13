@@ -1,0 +1,14 @@
+1. How much faster does queries.sql run when your indexes are in 
+place as compared to having no indexes?
+->Interestingly, my queries run faster without my indexes. perphas it has something to do with indexing everything?
+
+2. How much longer do the update statements take with the indexes 
+in place compared to having no indexes? Quantify the difference.
+->with my tests, the update statements took only a little longer compared to having no indexes. the differences were very minor, less than a 1% difference, averaged over 10 tests.
+
+3. What happens if you create your indexes before you load the data 
+in the two big tables?
+->the time to run my queries.sql takes much longer than creating my indexes before I load the big data tables, twice as long on average
+
+4. Are there any select statements which can't be helped by indexes?
+->no.

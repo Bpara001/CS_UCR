@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277162955947
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277162968295
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277162969697
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163000589
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163008055
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163013695
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163014179
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163036066
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163039192
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163039643
+error,log,,,"Error logged from Debug Core: ",1277163042634
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.0.v20091207-1800,"org.eclipse.ui.edit.text.smartEnter",1277163055394
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163095876
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163113166
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163114858
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163128098
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163130806
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163131291
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163141221
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163144062
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163147478
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163148008
+error,log,,,"Error logged from Debug Core: ",1277163155134
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277163172882
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277163176420

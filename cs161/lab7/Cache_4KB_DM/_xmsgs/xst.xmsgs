@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 109: &lt;<arg fmt="%s" index="1">cam_width</arg>&gt; is not declared.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="439" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 116: Formal port <arg fmt="%s" index="1">decoded_match_address</arg> of mode <arg fmt="%s" index="2">out</arg> cannot be associated with actual port <arg fmt="%s" index="3">address</arg> of mode <arg fmt="%s" index="4">in</arg>
+</msg>
+
+<msg type="error" file="HDLCompiler" num="100" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 116: <arg fmt="%s" index="1">address</arg> with mode &apos;in&apos; cannot be updated
+</msg>
+
+<msg type="error" file="HDLCompiler" num="854" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 55: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="854" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 129: Unit &lt;<arg fmt="%s" index="1">control_unit</arg>&gt; ignored due to previous errors.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="374" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 145: Entity &lt;<arg fmt="%s" index="1">control_unit</arg>&gt; is not yet compiled.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 150: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 151: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 152: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 153: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 154: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 158: &lt;<arg fmt="%s" index="1">wait_for_valid</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 159: &lt;<arg fmt="%s" index="1">update</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 160: &lt;<arg fmt="%s" index="1">match</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 165: &lt;<arg fmt="%s" index="1">clk</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 162: &lt;<arg fmt="%s" index="1">rst</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 191: &lt;<arg fmt="%s" index="1">valid_in</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 204: &lt;<arg fmt="%s" index="1">hit</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 175: &lt;<arg fmt="%s" index="1">rst</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab7\Cache_4KB_DM\Cache_4KB_DM.vhd" Line 172: &lt;<arg fmt="%s" index="1">clk</arg>&gt; is not declared.
+</msg>
+
+</messages>
+

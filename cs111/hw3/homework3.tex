@@ -1,0 +1,138 @@
+% <--- percent sign starts a comment line in LaTeX
+
+%----------------------------------------------------------
+% This is a sample assignment .tex file. Put your name,
+% assignment number and the due date below, as shown.
+% Before you typeset your own assignment try to preview
+% and print this one as follows:
+%   1. Save this in a file, say hw.tex
+%   2. do "latex hw"
+%	3. latex will produce a pdf file that should be named hw.pdf.
+%	4. Use any pdf viewer to view the document
+% ------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+\usepackage{fullpage,graphicx,latexsym,picinpar,amsbsy,amsmath,amsfonts}
+
+\input{macros.tex}
+
+\begin{document}
+
+% v -- YOUR NAME and SID in the braces
+\student{ Chris Wong}{ 860 923 521 }
+% v -- ASSIGNMENT NUMBER in the braces
+\assignment{ 3 }
+% v-- DUE DATE in the braces
+\duedate{5/10/2011 }
+
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lineacross
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+	We construct recursively binary trees $T_0, T_1, T_2, ...$,
+as follows. Both $T_0$ and $T_1$ consist of a single node.
+For $n\ge 2$, to obtain $T_n$, we link
+one copy of $T_{n-1}$ and two copies of
+$T_{n-2}$, as in the figure below:
+
+\begin{center}
+\includegraphics[width=2.5in]{hw3_bin_tree.pdf}
+\end{center}
+
+Let $b_n$ be the number of nodes in $T_n$. For example,
+$b_0 = 1$, $b_1 = 1$, $b_2 = 5$ and $b_3 = 9$. Give the
+formula for $b_n$. Show your work.  The solution
+must consist of the following steps:
+(i) Set up a recurrence equation and give a brief justification.
+(ii) Give the associated homogeneous equation.
+(iii) Determine the characteristic equation and solve it.
+(iv) Give the general solution for the homogeneous equation.
+(v) Determine a particular solution for the non-homogeneous equation.
+(vi) Give the general solution for the non-homogeneous equation.
+(vii) Use the initial conditions to compute the final answer.
+\end{problem}
+
+%---------------------------
+
+\pagebreak
+\begin{solution}
+	\\i) First, lets count the number nodes and recurances in the tree. There are
+	two nodes, one $T_{n-1}$ recurrance, and two $T_{n-2}$ recurannces. Now can
+	derive the recurrance eqaution: \\$b(n) = T_{n-1} + 2T_{n-2} + 2$
+	\\
+	\\ii)Homogeneous equation: $Tn = T_{n-1} + 2T_{n-2}$
+	\\
+	\\iii)Characteristic equation: $x^{2} - x - 2 = 0$ then $(x-2)(x+1)$
+	So, roots = 2 and -1
+	\\
+	\\iv)General soultion: b(n) = $C_{1}(2)^{n} + C_{2}(-1)^{n} + Y_{p}$(particular sol.)
+	\\
+	\\v)Non-homogeneous equation:$Tn = T_{n-1} + 2T_{n-2} + 2$ $\Rightarrow$
+	$A=A+ 2A + 2 $ $\Rightarrow$ $A = -1$ So, particular solution = -1
+	\\
+	\\vi)General solution = Characteristic solution + Particular solution $\Rightarrow$
+	$C_{1}(2)^{n} + C_{2}(-1)^{n} - 1$
+	\\
+	\\vii)Plugging in:
+	\\$b_0 = 1$ $\Rightarrow$ $1 = C_{1} + C_{2} - 1 $
+	\\$b_1 = 1$ $\Rightarrow$ $1 = (2)C_{1} + (-1)C_{2} - 1 $
+	\\$C_{1} = \frac{4}{3} , C_{2} = \frac{2}{3}$
+	\\Thus, the final answer is: $b(n) = \frac{4}{3}(2)^{n} + \frac{2}{3}(-1)^{n} - 1$
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\begin{problem}
+	Let $S_n$ be the number of tilings of the $n\times 3$ grid with
+$1\times 3$ and $2\times 3$ tiles. (Tiles can be rotated by 90 degrees.)
+ Give a recurrence relation
+for $S_n$ and justify its correctness.
+
+Note: This recurrence will be of degree higher than $2$, and you
+\emph{do not} have to solve it. The reverse page shows all tilings of
+the $5\times 3$ grid, showing that $S_5 = 23$. You can use this value to
+verify you recurrence.
+\end{problem}
+
+%-----------------------------
+
+\begin{solution}
+\\   First,  set n = 1. So, we will find the number of times a 1x3 and 2x3 fits
+into a 1x3 square. Only one 1x3 piece can fit into a 1x3. no 2x3 pieces can fit
+inside a 1x3. Those there exists only one possible combination for n=1
+\\
+\\   Next set n = 2. So, we will find the number of times a 1x3 and 2x3 fits
+into a 2x3 square without repitions from previous answers.  Two 1x3 pieces can fit
+insde a 2x3, but this is a repition of n=1, so we will not count that combination.
+A single 2x3 piece will fit inside a 2x3, and those are the only possible combinations.
+Thus, there exists only one more combination for n=2
+\\
+\\   Third, we set n = 3. So we will find the number of times a 1x3 and 2x3 fits
+into a 3x3 square without repitions from pervious n's. Three horizontal 1x3's,
+one 1x3 followed by a 2x3 horizontal, and a 2x3 followed by a 1x3 horizontal are
+the possible combinations that exist.  There are more, but those are just repeats
+of the pervious n's. So, there exsits 3 combinations for n = 3
+\\
+\\   There are no new combinations for n > 3 because of repition. We can now
+derive the recurrence relation: $S_{n} = S_{n-1} + S_{n-2} + 3S_{n-3}$
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    No partner
+\end{problem}
+
+%----------------------------
+
+\begin{solution}
+    No partner
+\end{solution}
+
+\end{document}

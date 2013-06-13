@@ -1,0 +1,35 @@
+//
+// Name: wong, christopher
+// Login id: wongc
+// Email: cwong030@student.ucr.edu
+//
+// Assignment name: assn3
+// Lab section: 022
+// TA: Busra Celikkaya
+//
+// I hereby certify that the contents of this file
+// re ENTIRELY my own original work.
+//
+//=================================================
+
+
+My program consists of 3 functions:execute,change_directory,and main
+Design is based off Professor Payne's sample code from lab and notes.
+
+-execute:
+    functions the same as Professor Payne's "doit" function,
+    creates a fork so execvp() doesnt kill the program
+    calls execvp to execute the user command
+    prints errors based on strerror() if applicable
+
+-change_directory:
+    functions as the shell's cd command
+    using the chdir function, it can change the current directory
+    outputs my made error message if user inputs incorrect syntax
+
+-main:
+    clears the terminal and outputs introduction message
+    inside a while loop, executes the user's inputs until exit is called
+    calls execute and change_directory when needed
+    populates a vector with strings before execute is called
+    outputs end program string to indicate when program is terminated

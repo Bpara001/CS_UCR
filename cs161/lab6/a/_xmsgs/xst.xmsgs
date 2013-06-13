@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompiler" num="374" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 17: Entity &lt;<arg fmt="%s" index="1">cam_cell</arg>&gt; is not yet compiled.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 20: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 21: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 24: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 27: &lt;<arg fmt="%s" index="1">clk</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 28: &lt;<arg fmt="%s" index="1">cell_search_bit</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 29: &lt;<arg fmt="%s" index="1">we</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 30: &lt;<arg fmt="%s" index="1">rst</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 31: &lt;<arg fmt="%s" index="1">q</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="192" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 31: Actual of formal <arg fmt="%s" index="1">out</arg> port <arg fmt="%s" index="2">q</arg> cannot be an expression
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 36: &lt;<arg fmt="%s" index="1">cell_match_bit_out</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 35: &lt;<arg fmt="%s" index="1">clk</arg>&gt; is not declared.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="989" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 35: Attribute <arg fmt="%s" index="1">event</arg> requires a static signal prefix
+</msg>
+
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl2\CAM_Cell.vhd" Line 33: &lt;<arg fmt="%s" index="1">clk</arg>&gt; is not declared.
+</msg>
+
+</messages>
+

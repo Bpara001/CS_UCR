@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162793081
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162793240
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162793415
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162793709
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162794205
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162794236
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162794271
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162794303
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162794334
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.undo",1277162794367
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277162809198
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277162811255
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277162814419
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277162815954
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277162821333
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277162824501
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277162833143
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.edit.paste",1277162834703
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277162842660
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277162843656
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277162844569
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277162845782
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277162846139
+executed,command,org.eclipse.ui,3.6.0.I20091209-1800a,"org.eclipse.ui.file.save",1277162855303
+error,log,,,"Error logged from Debug Core: ",1277162863775

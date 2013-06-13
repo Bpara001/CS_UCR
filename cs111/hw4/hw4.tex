@@ -1,0 +1,196 @@
+
+\documentclass{article}
+
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts,graphicx}
+
+\input{./macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS/MATH111 ASSIGNMENT 4}
+\centerline{due Tuesday, May~24, midnight}
+
+\vskip 0.2in
+\noindent{\bf Individual assignment:} Problems 1 and 2.
+
+\noindent{\bf Group assignment:} Problems 1,2 and 3.
+
+\vskip 0.1in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Give the asymptotic value (using the $\Theta$-notation)
+for the number of words that will be printed by the algorithms below.
+Your solution needs to consist of an appropriate recurrence 
+equation and its solution, with a brief justification.
+(See the suggested format at the bottom of the assignment).
+
+\bigskip
+\noindent
+(a)\ \ 
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Jazz} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``jazz") \\
+          \>\textbf{else} \\
+      		\>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $2n$ \textbf{do} print(``jazz")\\
+          \>\>  \textbf{for} $j\leftarrow 1$ \textbf{to} $4$ 
+				\textbf{do} \textsc{Jazz}$(\ceiling{n/4})$
+\end{tabbing}
+\end{minipage}
+
+\bigskip
+\noindent
+(b)\ \
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Salsa} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``salsa") \\
+          \>\textbf{else} \\
+          \>\>  \textbf{for} $j \leftarrow 1$ \textbf{to} $8$ 
+					\textbf{do} \textsc{Salsa}$(\floor{n/2})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $n^2$ \textbf{do} print(``salsa")
+\end{tabbing}
+\end{minipage}
+
+\bigskip
+\noindent
+(c)\ \ 
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Mariachi} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``mariachi") \\
+          \>\textbf{else} \\
+          \>\>  \textsc{Mariachi}$(\ceiling{n/4})$\\
+          \>\>  \textsc{Mariachi}$(\ceiling{n/4})$\\
+          \>\>  \textsc{Mariachi}$(\ceiling{n/4})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $3n$ \textbf{do} print(``mariachi")
+\end{tabbing}
+\end{minipage}
+
+\bigskip
+\noindent
+(d)\ \ 
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Reggae} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``reggae") \\
+          \>\textbf{else} \\
+          \>\>  \textsc{Reggae}$(\ceiling{n/3})$\\
+          \>\>  \textsc{Reggae}$(\floor{n/3})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $7$ \textbf{do} print(``reggae")
+\end{tabbing}
+\end{minipage}
+\bigskip
+\ 
+
+
+\bigskip
+\noindent
+(e)\ \ 
+\begin{minipage}[t]{3in}
+\begin{tabbing}
+aaa \= aaa \= aaa \= aaa \=  \kill
+\textbf{Algorithm} \textsc{Rhumba} $(n: \mbox{\bf integer})$ \\
+          \> \textbf{if} $n = 1$ \\
+          \>\>  print(``rhumba") \\
+          \>\textbf{else} \\
+          \>\>  \textbf{for} $j \leftarrow 1$ \textbf{to} $16$ 
+					\textbf{do} \textsc{Rhumba}$(\floor{n/4})$\\
+      \>\> \textbf{for} $i \leftarrow 1$ \textbf{to} $2n^3$ \textbf{do} print(``rhumba")
+\end{tabbing}
+\end{minipage}
+\bigskip
+\
+
+
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Determine (using the inclusion-exclusion principle)
+the number of integer solutions of the equation:
+%
+\begin{eqnarray*}
+x + y + z &=& 17,
+\end{eqnarray*}
+%
+under the constraints 
+%
+\begin{eqnarray*}
+        0 \;\le\; x \;\le\; 4 \\
+        0 \;\le\; y \;\le\; 6 \\
+        0\;\le\; z  \;\le\; 9
+\end{eqnarray*}
+%
+Show your work.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Suppose we have three sets, $A$, $B$, $C$
+with the following properties:
+
+\begin{description}
+
+\item{(a)} $|A| = 75$, $|B| = 94$,
+                $|C| = 69$,
+
+\item{(b)} $|A\cap B| = 61$,
+        $|A\cap C| = 37$,
+        $|B\cap C| = 50$,
+
+\item{(c)}
+$|A\cup B\cup C| = 4\cdot|A\cap B\cap C|$.
+
+\end{description}
+
+Use the inclusion-exclusion formula to
+determine the number of elements in $A\cup B\cup C$.
+Show your work.
+(Hint: Use the inclusion-exclusion principle to
+set up an appropriate equation, and solve it.)
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+\paragraph{Submission.}
+You need to turn in your homework via Ilearn, by midnight,
+Tuesday, May 24. 
+
+\vskip 0.5in
+
+\noindent
+\hrule
+
+
+\vskip 0.3in
+
+\paragraph{Suggested format for solutions for Problem 1:}
+ ... There are $7$ recursive calls, each with parameter $\ceiling{n/2}$. Since
+we are looking for an asymptotic solution, we can ignore rounding. Then
+the number of letters printed can be expressed by the recurrence:
+%
+\begin{eqnarray*}
+	X(n) &=& 7 X(n/2) + 4n^2.
+\end{eqnarray*}
+%
+We apply the Master Theorem with $a = 7$, $b = 2$, $d = 2$. Here, we
+have $a > b^d$, so the solution is $\Theta(n^{\log 7})$.
+
+\end{document}
+

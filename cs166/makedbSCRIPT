@@ -1,0 +1,11 @@
+#!/bin/bash
+cd /tmp
+mkdir /tmp/wongc
+mkdir /tmp/wongc/data
+export PGDATA=/tmp/wongc/data
+cd /tmp/wongc
+initdb
+export PGPORT=43123
+pg_ctl -o "-p $PGPORT" -D $PGDATA -l logfile start
+export YOUR_DB_NAME=mydb
+createdb -p $PGPORT $YOUR_DB_NAME

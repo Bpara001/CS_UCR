@@ -1,0 +1,76 @@
+% <--- percent sign starts a comment line in LaTeX
+
+%----------------------------------------------------------
+% This is a sample assignment .tex file. Put your name,
+% assignment number and the due date below, as shown.
+% Before you typeset your own assignment try to preview
+% and print this one as follows:
+%   1. Save this in a file, say hw.tex
+%   2. do "latex hw"
+%	3. latex will produce a pdf file that should be named hw.pdf.
+%	4. Use any pdf viewer to view the document
+% ------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+\usepackage{fullpage,graphicx,latexsym,picinpar,amsbsy,amsmath,amsfonts}
+
+\input{macros.tex}
+
+\begin{document}
+
+% v -- YOUR NAME and SID in the braces
+\student{ Chris Wong}{860-923-521}
+% v -- YOUR NAME and SID in the braces
+\assignment{5}
+% v-- DUE DATE in the braces
+\duedate{June 3}
+
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lineacross
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+	You are given two bipartite graphs $G$ and $H$ below. For each
+graph determine whether it has a perfect matching.
+Justify your answer, either by
+listing the edges that are in the matching or using
+Hall's Theorem to show that the graph does not have a
+perfect matching.
+
+\begin{center}
+\includegraphics[width = 2in]{bipartite_graphG_hw5.pdf}
+\includegraphics[width = 2in]{bipartite_graphH_hw5.pdf}
+\end{center}
+\end{problem}
+
+%---------------------------
+
+\begin{solution}
+	\\Graph G: Impossible, cannot have perfect matching;
+    \\Note,  4 can only match to 5 or 9
+    \\Note,  3 can only match to 5 or 9
+    \\Note,  1 can only match to 5 or 9
+    \\SO, 4, and 3, and 1 can only match to 5 or 9, we cannot have perfect match with this.
+    \\Thus, graph G does not have perfect matching
+    \\
+    \\
+	\\Graph H: Yes, it has perfect matching;
+	\\here is a perfect set:
+	\\4 matches with 8,
+	\\3 matches with 9,
+	\\2 matches with 6,
+	\\1 matches with 5,
+	\\0 matches with 7
+	\\Thus, graph h has perfect matching
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}

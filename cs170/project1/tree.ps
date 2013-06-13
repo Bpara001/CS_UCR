@@ -1,0 +1,1164 @@
+%!PS-Adobe-3.0
+%%Title: tree.H
+%%For: Christopher Wong
+%%Creator: a2ps version 4.13
+%%CreationDate: Thu Nov  1 18:18:22 2012
+%%BoundingBox: 24 24 588 768
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 3
+%%PageOrder: Ascend
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontType get 0 eq {
+    currentfont /FontMatrix get 3 get
+  }{
+    currentfont /FontMatrix get 3 get 1000 mul
+  } ifelse
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% composite fonts for ASCII-EUC mixed string
+% Version 1.2 1/31/1990
+% Orignal Ken'ichi HANDA (handa@etl.go.jp)
+% Modified Norio Katayama (katayama@rd.nacsis.ac.jp),1998
+% Extend & Fix Koji Nakamaru (maru@on.cs.keio.ac.jp), 1999
+% Anyone can freely copy, modify, distribute this program.
+
+/copyfont {	% font-dic extra-entry-count  copyfont  font-dic
+	1 index maxlength add dict begin
+	{	1 index /FID ne 2 index /UniqueID ne and
+		{def} {pop pop} ifelse
+	} forall
+	currentdict
+	end
+} bind def
+
+/compositefont { % ASCIIFontName EUCFontName RomanScale RomanOffset Rot(T/F) compositefont font
+    /RomanRotation exch def
+    /RomanOffset exch def
+    /RomanScale exch def
+    userdict /fixeucfont_dict known not {
+	userdict begin
+	    /fixeucfont_dict 2 dict begin
+		/UpperByteEncoding [
+		    16#00 1 16#20 { pop 0 } for
+		    16#21 1 16#28 { 16#20 sub } for
+		    16#29 1 16#2F { pop 0 } for
+		    16#30 1 16#74 { 16#27 sub } for
+		    16#75 1 16#FF { pop 0 } for
+		] def
+	        /LowerByteEncoding [
+		    16#00 1 16#A0 { pop /.notdef } for
+		    16#A1 1 16#FE { 16#80 sub 16 2 string cvrs
+				    (cXX) dup 1 4 -1 roll
+				    putinterval cvn } for
+		    /.notdef
+		] def
+		currentdict
+	    end def
+	end
+    } if
+    findfont dup /FontType get 0 eq {
+	14 dict begin
+	    %
+	    % 7+8 bit EUC font
+	    %
+	    12 dict begin
+		/EUCFont exch def
+		/FontInfo (7+8 bit EUC font) readonly def
+		/PaintType 0 def
+		/FontType 0 def
+		/FontMatrix matrix def
+		% /FontName
+		/Encoding fixeucfont_dict /UpperByteEncoding get def
+		/FMapType 2 def
+		EUCFont /WMode known
+		{ EUCFont /WMode get /WMode exch def }
+		{ /WMode 0 def } ifelse
+		/FDepVector [
+		    EUCFont /FDepVector get 0 get
+		    [ 16#21 1 16#28 {} for 16#30 1 16#74 {} for ]
+		    {
+			13 dict begin
+			    /EUCFont EUCFont def
+			    /UpperByte exch 16#80 add def	
+			    % /FontName
+			    /FontInfo (EUC lower byte font) readonly def
+			    /PaintType 0 def
+			    /FontType 3 def
+			    /FontMatrix matrix def
+			    /FontBBox {0 0 0 0} def
+			    /Encoding
+				fixeucfont_dict /LowerByteEncoding get def
+			    % /UniqueID
+			    % /WMode
+			    /BuildChar {
+				gsave
+				exch dup /EUCFont get setfont
+				/UpperByte get
+				2 string
+				dup 0 4 -1 roll put
+				dup 1 4 -1 roll put
+				dup stringwidth setcharwidth
+				0 0 moveto show
+				grestore
+			    } bind def
+			    currentdict
+			end
+			/lowerbytefont exch definefont
+		    } forall
+		] def
+		currentdict
+	    end
+	    /eucfont exch definefont
+	    exch
+	    findfont 1 copyfont dup begin
+		RomanRotation {
+			/FontMatrix FontMatrix
+			[ 0 RomanScale neg RomanScale 0 RomanOffset neg 0 ]
+			matrix concatmatrix def
+		}{
+			/FontMatrix FontMatrix
+			[ RomanScale 0 0 RomanScale 0 RomanOffset ] matrix concatmatrix
+			def
+			/CDevProc
+			    {pop pop pop pop 0 exch -1000 exch 2 div 880} def
+		} ifelse
+	    end
+	    /asciifont exch definefont
+	    exch
+	    /FDepVector [ 4 2 roll ] def
+	    /FontType 0 def
+	    /WMode 0 def
+	    /FMapType 4 def
+	    /FontMatrix matrix def
+	    /Encoding [0 1] def
+	    /FontBBox {0 0 0 0} def
+%	    /FontHeight 1.0 def % XXXX
+	    /FontHeight RomanScale 1.0 ge { RomanScale }{ 1.0 } ifelse def
+	    /Descent -0.3 def   % XXXX
+	    currentdict
+	end
+	/tmpfont exch definefont
+	pop
+	/tmpfont findfont
+    }{
+	pop findfont 0 copyfont
+    } ifelse
+} def	
+
+/slantfont {	% FontName slant-degree  slantfont  font'
+    exch findfont 1 copyfont begin
+    [ 1 0 4 -1 roll 1 0 0 ] FontMatrix exch matrix concatmatrix
+    /FontMatrix exch def
+    currentdict
+    end
+} def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 612 def
+/sw 792 def
+/llx 24 def
+/urx 768 def
+/ury 588 def
+/lly 24 def
+/#copies 1 def
+/th 15.000000 def
+/fnfs 11 def
+/bfs 7.060185 def
+/cw 4.236111 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   520.335631 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 5 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1-2) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (/* Course: CS 170 fall quarter , 2012) p n
+(2) # () N
+(3) # ( First Name: Christopher) N
+(4) # ( Last Name: Wong) N
+(5) # ( Login id: wongc) N
+(6) # ( email address: cwong030@student.ucr.edu) N
+(7) # ( Student id: 860 923 521) N
+(8) # () N
+(9) # ( Assignment: Programming  Project 1) N
+(10) # () N
+(11) # ( I hereby certify that the code in this file) N
+(12) # ( is ENTIRELY my own original work.) N
+(13) # (========================================================================) N
+(14) # (*/) N
+(15) # (//tree.h) N
+(16) # () N
+(17) # () N
+(18) # (#ifndef __TREE_H__) N
+(19) # (#define __TREE_H__) N
+(20) # () N
+(21) # (//load libraries) N
+(22) # (#include "node.H") N
+(23) # (#include <queue>) N
+(24) # (#include <stack>) N
+(25) # (#include <sstream>) N
+(26) # (#include <stdio.h>) N
+(27) # (#include <time.h>) N
+(28) # (using namespace std;) N
+(29) # () N
+(30) # (//global contants) N
+(31) # (#define HASHTABLESIZE 12557647  //table size of hashtable. set to prime for bett) N
+0 T (er hashing) N
+(32) # (#define MAXDEPTH 30             //max depth till we stop searching) N
+(33) # () N
+(34) # (class Tree {) N
+(35) # () N
+(36) # (    //Create objects) N
+(37) # (    Node root;             //node to the root) N
+(38) # (    Node goalnode;         //the actual node which is the goal state, can be nul) N
+0 T (l if goalstate isnt found) N
+(39) # () N
+(40) # (    //Create data structures) N
+(41) # (    vector<Node> tree;      //vector that holds all states) N
+(42) # (    queue<int> q;           //queue for which leaf to look at) N
+(43) # (    priority_queue<Node, vector<Node>,less<vector<Node>::value_type> > q2;  //cu) N
+0 T (stom priority queue for nodes) N
+(44) # (    bool hashtable [HASHTABLESIZE]; //hashtable that tells us if node has been c) N
+0 T (reated or not) N
+(45) # () N
+(46) # (    //Create objects for statistical information) N
+(47) # (    int maxqsize;        //counter for the max queue size) N
+(48) # (    bool goalfound;       //tells us if the goal stae has been found) N
+(49) # () N
+(50) # () N
+(51) # (    //Hashing function taken from online) N
+(52) # (    //Takes a string,) N
+(53) # (    //returns a hashed integer value) N
+(54) # (    unsigned long long hash\(const char *str\) {) N
+(55) # (        unsigned long long hash = 5381;) N
+(56) # (        int c;) N
+(57) # () N
+(58) # (        while \(c = *str++\)) N
+(59) # (            hash = \(\(hash << 5\) + hash\) + c; /* hash * 33 + c */) N
+(60) # () N
+(61) # (        return hash % HASHTABLESIZE;) N
+(62) # (    }) N
+(63) # () N
+(64) # (    //function that checks for duplicates) N
+(65) # (    //Takes a vector with the puzzle integers) N
+(66) # (    //returns true for "is a duplicate", false for "not a duplicate") N
+(67) # (    bool is_dup\(vector<int> v\){) N
+(68) # () N
+(69) # () N
+(tree.H) (Page 1/5) (Nov 01, 12 18:10) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(70) # (        //generate the key for the hash value) p n
+(71) # (        //concatnate all values of array and turn into string) N
+(72) # (        const char* hashkey;) N
+(73) # (        string temp ="";) N
+(74) # (        for\(int i = 0; i < v.size\(\); i++\){) N
+(75) # (            stringstream ss;) N
+(76) # (            ss << v[i];) N
+(77) # (            temp = temp + ss.str\(\);) N
+(78) # (        }) N
+(79) # (        hashkey = temp.c_str\(\);) N
+(80) # () N
+(81) # (        //if its a new key, set the item to true and return false) N
+(82) # (        if\(hashtable[hash\(hashkey\)] != true\){) N
+(83) # (            hashtable[hash\(hashkey\)] = true;) N
+(84) # (            return false;) N
+(85) # (        }) N
+(86) # () N
+(87) # (        //if its a repeat key) N
+(88) # (        else return true;) N
+(89) # (    }) N
+(90) # () N
+(91) # (    //Print solution with a lot of extra text) N
+(92) # (    //if solution doesnt exist, print the dne text.) N
+(93) # (    void print_solution\(int searchtype,bool possible\){) N
+(94) # () N
+(95) # (        //If solution could not be found,) N
+(96) # (        if\(!goalfound && possible\){) N
+(97) # (            cout << "\\nSoultion could not be found" << endl) N
+(98) # (                 << "Fatal collision in hashing" << endl) N
+(99) # (                 << "\\nTo solve this problem the search algorithm expanded a tot) N
+0 T (al of " << tree.size\(\)-1 << " nodes.\\n" //subtract the root node) N
+(100) # (                 << "The max number of nodes in the queue at any one time was " ) N
+0 T (<< maxqsize << ".\\n";) N
+(101) # (        }) N
+(102) # (        else if\(!possible\) cout << "Solution DOES NOT exist" << endl;) N
+(103) # () N
+(104) # (        //if solution was found) N
+(105) # (        else{) N
+(106) # (            cout << "\\nSoultion found!\\n" << endl;) N
+(107) # (            cout << "Path of 'Uniform Cost Search'" << endl;) N
+(108) # () N
+(109) # (            //push solutions onto the stack) N
+(110) # (            stack<int> mystack;) N
+(111) # (            if\(root.misplaced != 0\){) N
+(112) # (                Node newnode = tree[goalnode.i];) N
+(113) # (                mystack.push\(goalnode.i\);) N
+(114) # (                while\(newnode.depth != 1\){) N
+(115) # (                    mystack.push\(tree[newnode.parent].i\);) N
+(116) # (                    newnode = tree[newnode.parent];) N
+(117) # (                }) N
+(118) # (            }) N
+(119) # (            mystack.push\(0\);) N
+(120) # () N
+(121) # () N
+(122) # (            //otuput the solution) N
+(123) # (            while\(!mystack.empty\(\)\){) N
+(124) # (                Node tempnode = tree[mystack.top\(\)];) N
+(125) # (                if\(tempnode.path != ""\) cout << "->Moving blank tile " << tempno) N
+0 T (de.path << ", hn = " << tempnode.hn <<  endl;) N
+(126) # (                else cout << "->Start!!"  << ", hn = " << tempnode.hn << endl;) N
+(127) # (                tempnode.printdata\(\);) N
+(128) # (                cout << endl;) N
+(129) # (                mystack.pop\(\);) N
+(130) # (            }) N
+(131) # (            cout << "\\n->FINISHED!" << endl;) N
+(132) # () N
+(133) # (            //output some cool stuff) N
+(134) # (            cout << "To solve this problem the search algorithm expanded a total) N
+0 T ( of " << tree.size\(\)-1 << " nodes.\\n") N
+(135) # (                 << "The max number of nodes in the queue at any one time was " ) N
+0 T (<< maxqsize << ".\\n") N
+(136) # (                 << "The depth of the goal node was " << goalnode.depth << endl;) N
+(137) # () N
+(tree.H) (Page 2/5) (Nov 01, 12 18:10) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(tree.H) (1/3) (Thursday November 01, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(138) # () p n
+(139) # (        }) N
+(140) # () N
+(141) # (    }) N
+(142) # () N
+(143) # () N
+(144) # (    //Tells us if the puzzle is solveable) N
+(145) # (    //returns true for solveable, false for not.) N
+(146) # (    bool is_solveable\(vector<int> v\){) N
+(147) # () N
+(148) # (        //solvablility algorithum from http://www.cs.bham.ac.uk/~mdr/teaching/mo) N
+0 T (dules04/java2/TilesSolvability.html) N
+(149) # () N
+(150) # (        int inversions = 0;) N
+(151) # (        for\(int i = 0; i < v.size\(\); i++\){) N
+(152) # (            for\(int j = i; j < v.size\(\); j++\)) N
+(153) # (                if\(v[i] > v[j]\) inversions++;) N
+(154) # (        }) N
+(155) # () N
+(156) # (        //check for widths with odd numbers) N
+(157) # (        if\(inversions %2 != 0 && int\(floor\(sqrt\(v.size\(\)\)\)\) % 2 == 1\) return fal) N
+0 T (se;) N
+(158) # (        else return true;) N
+(159) # () N
+(160) # (    }) N
+(161) # () N
+(162) # () N
+(163) # (    public:) N
+(164) # () N
+(165) # (    //defualt constructor) N
+(166) # (    Tree\(vector<int> v\){) N
+(167) # () N
+(168) # (        //Create the root node and push it back) N
+(169) # (        root = Node\(v,-1,0,"",0,3\);) N
+(170) # (        tree.push_back\(root\);) N
+(171) # (        goalfound = false;) N
+(172) # (        maxqsize = 0;) N
+(173) # () N
+(174) # (    }) N
+(175) # () N
+(176) # () N
+(177) # (    //Function to make the tree & find path to solution) N
+(178) # (    //Param: integer to indicate which search type) N
+(179) # (    //Does all necessary calculations, sets goalfound and goalnode and all stat ) N
+0 T (info) N
+(180) # (    void general_search\(int searchtype\){) N
+(181) # () N
+(182) # (        //set the root node) N
+(183) # (        Node n = root;) N
+(184) # () N
+(185) # (        //check if the solution is possible) N
+(186) # (        bool possible = is_solveable\(n.data\);) N
+(187) # () N
+(188) # (        //Make the tree using the specifica algroithum until maxdepth or goal is) N
+0 T ( found) N
+(189) # (        while\(n.depth != MAXDEPTH and !goalfound and possible\){) N
+(190) # () N
+(191) # (            //cout << "\\n\\n" << "DP: " << n.depth  << "/" << n.path << " :: " <<) N
+0 T ( q2.size\(\) <<   "; " << tree.size\(\) << ".." << n.hn <<endl;) N
+(192) # (            //n.printdata\(\);) N
+(193) # () N
+(194) # (            //If we reached the goalstate, leave) N
+(195) # (            if\(n.misplaced == 0\){) N
+(196) # (                goalfound = true;) N
+(197) # (                goalnode = n;) N
+(198) # (                q.empty\(\);) N
+(199) # (                break;) N
+(200) # (            }) N
+(201) # () N
+(202) # () N
+(203) # () N
+(204) # (            //If its hitting the max depth search, skip making children) N
+(205) # (            if\(n.depth == MAXDEPTH- 1 && searchtype != 1\) { /*do nothing*/ }) N
+(tree.H) (Page 3/5) (Nov 01, 12 18:10) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(206) # (            else{) p n
+(207) # () N
+(208) # (                //pop the queue if needed) N
+(209) # (                if\(q.size\(\) > 0\) q.pop\(\);) N
+(210) # (                if\(q2.size\(\) > 0\) q2.pop\(\);) N
+(211) # () N
+(212) # (                //get i position of the zero / blank title) N
+(213) # (                int pos = n.tile_pos;) N
+(214) # () N
+(215) # (                //get length of each row) N
+(216) # (                int dsize = int\(floor\(sqrt\(n.data.size\(\)\)\)\);) N
+(217) # () N
+(218) # (                //Make right child IF POSSIBLE) N
+(219) # (                if\( \(pos+1\) % dsize != 0\){) N
+(220) # (                    //swap the values) N
+(221) # (                    vector<int> new_vec = n.data;) N
+(222) # (                    new_vec[pos] = new_vec[pos+1];) N
+(223) # (                    new_vec[pos+1] = 0;) N
+(224) # () N
+(225) # () N
+(226) # (                    //make the newnode and push it) N
+(227) # (                    if\(!is_dup\(new_vec\)\){) N
+(228) # (                        Node new_node = Node\(new_vec, n.i, n.depth+1,"right",tre) N
+0 T (e.size\(\),searchtype\);) N
+(229) # (                        tree.push_back\(new_node\);) N
+(230) # (                        n.moveright = new_node.i;) N
+(231) # (                        if\(searchtype == 1\) q.push\(tree.size\(\)-1\);) N
+(232) # (                        else if\(searchtype == 2 || searchtype == 3\) q2.push\(new_) N
+0 T (node\);) N
+(233) # (                    }) N
+(234) # (                }) N
+(235) # () N
+(236) # (                //Make left child IF POSSIBLE) N
+(237) # (                if\( \(pos+1\) % dsize != 1\){) N
+(238) # () N
+(239) # (                     //swap the values) N
+(240) # (                    vector<int> new_vec = n.data;) N
+(241) # (                    new_vec[pos] = new_vec[pos-1];) N
+(242) # (                    new_vec[pos-1] = 0;) N
+(243) # () N
+(244) # (                    //make the newnode and push it) N
+(245) # (                    if\(!is_dup\(new_vec\)\){) N
+(246) # (                        Node new_node = Node\(new_vec, n.i, n.depth+1,"left",tree) N
+0 T (.size\(\),searchtype\);) N
+(247) # (                        tree.push_back\(new_node\);) N
+(248) # (                        n.moveleft = new_node.i;) N
+(249) # (                        if\(searchtype == 1\) q.push\(tree.size\(\)-1\);) N
+(250) # (                        else if\(searchtype == 2 || searchtype == 3\) q2.push\(new_) N
+0 T (node\);) N
+(251) # (                    }) N
+(252) # (                }) N
+(253) # () N
+(254) # (                //Make up child IF POSSIBLE) N
+(255) # (                if\( \(pos+1\) > dsize \){) N
+(256) # (                    //swap the values) N
+(257) # (                    vector<int> new_vec = n.data;) N
+(258) # (                    new_vec[pos] = new_vec[pos-dsize];) N
+(259) # (                    new_vec[pos-dsize] = 0;) N
+(260) # () N
+(261) # (                    //make the newnode and pushs it) N
+(262) # (                    if\(!is_dup\(new_vec\)\){) N
+(263) # (                       Node new_node = Node\(new_vec, n.i, n.depth+1,"up",tree.si) N
+0 T (ze\(\),searchtype\);) N
+(264) # (                        tree.push_back\(new_node\);) N
+(265) # (                        n.moveup = new_node.i;) N
+(266) # (                         if\(searchtype == 1\) q.push\(tree.size\(\)-1\);) N
+(267) # (                        else if\(searchtype == 2|| searchtype == 3\) q2.push\(new_n) N
+0 T (ode\);) N
+(268) # (                    }) N
+(269) # (                }) N
+(270) # () N
+(271) # (                //Make down child IF POSSIBLE) N
+(272) # (                if\( \(pos+1 +dsize\) <= n.data.size\(\)\){) N
+(tree.H) (Page 4/5) (Nov 01, 12 18:10) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(tree.H) (2/3) (Thursday November 01, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5) 3
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(273) # (                     //swap the values) p n
+(274) # (                    vector<int> new_vec = n.data;) N
+(275) # (                    new_vec[pos] = new_vec[pos+dsize];) N
+(276) # (                    new_vec[pos+dsize] = 0;) N
+(277) # () N
+(278) # () N
+(279) # (                    //make the newnode and push it) N
+(280) # (                    if\(!is_dup\(new_vec\)\){) N
+(281) # (                        Node new_node = Node\(new_vec, n.i, n.depth+1,"down",tree) N
+0 T (.size\(\),searchtype\);) N
+(282) # (                        tree.push_back\(new_node\);) N
+(283) # (                        n.movedown = new_node.i;) N
+(284) # (                         if\(searchtype == 1\) q.push\(tree.size\(\)-1\);) N
+(285) # (                        else if\(searchtype == 2|| searchtype == 3\) q2.push\(new_n) N
+0 T (ode\);) N
+(286) # (                    }) N
+(287) # (                }) N
+(288) # () N
+(289) # (                //record the max queue size) N
+(290) # (                if\(searchtype ==1 &&maxqsize < q.size\(\)\) maxqsize = q.size\(\);) N
+(291) # (                else if\( \(searchtype == 2 || searchtype == 3\) && maxqsize < q2.s) N
+0 T (ize\(\) \) maxqsize = q2.size\(\);) N
+(292) # () N
+(293) # (            }) N
+(294) # () N
+(295) # (            //do the search on the next node) N
+(296) # (            if\(searchtype == 1\) n = tree[q.front\(\)]; //use regular queue) N
+(297) # (            else if\(searchtype == 2|| searchtype == 3\) n = tree[q2.top\(\).i]; //u) N
+0 T (se priority queue) N
+(298) # () N
+(299) # (        }) N
+(300) # () N
+(301) # (        //print the solution) N
+(302) # (        print_solution\(searchtype,possible\);) N
+(303) # () N
+(304) # (    }) N
+(305) # () N
+(306) # () N
+(307) # (    //deconstructor) N
+(308) # (     ~Tree\(\){) N
+(309) # () N
+(310) # (    }) N
+(311) # () N
+(312) # (};) N
+(313) # () N
+(314) # () N
+(315) # (#endif) N
+(tree.H) (Page 5/5) (Nov 01, 12 18:10) title
+border
+grestore
+(Printed by Christopher Wong) rhead
+(tree.H) (3/3) (Thursday November 01, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

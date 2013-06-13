@@ -1,0 +1,36 @@
+Names: Chris Wong , Allen Yu
+Login:  wongc, yua
+Email: cwong030@student.ucr.edu , yua@cs.ucr.edu
+Lab Section: 022
+Assignment: Lab 5
+I acknowledge all content is original.
+
+Lab Objective
+    The objective of this lab was to familiarize us with the addition of
+Binary Coded Decimals and conversion of the Densely Packed Decimal to the 
+Binary Coded Decimal.
+
+
+Personal Contributions
+	 Allen - 50%. Chris - 50%. We both contributed to an equal amount of
+work in this lab. We worked on one program together and explained to eachother
+how the lab assignment should work. 
+
+
+Skill Learned & Knowledge Gained
+      We learned to code in VHDL a lot better than before. We learned how
+the addition of Binary Coded Decimals worked with full adders. We learned how
+to convert from DPDs to BCD in VHDL.
+
+
+Known Bugs Location
+      We had a  problem synthesizing in Xilinx where it said that we needed to
+contact technical support. We figured out that it was our syntax or coding 
+style that generated this error. We were initializing a signal inside a process
+where it shouldn't be.
+
+
+Feedback on the Lab
+      Lab 5 was very straight forward. It was very easy to understand the
+material since we went over it in the 161L lecture. There was no problem
+completing this lab within the 3 hour lab time. 

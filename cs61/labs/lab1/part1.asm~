@@ -1,0 +1,25 @@
+;----------------------------------------------------
+; Wong, Chris
+; 860-923-521
+; Login: wongc
+; Section: 23
+; TA: Wasim
+; Email: cwong030@ucr.edu
+; Lab 01
+;----------------------------------------------------
+
+;; heloo world program
+
+.ORIG x3000
+
+LEA RO, message
+PUTS
+HALT
+
+;;end of code
+
+;;date block
+message     .STRINGZ "Hello World!\n"
+
+
+.END    ;

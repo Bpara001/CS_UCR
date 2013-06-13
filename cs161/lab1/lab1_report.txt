@@ -1,0 +1,33 @@
+Names: Hans Wun, Chris Wong
+Login: wunh, wongc
+Email: hwun001@ucr.edu, wongc@cs.ucr.edu
+Lab Section: 0##
+Assignment: Lab #1
+I acknowledge all content is original.
+
+I. Lab objective
+The lab objective was to introduce us to using Xilinx ISE 13 tool-chain.
+To do this we designed a basic ALU.
+
+II . Personal contributions
+Hans wrote most of the processes for the ALU, while Chris modified the testbench to test
+more cases as well as debugged the program when the program output the wrong values
+for the new test cases.  
+
+III. Skill learned & knowledge gained.
+We learned basics of coding in VHDL, specifically regarding syntax and semantics.
+It was very different coding in a hardware mindset, since all processes work in parallel.
+However, over the course of the first lab, we had many questions answered and 
+now have a better understanding of how to code in VHDL.
+
+
+IV. Known bugs locations
+We tested our design with numerous cases, supplementing what was already
+provided in the test bench template. There may have been a few cases that we missed,
+and therefore our program might possibly fail still for specific input.
+The largest bug we had was regarding our testbench not inheriting the correct
+component, resulting in our outputs always being uninitialized.  Definitely a lesson
+learned.
+
+V. Feedback on the lab
+Overall the lab was great!

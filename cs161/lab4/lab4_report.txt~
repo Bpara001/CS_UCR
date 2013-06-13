@@ -1,0 +1,21 @@
+Names: Bryan Marsh, Chris Wong
+Login: marshb,wongc
+Email: bmars003@ucr.edu ,cwong030@ucr.edu
+Lab Section: #1
+Assignment: Lab #4
+I acknowledge all content is original
+
+I. Lab objective
+	The objective of this lab was to implement control and data hazard detection in MIPS pipeline. 
+
+II . Personal contributions:
+	We both worked on designing the algorithm(s) and logic that is used for completing the objective. We also both worked on making example to help us valid the algorithm(s) and logic.
+
+III. Skill learned & knowledge gained.
+	This lab helped reinforce the knowledge that we gained about pipelines, control and data hazard detection.
+
+IV. Known bugs locations
+	None as of the time this document was submitted.
+
+V. Feedback on the lab
+	The lab at first seemed a little confusing. After reading the lab manual more in depth,, talking with the TA ,re-reading lecture slides and the book the lab became more clear. 

@@ -1,0 +1,50 @@
+Running: C:\Xilinx\13.3\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/wrapper_isim_beh.exe -prj C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/wrapper_beh.prj work.wrapper 
+ISim O.76xd (signature 0x2f00eba5)
+Number of CPUs detected in this system: 2
+Turning on mult-threading, number of parallel sub-compilation jobs: 4 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/ipcore_dir/my_MEM_256x32.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../MIPS_lib.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../Reg_File_S10.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/Mux.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../Generic_Register_S10.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../Extra_Components_S10.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../ALU_S10.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../Datapath_S10.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../Control_Unit_S10.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../ALU_Control_S10.vhd" into library work
+Parsing VHDL file "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/../Wrapper_S10.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 68188 KB
+Fuse CPU Usage: 780 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package mips_lib
+Compiling package std_logic_unsigned
+Compiling architecture behavioral of entity Generic_Register [\Generic_Register(32)\]
+Compiling architecture behavioral of entity Mux_32_2_1 [mux_32_2_1_default]
+Compiling package textio
+Compiling package std_logic_textio
+Compiling architecture output_stage_behavioral of entity BLK_MEM_GEN_V6_2_output_stage [\BLK_MEM_GEN_V6_2_output_stage("...]
+Compiling architecture softecc_output_reg_stage_behavioral of entity BLK_MEM_GEN_V6_2_softecc_output_reg_stage [\BLK_MEM_GEN_V6_2_softecc_output...]
+Compiling architecture mem_module_behavioral of entity BLK_MEM_GEN_V6_2_mem_module [\BLK_MEM_GEN_V6_2_mem_module("bl...]
+Compiling architecture behavioral of entity BLK_MEM_GEN_V6_2 [\BLK_MEM_GEN_V6_2("blk_mem_gen_v...]
+Compiling architecture my_mem_256x32_a of entity my_MEM_256x32 [my_mem_256x32_default]
+Compiling architecture behavioral of entity Mux_5_2_1 [mux_5_2_1_default]
+Compiling architecture behavioral of entity Mux_32_4_1 [mux_32_4_1_default]
+Compiling architecture behavioral of entity Mux_32_3_1 [mux_32_3_1_default]
+Compiling architecture behavioral of entity Reg_File [reg_file_default]
+Compiling architecture bhv of entity SignExt_16_32 [signext_16_32_default]
+Compiling architecture bhv of entity ALU [alu_default]
+Compiling architecture bhv of entity Datapath [datapath_default]
+Compiling architecture bhv of entity Control [control_default]
+Compiling architecture bhv of entity ALUControl [alucontrol_default]
+Compiling architecture behavioral of entity wrapper
+Time Resolution for simulation is 1ps.
+Waiting for 9 sub-compilation(s) to finish...
+Compiled 40 VHDL Units
+Built simulation executable C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/wrapper_isim_beh.exe
+Fuse Memory Usage: 90656 KB
+Fuse CPU Usage: 1187 ms

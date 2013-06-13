@@ -1,0 +1,6 @@
+vhdl isim_temp "myFF.vhd"
+vhdl isim_temp "CAM_Cell.vhd"
+vhdl isim_temp "CAM_Row.vhd"
+vhdl isim_temp "CAM_Array.vhd"
+vhdl isim_temp "CAM_Wrapper.vhd"
+vhdl isim_temp "cam_wrapper_tb.vhd"

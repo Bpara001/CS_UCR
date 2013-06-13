@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "Y:/Desktop/cs161/lab7/vhdl_temp/vhdl/CAM_Array.xst" -ofn "Y:/Desktop/cs161/lab7/vhdl_temp/vhdl/CAM_Array.syr" 

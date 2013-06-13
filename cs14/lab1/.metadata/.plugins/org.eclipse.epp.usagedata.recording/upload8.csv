@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.0.v20091207-1800,"org.eclipse.ui.edit.text.showInformation",1277156176965
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.0.v20091207-1800,"org.eclipse.ui.edit.text.showInformation",1277156177616
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156177630
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156181190
+executed,command,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.edit.opendecl",1277156187014
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.0.v20091207-1800,"org.eclipse.ui.edit.text.showInformation",1277156189336
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.0.v20091207-1800,"org.eclipse.ui.edit.text.showInformation",1277156191187
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156195786
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156199615
+executed,command,org.eclipse.ui.ide,3.6.0.I20091210-1200,"org.eclipse.ui.project.buildAll",1277156202131
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156202474
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156204159
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156210440
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156210578
+error,log,,,"Error logged from Debug Core: ",1277156211083
+activated,view,org.eclipse.ui.console,3.5.0.v20090907,"org.eclipse.ui.console.ConsoleView",1277156219639
+activated,editor,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.editor.CEditor",1277156262968
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156272561
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156290159
+activated,view,org.eclipse.ui.console,3.5.0.v20090907,"org.eclipse.ui.console.ConsoleView",1277156293138
+opened,view,org.eclipse.ui.views,3.5.0.I20090914-0830,"org.eclipse.ui.views.PropertySheet",1277156293601
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156293628
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156300033
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277156302144
+activated,perspective,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui.CPerspective",1277156303409

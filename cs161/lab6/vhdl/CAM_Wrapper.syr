@@ -1,0 +1,419 @@
+Release 13.3 - xst O.76xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.23 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.23 secs
+ 
+--> Reading design: CAM_Wrapper.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "CAM_Wrapper.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "CAM_Wrapper"
+Output Format                      : NGC
+Target Device                      : xc6vlx240t-1-ff1156
+
+---- Source Options
+Top Module Name                    : CAM_Wrapper
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl\myFF.vhd" into library work
+Parsing entity <myFF>.
+Parsing architecture <archi> of entity <myff>.
+Parsing VHDL file "\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl\CAM_Cell.vhd" into library work
+Parsing entity <CAM_Cell>.
+Parsing architecture <Ternary_at_Input_Cell> of entity <cam_cell>.
+Parsing VHDL file "\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl\CAM_Row.vhd" into library work
+Parsing entity <CAM_Row>.
+Parsing architecture <Behavioral> of entity <cam_row>.
+Parsing VHDL file "\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl\CAM_Array.vhd" into library work
+Parsing entity <CAM_Array>.
+Parsing architecture <Behavioral> of entity <cam_array>.
+Parsing VHDL file "\\nemo.cs.ucr.edu\wongc\Desktop\cs161\lab6\vhdl\CAM_Wrapper.vhd" into library work
+Parsing entity <CAM_Wrapper>.
+Parsing architecture <Behavioral> of entity <cam_wrapper>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <CAM_Wrapper> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <CAM_Array> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <CAM_Row> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <CAM_Cell> (architecture <Ternary_at_Input_Cell>) from library <work>.
+
+Elaborating entity <myFF> (architecture <archi>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <CAM_Wrapper>.
+    Related source file is "//nemo.cs.ucr.edu/wongc/desktop/cs161/lab6/vhdl/cam_wrapper.vhd".
+        CAM_WIDTH = 32
+        CAM_DEPTH = 8
+    Found 8-bit register for signal <we_decoded_row_address_buffered>.
+    Found 32-bit register for signal <search_word_buffered>.
+    Found 8-bit register for signal <decoded_match_address>.
+    Found 1-bit register for signal <rst_buffered>.
+    Summary:
+	inferred  49 D-type flip-flop(s).
+Unit <CAM_Wrapper> synthesized.
+
+Synthesizing Unit <CAM_Array>.
+    Related source file is "//nemo.cs.ucr.edu/wongc/desktop/cs161/lab6/vhdl/cam_array.vhd".
+        CAM_WIDTH = 32
+        CAM_DEPTH = 8
+    Summary:
+	no macro.
+Unit <CAM_Array> synthesized.
+
+Synthesizing Unit <CAM_Row>.
+    Related source file is "//nemo.cs.ucr.edu/wongc/desktop/cs161/lab6/vhdl/cam_row.vhd".
+        CAM_WIDTH = 32
+    Summary:
+	no macro.
+Unit <CAM_Row> synthesized.
+
+Synthesizing Unit <CAM_Cell>.
+    Related source file is "//nemo.cs.ucr.edu/wongc/desktop/cs161/lab6/vhdl/cam_cell.vhd".
+    Found 1-bit register for signal <cell_match_bit_out>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <CAM_Cell> synthesized.
+
+Synthesizing Unit <myFF>.
+    Related source file is "//nemo.cs.ucr.edu/wongc/desktop/cs161/lab6/vhdl/myff.vhd".
+    Found 1-bit register for signal <Q>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <myFF> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 516
+ 1-bit register                                        : 513
+ 32-bit register                                       : 1
+ 8-bit register                                        : 2
+# Xors                                                 : 256
+ 1-bit xor2                                            : 256
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 561
+ Flip-Flops                                            : 561
+# Xors                                                 : 256
+ 1-bit xor2                                            : 256
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <CAM_Wrapper> ...
+
+Optimizing unit <CAM_Array> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block CAM_Wrapper, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 561
+ Flip-Flops                                            : 561
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : CAM_Wrapper.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 257
+#      GND                         : 1
+#      LUT2                        : 8
+#      LUT3                        : 248
+# FlipFlops/Latches                : 561
+#      FD                          : 297
+#      FDR                         : 8
+#      FDRE                        : 256
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 49
+#      IBUF                        : 41
+#      OBUF                        : 8
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6vlx240tff1156-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             561  out of  301440     0%  
+ Number of Slice LUTs:                  256  out of  150720     0%  
+    Number used as Logic:               256  out of  150720     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    561
+   Number with an unused Flip Flop:       0  out of    561     0%  
+   Number with an unused LUT:           305  out of    561    54%  
+   Number of fully used LUT-FF pairs:   256  out of    561    45%  
+   Number of unique control sets:        10
+
+IO Utilization: 
+ Number of IOs:                          50
+ Number of bonded IOBs:                  50  out of    600     8%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 561   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 1.410ns (Maximum Frequency: 709.433MHz)
+   Minimum input arrival time before clock: 0.413ns
+   Maximum output required time after clock: 0.777ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 1.410ns (frequency: 709.433MHz)
+  Total number of paths / destination ports: 1536 / 1032
+-------------------------------------------------------------------------
+Delay:               1.410ns (Levels of Logic = 0)
+  Source:            rst_buffered (FF)
+  Destination:       CAM_Array_pmX/gen_sub[0].forward_unit/gen_sub[31].forward_unit/ffd/Q (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: rst_buffered to CAM_Array_pmX/gen_sub[0].forward_unit/gen_sub[31].forward_unit/ffd/Q
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q             256   0.375   0.601  rst_buffered (rst_buffered)
+     FDRE:R                    0.434          CAM_Array_pmX/gen_sub[7].forward_unit/start/ffd/Q
+    ----------------------------------------
+    Total                      1.410ns (0.809ns logic, 0.601ns route)
+                                       (57.4% logic, 42.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 41 / 41
+-------------------------------------------------------------------------
+Offset:              0.413ns (Levels of Logic = 1)
+  Source:            we_decoded_row_address<0> (PAD)
+  Destination:       we_decoded_row_address_buffered_0 (FF)
+  Destination Clock: clk rising
+
+  Data Path: we_decoded_row_address<0> to we_decoded_row_address_buffered_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.003   0.399  we_decoded_row_address_0_IBUF (we_decoded_row_address_0_IBUF)
+     FD:D                      0.011          we_decoded_row_address_buffered_0
+    ----------------------------------------
+    Total                      0.413ns (0.014ns logic, 0.399ns route)
+                                       (3.4% logic, 96.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              0.777ns (Levels of Logic = 1)
+  Source:            decoded_match_address_buffered_7 (FF)
+  Destination:       decoded_match_address<7> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: decoded_match_address_buffered_7 to decoded_match_address<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.375   0.399  decoded_match_address_buffered_7 (decoded_match_address_buffered_7)
+     OBUF:I->O                 0.003          decoded_match_address_7_OBUF (decoded_match_address<7>)
+    ----------------------------------------
+    Total                      0.777ns (0.378ns logic, 0.399ns route)
+                                       (48.6% logic, 51.4% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    1.410|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 15.00 secs
+Total CPU time to Xst completion: 14.50 secs
+ 
+--> 
+
+Total memory usage is 156480 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

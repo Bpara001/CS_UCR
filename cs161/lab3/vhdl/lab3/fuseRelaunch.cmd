@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/wrapper_isim_beh.exe" -prj "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab3/vhdl/lab3/wrapper_beh.prj" "work.wrapper" 

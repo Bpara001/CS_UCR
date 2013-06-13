@@ -1,0 +1,22 @@
+
+******TESTING PUSH_FRONT******
+
+List after first stage: size is 5
+fifth fourth third second first 
+
+List after second stage: size is 2
+second first 
+
+List after third stage: size is 0
+
+
+******TESTING PUSH_BACK******
+
+List after first stage:
+first second third fourth fifth 
+
+List after second stage:
+fourth fifth 
+
+List after third stage:
+

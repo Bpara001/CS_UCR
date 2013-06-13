@@ -1,0 +1,87 @@
+
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts}
+
+\input{macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS/MATH111 SUNTINWONG! ASSIGNMENT 1}
+\centerline{due Tuesday, April 12}
+
+\vskip 0.1in
+\noindent{\bf Individual assignment:} Problems 1 and 2.
+
+\noindent{\bf Group assignment:} Problems 1,2 and 3.
+
+\vskip 0.2in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+(a)
+Give the exact formula (as a function of $n$) for the number of
+times ``whatsup" is printed by Algorithm~\textsc{WhatsUp} below.
+First express it as a summation, and then give a closed-form expression.
+
+\noindent
+(b)
+Give the asymptotic value of the
+number of ``whatsup"s (using the $\Theta$-notation.)
+
+\begin{tabbing}
+aa \= aa \= aa \= aa \= aa \= aa \= \kill
+\textbf{Algorithm} \textsc{WhatsUp} $(n: \mbox{\bf integer})$ \\
+      \> \textbf{for} $i \leftarrow 1$ \textbf{to} $2n$
+                         \textbf{do} \\
+      \> \> \textbf{for} $j \leftarrow 1$ \textbf{to} $(i+1)^2$ \textbf{do} \\
+      \> \> \> print(``whatsup")
+\end{tabbing}
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $f(n)$ be a function on natural numbers defined
+recursively by $f(0) = 1$, $f(1) = 2.3$, $f(n+2) = 3f(n) + f(n+1)$.
+Prove by induction that
+$(9/4)^n \le f(n) \le (7/3)^n$.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Give as good big-O estimates as possible for the
+following functions:
+%
+\begin{description}
+%
+\item{(a)} $3n^2 + 7 n^4 + n + 17$
+\item{(b)} $n^3 (n\log n + \sqrt{n}+5 )$
+\item{(c)} $n^3\log^3n + 13 n^2\log^5n + n^{1.5}$
+\item{(d)} $n^3 + n^2 4^n + \log^5 n$
+\item{(e)} $n3^n + 5^n$
+%
+\end{description}
+%
+Justify your answer.
+(Here, you don't need to give a complete rigorous proof.
+Give only an informal explanation using asymptotic
+relations between the functions $n^c$, $\log n$, and
+$c^n$.)
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+\paragraph{Submission.}
+You need to turn in your homework by Tuesday, April 12 (midnight).
+Submit the homework in Ilearn in the pdf format.
+
+\paragraph{Reminders.}
+Remember that only {\LaTeX} papers are accepted. Also,
+remember to turn in your signed academic integrity statement.
+
+\end{document}
+

@@ -1,0 +1,45 @@
+Names: Hans Wun, Chris Wong
+Login: wunh, wongc
+Email: hwun001@ucr.edu, wongc@cs.ucr.edu
+Lab Section: 0##
+Assignment: Lab #3
+
+
+I. Lab objective
+The goal of this lab was to design an assembler
+to compile MIPS assembly code into machine language.
+
+II . Personal contributions
+Chris wrote a large portion of the assembler, since
+he designed the integer to binary converter function
+on his own time, while Hans focused on writing the VHDL.
+We worked together to debug both programs
+
+III. Skill learned & knowledge gained
+The assembler logic was fairly easy to write, but the VHDL was very
+confusing at first.  We eventually made sense of the logic
+and were able to get most of the components connected and implemented.
+
+IV. Known bug locations
+Most of our fields get valid values, and the datapaths should be
+connected correctly.  However, our PC does not work properly 
+and cannot be initialized nor will it increment since the value is
+null.  We were also unable to initialize our register values, 
+and since we did not implement any functions to set imediate values we could
+never properly access the registers to do arithmetic.  The assembler
+should work flawlessly to produce a correct COE file.  The
+branch and decrement operation is also not implemented in the
+VHDL.
+
+V. Feedback on the lab
+The VHDL portion was very confusing, especially because there were 
+multiple parts where certain components did not have the correct syntax,
+plaguing the program with obscure bugs.  This often made it hard to tell
+which of the given components was actually completely correct or not.
+However, since the bugs were present, we were essentially forced to
+understand the code in order to be able to fix it, so in the end it was
+actually beneficial because we learned how all the component files 
+worked and how to create entities.
+
+
+

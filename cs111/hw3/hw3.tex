@@ -1,0 +1,88 @@
+
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts,graphicx}
+
+\input{macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS/MATH111 ASSIGNMENT 3}
+\centerline{due Tuesday, May 10, midnight}
+
+\vskip 0.2in
+\noindent{\bf Individual assignment:} Problems 1 and 2.
+
+\noindent{\bf Group assignment:} Problems 1,2 and 3.
+
+\vskip 0.1in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+We construct recursively binary trees $T_0, T_1, T_2, ...$,
+as follows. Both $T_0$ and $T_1$ consist of a single node.
+For $n\ge 2$, to obtain $T_n$, we link
+one copy of $T_{n-1}$ and two copies of
+$T_{n-2}$, as in the figure below:
+
+\begin{center}
+\includegraphics[width=2.5in]{hw3_bin_tree.pdf}
+\end{center}
+
+Let $b_n$ be the number of nodes in $T_n$. For example,
+$b_0 = 1$, $b_1 = 1$, $b_2 = 5$ and $b_3 = 9$. Give the
+formula for $b_n$. Show your work.  The solution
+must consist of the following steps:
+(i) Set up a recurrence equation and give a brief justification.
+(ii) Give the associated homogeneous equation.
+(iii) Determine the characteristic equation and solve it.
+(iv) Give the general solution for the homogeneous equation.
+(v) Determine a particular solution for the non-homogeneous equation.
+(vi) Give the general solution for the non-homogeneous equation.
+(vii) Use the initial conditions to compute the final answer.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $S_n$ be the number of tilings of the $n\times 3$ grid with
+$1\times 3$ and $2\times 3$ tiles. (Tiles can be rotated by 90 degrees.)
+ Give a recurrence relation
+for $S_n$ and justify its correctness.
+
+Note: This recurrence will be of degree higher than $2$, and you
+\emph{do not} have to solve it. The reverse page shows all tilings of
+the $5\times 3$ grid, showing that $S_5 = 23$. You can use this value to
+verify you recurrence.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Solve the following recurrence equation:
+%
+\begin{eqnarray*}
+        V_n &=& 4V_{n-1} - 2V_{n-2}\\
+        V_0 &=& 0 \\
+        V_1 &=& 1
+\end{eqnarray*}
+%
+Show your work.
+\end{problem}
+
+\vskip 0.1in
+\paragraph{Submission.}
+You need to turn in your homework via Ilearn
+no later than midnight of Tuesday, May 10.
+
+
+\vfill
+\eject
+
+\begin{center}
+\includegraphics[width=5in]{hw3_tilings.pdf}
+\end{center}
+
+\end{document}
+

@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+java.vm.specification.version,sysinfo,,,"1.0",1277328303543
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1277328303543
+java.vm.version,sysinfo,,,"14.0-b16",1277328303543
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277328308915
+activated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277328310705
+deactivated,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277328311657
+closed,workbench,org.eclipse.ui.workbench,3.6.0.I20091209-1800,"",1277328314318
+stopped,bundle,org.eclipse.cdt.debug.mi.ui,6.0.0.200912110805,"org.eclipse.cdt.debug.mi.ui",1277328314667
+stopped,bundle,org.eclipse.cdt.debug.mi.core,6.1.0.200912110805,"org.eclipse.cdt.debug.mi.core",1277328314668
+stopped,bundle,org.eclipse.cdt.dsf.gdb.ui,2.1.0.200912110805,"org.eclipse.cdt.dsf.gdb.ui",1277328314672
+stopped,bundle,org.eclipse.cdt.dsf.ui,2.1.0.200912110805,"org.eclipse.cdt.dsf.ui",1277328314672
+stopped,bundle,org.eclipse.cdt.launch,6.1.0.200912110805,"org.eclipse.cdt.launch",1277328314688
+stopped,bundle,org.eclipse.cdt.debug.ui,6.1.0.200912110805,"org.eclipse.cdt.debug.ui",1277328314699
+stopped,bundle,org.eclipse.cdt.dsf.gdb,2.1.0.200912110805,"org.eclipse.cdt.dsf.gdb",1277328314708
+stopped,bundle,org.eclipse.cdt.dsf,2.1.0.200912110805,"org.eclipse.cdt.dsf",1277328314710
+stopped,bundle,org.eclipse.cdt.debug.core,6.1.0.200912110805,"org.eclipse.cdt.debug.core",1277328314710
+stopped,bundle,org.eclipse.cdt.managedbuilder.ui,5.2.0.200912110805,"org.eclipse.cdt.managedbuilder.ui",1277328314730
+stopped,bundle,org.eclipse.cdt.make.ui,6.1.0.200912110805,"org.eclipse.cdt.make.ui",1277328314731
+stopped,bundle,org.eclipse.cdt.managedbuilder.gnu.ui,5.0.100.200912110805,"org.eclipse.cdt.managedbuilder.gnu.ui",1277328314732
+stopped,bundle,org.eclipse.cdt.managedbuilder.core,6.1.0.200912110805,"org.eclipse.cdt.managedbuilder.core",1277328314733
+stopped,bundle,org.eclipse.cdt.make.core,6.0.0.200912110805,"org.eclipse.cdt.make.core",1277328314733
+stopped,bundle,org.eclipse.cdt.ui,5.2.0.200912110805,"org.eclipse.cdt.ui",1277328315909
+stopped,bundle,org.eclipse.cdt.core,5.2.0.200912110805,"org.eclipse.cdt.core",1277328315911
+stopped,bundle,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20091010,"org.eclipse.equinox.p2.ui.sdk",1277328315913
+stopped,bundle,org.eclipse.equinox.p2.ui.sdk.scheduler,1.0.0.v20091010,"org.eclipse.equinox.p2.ui.sdk.scheduler",1277328315914

@@ -1,0 +1,20 @@
+/* Digraph 
+ * lab 5
+ * cs014_10spr 
+ */
+
+digraph G {
+
+  // nodes and edges	
+  a->b;
+  b->c;
+  c->a;
+  d->a;
+  d->e;
+  e->h;
+  h->d;
+  e->f;
+  f->g;
+
+ 
+    }
